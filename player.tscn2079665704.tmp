@@ -9,7 +9,6 @@
 points = PackedVector2Array(-42, -13.999999, -48, -8.999999, -48, 9.000001, -42, 14.000001, 27, 14, 47, -5.604694e-07, 27, -14)
 
 [node name="Player" type="CharacterBody2D" unique_id=2092264728]
-collision_mask = 0
 script = ExtResource("1_onrkg")
 max_speed = 500
 metadata/_edit_group_ = true
@@ -28,7 +27,7 @@ shape = SubResource("ConvexPolygonShape2D_onrkg")
 
 [node name="RightBroadside" type="Node2D" parent="." unique_id=11000823]
 position = Vector2(7, 0)
-rotation = 4.712389
+rotation = 1.5707964
 script = ExtResource("3_i3pqv")
 cannonball_scene = ExtResource("4_hqtel")
 
@@ -94,9 +93,7 @@ position = Vector2(35, -1.6808945e-06)
 
 [node name="LeftBroadside" type="Node2D" parent="." unique_id=1529387424]
 position = Vector2(-7, 0)
-rotation = 1.5707964
-script = ExtResource("3_i3pqv")
-cannonball_scene = ExtResource("4_hqtel")
+rotation = 4.712389
 
 [node name="LeftCannon" type="Marker2D" parent="LeftBroadside" unique_id=616195159]
 position = Vector2(-35, 2.213368e-06)
