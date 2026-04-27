@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bvpsthsbdx3mi"]
+
+[ext_resource type="Texture2D" uid="uid://csaqijxd3ktso" path="res://boat 1.png" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://dj1r0kltpi8yc" path="res://player.gd" id="1_onrkg"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_onrkg"]
+points = PackedVector2Array(-42, -15, -48, -10, -48, 8, -42, 13, 27, 13, 47, -1, 27, -15)
+
+[node name="Player" type="CharacterBody2D" unique_id=2092264728]
+script = ExtResource("1_onrkg")
+max_speed = 500
+acceleration = 100
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1622442457]
+rotation = 4.712389
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_4flbx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2005568128]
+rotation = 4.712389
+shape = SubResource("ConvexPolygonShape2D_onrkg")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1375824766]
