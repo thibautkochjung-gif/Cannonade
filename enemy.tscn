@@ -1,0 +1,142 @@
+[gd_scene format=3 uid="uid://dmgtoi1wc10s4"]
+
+[ext_resource type="Texture2D" uid="uid://csaqijxd3ktso" path="res://Sprites/boat 1.png" id="1_7k104"]
+[ext_resource type="Script" uid="uid://iybdaoquofu0" path="res://enemy.gd" id="1_qi2p4"]
+[ext_resource type="Script" uid="uid://bgi08qd4y6nc2" path="res://health.gd" id="2_4gyqm"]
+[ext_resource type="PackedScene" uid="uid://c1jujcp8ukeio" path="res://cannon.tscn" id="4_iifgy"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_4gyqm"]
+points = PackedVector2Array(37, -1, 22, 10, -33, 10, -38, 7, -38, -8, -33, -12, 21, -12)
+
+[node name="Enemy" type="RigidBody2D" unique_id=483788940]
+collision_layer = 4
+collision_mask = 3
+mass = 2000.0
+gravity_scale = 0.0
+script = ExtResource("1_qi2p4")
+
+[node name="EnemySprite" type="Sprite2D" parent="." unique_id=1911777988]
+modulate = Color(0.7310533, 0.013564329, 0.23212478, 1)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("1_7k104")
+
+[node name="EnemyHitbox" type="CollisionShape2D" parent="." unique_id=584272288]
+shape = SubResource("ConvexPolygonShape2D_4gyqm")
+
+[node name="Health" type="Node2D" parent="." unique_id=1267936006]
+script = ExtResource("2_4gyqm")
+
+[node name="RightBroadside" type="Node2D" parent="." unique_id=730625093]
+position = Vector2(0, 5)
+rotation = 4.712389
+
+[node name="Cannon" parent="RightBroadside" unique_id=503346608 instance=ExtResource("4_iifgy")]
+position = Vector2(-3.0000005, -30)
+
+[node name="Cannon2" parent="RightBroadside" unique_id=2097357090 instance=ExtResource("4_iifgy")]
+position = Vector2(-3.0000005, -27)
+
+[node name="Cannon3" parent="RightBroadside" unique_id=1682228125 instance=ExtResource("4_iifgy")]
+position = Vector2(-3.0000005, -24)
+
+[node name="Cannon4" parent="RightBroadside" unique_id=1011074204 instance=ExtResource("4_iifgy")]
+position = Vector2(-3.0000005, -21)
+
+[node name="Cannon5" parent="RightBroadside" unique_id=868058116 instance=ExtResource("4_iifgy")]
+position = Vector2(-3.0000005, -18)
+
+[node name="Cannon6" parent="RightBroadside" unique_id=1522267415 instance=ExtResource("4_iifgy")]
+position = Vector2(-3.0000002, -11)
+
+[node name="Cannon7" parent="RightBroadside" unique_id=518823062 instance=ExtResource("4_iifgy")]
+position = Vector2(-3.0000002, -8)
+
+[node name="Cannon8" parent="RightBroadside" unique_id=289150979 instance=ExtResource("4_iifgy")]
+position = Vector2(-3.0000002, -5)
+
+[node name="Cannon9" parent="RightBroadside" unique_id=416641981 instance=ExtResource("4_iifgy")]
+position = Vector2(-3.0000002, -2)
+
+[node name="Cannon10" parent="RightBroadside" unique_id=2101022951 instance=ExtResource("4_iifgy")]
+position = Vector2(-3.0000002, 1)
+
+[node name="Cannon11" parent="RightBroadside" unique_id=1988478456 instance=ExtResource("4_iifgy")]
+position = Vector2(-3, 8)
+
+[node name="Cannon12" parent="RightBroadside" unique_id=2025540065 instance=ExtResource("4_iifgy")]
+position = Vector2(-3, 11)
+
+[node name="Cannon13" parent="RightBroadside" unique_id=1801407260 instance=ExtResource("4_iifgy")]
+position = Vector2(-3, 14)
+
+[node name="Cannon14" parent="RightBroadside" unique_id=61653080 instance=ExtResource("4_iifgy")]
+position = Vector2(-3, 17)
+
+[node name="Cannon15" parent="RightBroadside" unique_id=438035107 instance=ExtResource("4_iifgy")]
+position = Vector2(-3, 20)
+
+[node name="LeftBroadside" type="Node2D" parent="." unique_id=1692605001]
+position = Vector2(0, -5)
+rotation = 1.5707964
+
+[node name="Cannon16" parent="LeftBroadside" unique_id=1293415195 instance=ExtResource("4_iifgy")]
+position = Vector2(-4.9999986, -20)
+rotation = 3.1415927
+
+[node name="Cannon17" parent="LeftBroadside" unique_id=1024772550 instance=ExtResource("4_iifgy")]
+position = Vector2(-4.9999986, -17)
+rotation = 3.1415927
+
+[node name="Cannon18" parent="LeftBroadside" unique_id=514874149 instance=ExtResource("4_iifgy")]
+position = Vector2(-4.9999986, -14)
+rotation = 3.1415927
+
+[node name="Cannon19" parent="LeftBroadside" unique_id=351973979 instance=ExtResource("4_iifgy")]
+position = Vector2(-4.9999986, -11)
+rotation = 3.1415927
+
+[node name="Cannon20" parent="LeftBroadside" unique_id=1569803947 instance=ExtResource("4_iifgy")]
+position = Vector2(-4.9999986, -8)
+rotation = 3.1415927
+
+[node name="Cannon21" parent="LeftBroadside" unique_id=1628955853 instance=ExtResource("4_iifgy")]
+position = Vector2(-4.9999986, -0.999999)
+rotation = 3.1415927
+
+[node name="Cannon22" parent="LeftBroadside" unique_id=1940081689 instance=ExtResource("4_iifgy")]
+position = Vector2(-4.9999986, 2.000001)
+rotation = 3.1415927
+
+[node name="Cannon23" parent="LeftBroadside" unique_id=1749469581 instance=ExtResource("4_iifgy")]
+position = Vector2(-4.9999986, 5.000001)
+rotation = 3.1415927
+
+[node name="Cannon24" parent="LeftBroadside" unique_id=1285344440 instance=ExtResource("4_iifgy")]
+position = Vector2(-4.9999986, 8.000001)
+rotation = 3.1415927
+
+[node name="Cannon25" parent="LeftBroadside" unique_id=664545149 instance=ExtResource("4_iifgy")]
+position = Vector2(-4.9999986, 11.000001)
+rotation = 3.1415927
+
+[node name="Cannon26" parent="LeftBroadside" unique_id=1406581002 instance=ExtResource("4_iifgy")]
+position = Vector2(-4.9999986, 18)
+rotation = 3.1415927
+
+[node name="Cannon27" parent="LeftBroadside" unique_id=204143057 instance=ExtResource("4_iifgy")]
+position = Vector2(-4.9999986, 21)
+rotation = 3.1415927
+
+[node name="Cannon28" parent="LeftBroadside" unique_id=545363709 instance=ExtResource("4_iifgy")]
+position = Vector2(-4.9999986, 24)
+rotation = 3.1415927
+
+[node name="Cannon29" parent="LeftBroadside" unique_id=1201042328 instance=ExtResource("4_iifgy")]
+position = Vector2(-4.9999986, 27)
+rotation = 3.1415927
+
+[node name="Cannon30" parent="LeftBroadside" unique_id=304809330 instance=ExtResource("4_iifgy")]
+position = Vector2(-4.9999986, 30)
+rotation = 3.1415927
+
+[connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]

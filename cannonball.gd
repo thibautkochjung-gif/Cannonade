@@ -24,3 +24,9 @@ func _process(delta: float) -> void:
 
 func _on_timer_timeout() -> void:
 	queue_free()
+
+
+func _on_body_entered(body: Node) -> void:
+	print("COLLISION")
+	body.get_node("Health").take_damage(10)
+	queue_free()
