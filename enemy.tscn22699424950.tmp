@@ -16,6 +16,7 @@ mass = 2000.0
 gravity_scale = 0.0
 linear_damp = 0.745
 script = ExtResource("1_qi2p4")
+max_speed = 500
 
 [node name="EnemySprite" type="Sprite2D" parent="." unique_id=1911777988]
 modulate = Color(0.7310533, 0.013564329, 0.23212478, 1)

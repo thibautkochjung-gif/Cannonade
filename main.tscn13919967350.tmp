@@ -563,6 +563,13 @@ tile_set = SubResource("TileSet_16pp4")
 acceleration_factor = 0.002
 
 [node name="Enemy" parent="." unique_id=483788940 instance=ExtResource("30_kq58d")]
-position = Vector2(621, -214)
+position = Vector2(174, -143)
 rotation = 3.1415927
-max_speed = 400.0
+
+[node name="Enemy2" parent="." unique_id=522915516 instance=ExtResource("30_kq58d")]
+position = Vector2(-117, 81)
+rotation = 3.1415927
+
+[node name="Enemy3" parent="." unique_id=171987032 instance=ExtResource("30_kq58d")]
+position = Vector2(530, 81)
+rotation = 3.1415927

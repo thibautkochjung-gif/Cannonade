@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var max_speed = 100
+@export var max_speed = 500
 @export var acceleration_factor = 0.1
 @export var angular_speed = 0.5
 

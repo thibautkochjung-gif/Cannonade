@@ -10,10 +10,9 @@
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_onrkg"]
 points = PackedVector2Array(-42, -13.999999, -48, -8.999999, -48, 9.000001, -42, 14.000001, 27, 14, 47, -5.604694e-07, 27, -14)
 
-[node name="Player" type="CharacterBody2D" unique_id=2092264728]
+[node name="Player" type="CharacterBody2D" unique_id=2092264728 groups=["player"]]
 collision_mask = 4
 script = ExtResource("1_onrkg")
-max_speed = 500
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1622442457]
@@ -27,6 +26,7 @@ rotation = 4.712389
 shape = SubResource("ConvexPolygonShape2D_onrkg")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1375824766]
+zoom = Vector2(0.8, 0.8)
 script = ExtResource("3_2hs0m")
 min_zoom = 0.5
 
@@ -34,513 +34,411 @@ min_zoom = 0.5
 position = Vector2(7, 0)
 rotation = 4.712389
 script = ExtResource("3_i3pqv")
-shot_strength = 700
 
-[node name="Cannon" parent="RightBroadside" unique_id=503346608 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon" parent="RightBroadside" unique_id=503346608 instance=ExtResource("4_hqtel")]
 position = Vector2(-40, 3.0000005)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon2" parent="RightBroadside" unique_id=172785757 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon2" parent="RightBroadside" unique_id=172785757 instance=ExtResource("4_hqtel")]
 position = Vector2(-39, 3.0000005)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon3" parent="RightBroadside" unique_id=1604573697 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon3" parent="RightBroadside" unique_id=1604573697 instance=ExtResource("4_hqtel")]
 position = Vector2(-38, 3.0000005)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon4" parent="RightBroadside" unique_id=1798703149 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon4" parent="RightBroadside" unique_id=1798703149 instance=ExtResource("4_hqtel")]
 position = Vector2(-37, 3.0000005)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon5" parent="RightBroadside" unique_id=1479266060 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon5" parent="RightBroadside" unique_id=1479266060 instance=ExtResource("4_hqtel")]
 position = Vector2(-36, 3.0000005)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon6" parent="RightBroadside" unique_id=1544752145 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon6" parent="RightBroadside" unique_id=1544752145 instance=ExtResource("4_hqtel")]
 position = Vector2(-34, 3.0000005)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon7" parent="RightBroadside" unique_id=2009588789 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon7" parent="RightBroadside" unique_id=2009588789 instance=ExtResource("4_hqtel")]
 position = Vector2(-33, 3.0000005)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon8" parent="RightBroadside" unique_id=1405133477 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon8" parent="RightBroadside" unique_id=1405133477 instance=ExtResource("4_hqtel")]
 position = Vector2(-32, 3.0000005)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon9" parent="RightBroadside" unique_id=1926193553 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon9" parent="RightBroadside" unique_id=1926193553 instance=ExtResource("4_hqtel")]
 position = Vector2(-31, 3.0000005)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon10" parent="RightBroadside" unique_id=729745187 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon10" parent="RightBroadside" unique_id=729745187 instance=ExtResource("4_hqtel")]
 position = Vector2(-30, 3.0000005)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon11" parent="RightBroadside" unique_id=957140432 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon11" parent="RightBroadside" unique_id=957140432 instance=ExtResource("4_hqtel")]
 position = Vector2(-28, 3.0000005)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon12" parent="RightBroadside" unique_id=380464799 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon12" parent="RightBroadside" unique_id=380464799 instance=ExtResource("4_hqtel")]
 position = Vector2(-27, 3.0000005)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon13" parent="RightBroadside" unique_id=1627225895 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon13" parent="RightBroadside" unique_id=1627225895 instance=ExtResource("4_hqtel")]
 position = Vector2(-26, 3.0000005)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon14" parent="RightBroadside" unique_id=2046364593 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon14" parent="RightBroadside" unique_id=2046364593 instance=ExtResource("4_hqtel")]
 position = Vector2(-25, 3.0000005)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon15" parent="RightBroadside" unique_id=2089713870 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon15" parent="RightBroadside" unique_id=2089713870 instance=ExtResource("4_hqtel")]
 position = Vector2(-24, 3.0000005)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon16" parent="RightBroadside" unique_id=1666532985 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon16" parent="RightBroadside" unique_id=1666532985 instance=ExtResource("4_hqtel")]
 position = Vector2(-22, 3.0000005)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon17" parent="RightBroadside" unique_id=1590510648 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon17" parent="RightBroadside" unique_id=1590510648 instance=ExtResource("4_hqtel")]
 position = Vector2(-21, 3.0000005)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon18" parent="RightBroadside" unique_id=359115592 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon18" parent="RightBroadside" unique_id=359115592 instance=ExtResource("4_hqtel")]
 position = Vector2(-20, 3.0000005)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon19" parent="RightBroadside" unique_id=630104296 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon19" parent="RightBroadside" unique_id=630104296 instance=ExtResource("4_hqtel")]
 position = Vector2(-19, 3.0000005)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon20" parent="RightBroadside" unique_id=729329037 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon20" parent="RightBroadside" unique_id=729329037 instance=ExtResource("4_hqtel")]
 position = Vector2(-18, 3.0000005)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon21" parent="RightBroadside" unique_id=195341875 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon21" parent="RightBroadside" unique_id=195341875 instance=ExtResource("4_hqtel")]
 position = Vector2(-16, 3.0000005)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon22" parent="RightBroadside" unique_id=331085759 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon22" parent="RightBroadside" unique_id=331085759 instance=ExtResource("4_hqtel")]
 position = Vector2(-15, 3.0000005)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon23" parent="RightBroadside" unique_id=2072375814 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon23" parent="RightBroadside" unique_id=2072375814 instance=ExtResource("4_hqtel")]
 position = Vector2(-14, 3.0000005)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon24" parent="RightBroadside" unique_id=560299553 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon24" parent="RightBroadside" unique_id=560299553 instance=ExtResource("4_hqtel")]
 position = Vector2(-13, 3.0000005)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon25" parent="RightBroadside" unique_id=985591670 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon25" parent="RightBroadside" unique_id=985591670 instance=ExtResource("4_hqtel")]
 position = Vector2(-12, 3.0000005)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon26" parent="RightBroadside" unique_id=574967342 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon26" parent="RightBroadside" unique_id=574967342 instance=ExtResource("4_hqtel")]
 position = Vector2(-10, 3.0000005)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon27" parent="RightBroadside" unique_id=140861467 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon27" parent="RightBroadside" unique_id=140861467 instance=ExtResource("4_hqtel")]
 position = Vector2(-9, 3.0000005)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon28" parent="RightBroadside" unique_id=1413196027 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon28" parent="RightBroadside" unique_id=1413196027 instance=ExtResource("4_hqtel")]
 position = Vector2(-8, 3.0000005)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon29" parent="RightBroadside" unique_id=1321766439 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon29" parent="RightBroadside" unique_id=1321766439 instance=ExtResource("4_hqtel")]
 position = Vector2(-7, 3.0000005)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon30" parent="RightBroadside" unique_id=742025785 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon30" parent="RightBroadside" unique_id=742025785 instance=ExtResource("4_hqtel")]
 position = Vector2(-6, 3.0000005)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon31" parent="RightBroadside" unique_id=657926866 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon31" parent="RightBroadside" unique_id=657926866 instance=ExtResource("4_hqtel")]
 position = Vector2(0, 3.0000002)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon32" parent="RightBroadside" unique_id=1453297655 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon32" parent="RightBroadside" unique_id=1453297655 instance=ExtResource("4_hqtel")]
 position = Vector2(1, 3.0000002)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon33" parent="RightBroadside" unique_id=1704163973 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon33" parent="RightBroadside" unique_id=1704163973 instance=ExtResource("4_hqtel")]
 position = Vector2(2, 3.0000002)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon34" parent="RightBroadside" unique_id=661381359 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon34" parent="RightBroadside" unique_id=661381359 instance=ExtResource("4_hqtel")]
 position = Vector2(3, 3.0000002)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon35" parent="RightBroadside" unique_id=1591999620 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon35" parent="RightBroadside" unique_id=1591999620 instance=ExtResource("4_hqtel")]
 position = Vector2(4, 3.0000002)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon36" parent="RightBroadside" unique_id=833302479 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon36" parent="RightBroadside" unique_id=833302479 instance=ExtResource("4_hqtel")]
 position = Vector2(6, 3.0000002)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon37" parent="RightBroadside" unique_id=1733039547 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon37" parent="RightBroadside" unique_id=1733039547 instance=ExtResource("4_hqtel")]
 position = Vector2(7, 3.0000002)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon38" parent="RightBroadside" unique_id=740587745 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon38" parent="RightBroadside" unique_id=740587745 instance=ExtResource("4_hqtel")]
 position = Vector2(8, 3.0000002)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon39" parent="RightBroadside" unique_id=172734715 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon39" parent="RightBroadside" unique_id=172734715 instance=ExtResource("4_hqtel")]
 position = Vector2(9, 3.0000002)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon40" parent="RightBroadside" unique_id=1697351581 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon40" parent="RightBroadside" unique_id=1697351581 instance=ExtResource("4_hqtel")]
 position = Vector2(10, 3.0000002)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon41" parent="RightBroadside" unique_id=241236039 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon41" parent="RightBroadside" unique_id=241236039 instance=ExtResource("4_hqtel")]
 position = Vector2(12, 3)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon42" parent="RightBroadside" unique_id=1173044081 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon42" parent="RightBroadside" unique_id=1173044081 instance=ExtResource("4_hqtel")]
 position = Vector2(13, 3)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon43" parent="RightBroadside" unique_id=976940160 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon43" parent="RightBroadside" unique_id=976940160 instance=ExtResource("4_hqtel")]
 position = Vector2(14, 3)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon44" parent="RightBroadside" unique_id=656864245 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon44" parent="RightBroadside" unique_id=656864245 instance=ExtResource("4_hqtel")]
 position = Vector2(15, 3)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon45" parent="RightBroadside" unique_id=1005392386 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon45" parent="RightBroadside" unique_id=1005392386 instance=ExtResource("4_hqtel")]
 position = Vector2(16, 3)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon46" parent="RightBroadside" unique_id=94198136 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon46" parent="RightBroadside" unique_id=94198136 instance=ExtResource("4_hqtel")]
 position = Vector2(18, 3)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon47" parent="RightBroadside" unique_id=353636664 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon47" parent="RightBroadside" unique_id=353636664 instance=ExtResource("4_hqtel")]
 position = Vector2(19, 3)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon48" parent="RightBroadside" unique_id=1458267024 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon48" parent="RightBroadside" unique_id=1458267024 instance=ExtResource("4_hqtel")]
 position = Vector2(20, 3)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon49" parent="RightBroadside" unique_id=1265290496 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon49" parent="RightBroadside" unique_id=1265290496 instance=ExtResource("4_hqtel")]
 position = Vector2(21, 3)
 rotation = 1.5707964
-broadside = NodePath("..")
 
-[node name="Cannon50" parent="RightBroadside" unique_id=681739108 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon50" parent="RightBroadside" unique_id=681739108 instance=ExtResource("4_hqtel")]
 position = Vector2(22, 3)
 rotation = 1.5707964
-broadside = NodePath("..")
 
 [node name="LeftBroadside" type="Node2D" parent="." unique_id=1529387424]
 position = Vector2(-7, 0)
 rotation = 1.5707964
 script = ExtResource("3_i3pqv")
-shot_strength = 700
 
-[node name="Cannon51" parent="LeftBroadside" unique_id=678606727 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon51" parent="LeftBroadside" unique_id=678606727 instance=ExtResource("4_hqtel")]
 position = Vector2(40, 2.999998)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon52" parent="LeftBroadside" unique_id=1332514459 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon52" parent="LeftBroadside" unique_id=1332514459 instance=ExtResource("4_hqtel")]
 position = Vector2(39, 2.999998)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon53" parent="LeftBroadside" unique_id=1031134907 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon53" parent="LeftBroadside" unique_id=1031134907 instance=ExtResource("4_hqtel")]
 position = Vector2(38, 2.999998)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon54" parent="LeftBroadside" unique_id=658519451 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon54" parent="LeftBroadside" unique_id=658519451 instance=ExtResource("4_hqtel")]
 position = Vector2(37, 2.999998)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon55" parent="LeftBroadside" unique_id=437600987 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon55" parent="LeftBroadside" unique_id=437600987 instance=ExtResource("4_hqtel")]
 position = Vector2(36, 2.999998)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon56" parent="LeftBroadside" unique_id=1153233428 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon56" parent="LeftBroadside" unique_id=1153233428 instance=ExtResource("4_hqtel")]
 position = Vector2(34, 2.999998)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon57" parent="LeftBroadside" unique_id=1481263022 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon57" parent="LeftBroadside" unique_id=1481263022 instance=ExtResource("4_hqtel")]
 position = Vector2(33, 2.999998)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon58" parent="LeftBroadside" unique_id=1865928096 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon58" parent="LeftBroadside" unique_id=1865928096 instance=ExtResource("4_hqtel")]
 position = Vector2(32, 2.999999)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon59" parent="LeftBroadside" unique_id=1529674038 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon59" parent="LeftBroadside" unique_id=1529674038 instance=ExtResource("4_hqtel")]
 position = Vector2(31, 2.999999)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon60" parent="LeftBroadside" unique_id=239551781 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon60" parent="LeftBroadside" unique_id=239551781 instance=ExtResource("4_hqtel")]
 position = Vector2(30, 2.999999)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon61" parent="LeftBroadside" unique_id=819536150 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon61" parent="LeftBroadside" unique_id=819536150 instance=ExtResource("4_hqtel")]
 position = Vector2(28, 2.999999)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon62" parent="LeftBroadside" unique_id=1223049771 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon62" parent="LeftBroadside" unique_id=1223049771 instance=ExtResource("4_hqtel")]
 position = Vector2(27, 2.999999)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon63" parent="LeftBroadside" unique_id=735908021 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon63" parent="LeftBroadside" unique_id=735908021 instance=ExtResource("4_hqtel")]
 position = Vector2(26, 2.999999)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon64" parent="LeftBroadside" unique_id=470599971 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon64" parent="LeftBroadside" unique_id=470599971 instance=ExtResource("4_hqtel")]
 position = Vector2(25, 2.999999)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon65" parent="LeftBroadside" unique_id=929451559 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon65" parent="LeftBroadside" unique_id=929451559 instance=ExtResource("4_hqtel")]
 position = Vector2(24, 2.999999)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon66" parent="LeftBroadside" unique_id=1801671059 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon66" parent="LeftBroadside" unique_id=1801671059 instance=ExtResource("4_hqtel")]
 position = Vector2(22, 2.999999)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon67" parent="LeftBroadside" unique_id=1980001338 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon67" parent="LeftBroadside" unique_id=1980001338 instance=ExtResource("4_hqtel")]
 position = Vector2(21, 2.999999)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon68" parent="LeftBroadside" unique_id=1000536413 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon68" parent="LeftBroadside" unique_id=1000536413 instance=ExtResource("4_hqtel")]
 position = Vector2(20, 2.999999)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon69" parent="LeftBroadside" unique_id=1997333576 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon69" parent="LeftBroadside" unique_id=1997333576 instance=ExtResource("4_hqtel")]
 position = Vector2(19, 2.999999)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon70" parent="LeftBroadside" unique_id=692006443 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon70" parent="LeftBroadside" unique_id=692006443 instance=ExtResource("4_hqtel")]
 position = Vector2(18, 2.999999)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon71" parent="LeftBroadside" unique_id=1253301073 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon71" parent="LeftBroadside" unique_id=1253301073 instance=ExtResource("4_hqtel")]
 position = Vector2(16, 2.999999)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon72" parent="LeftBroadside" unique_id=789876960 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon72" parent="LeftBroadside" unique_id=789876960 instance=ExtResource("4_hqtel")]
 position = Vector2(15, 2.999999)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon73" parent="LeftBroadside" unique_id=1556369189 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon73" parent="LeftBroadside" unique_id=1556369189 instance=ExtResource("4_hqtel")]
 position = Vector2(14, 2.999999)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon74" parent="LeftBroadside" unique_id=195948658 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon74" parent="LeftBroadside" unique_id=195948658 instance=ExtResource("4_hqtel")]
 position = Vector2(13, 2.999999)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon75" parent="LeftBroadside" unique_id=1596777462 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon75" parent="LeftBroadside" unique_id=1596777462 instance=ExtResource("4_hqtel")]
 position = Vector2(12, 2.999999)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon76" parent="LeftBroadside" unique_id=2127877048 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon76" parent="LeftBroadside" unique_id=2127877048 instance=ExtResource("4_hqtel")]
 position = Vector2(10, 3)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon77" parent="LeftBroadside" unique_id=809146901 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon77" parent="LeftBroadside" unique_id=809146901 instance=ExtResource("4_hqtel")]
 position = Vector2(9, 3)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon78" parent="LeftBroadside" unique_id=78914790 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon78" parent="LeftBroadside" unique_id=78914790 instance=ExtResource("4_hqtel")]
 position = Vector2(7.9999995, 3)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon79" parent="LeftBroadside" unique_id=997778705 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon79" parent="LeftBroadside" unique_id=997778705 instance=ExtResource("4_hqtel")]
 position = Vector2(7.0000005, 3)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon80" parent="LeftBroadside" unique_id=1689075395 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon80" parent="LeftBroadside" unique_id=1689075395 instance=ExtResource("4_hqtel")]
 position = Vector2(6.0000005, 3)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon81" parent="LeftBroadside" unique_id=646908993 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon81" parent="LeftBroadside" unique_id=646908993 instance=ExtResource("4_hqtel")]
 position = Vector2(1.6690882e-07, 3)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon82" parent="LeftBroadside" unique_id=1272209221 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon82" parent="LeftBroadside" unique_id=1272209221 instance=ExtResource("4_hqtel")]
 position = Vector2(-0.9999998, 3)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon83" parent="LeftBroadside" unique_id=1051792849 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon83" parent="LeftBroadside" unique_id=1051792849 instance=ExtResource("4_hqtel")]
 position = Vector2(-1.9999999, 3)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon84" parent="LeftBroadside" unique_id=750996694 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon84" parent="LeftBroadside" unique_id=750996694 instance=ExtResource("4_hqtel")]
 position = Vector2(-2.9999998, 3)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon85" parent="LeftBroadside" unique_id=1090099590 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon85" parent="LeftBroadside" unique_id=1090099590 instance=ExtResource("4_hqtel")]
 position = Vector2(-3.9999998, 3)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon86" parent="LeftBroadside" unique_id=367372477 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon86" parent="LeftBroadside" unique_id=367372477 instance=ExtResource("4_hqtel")]
 position = Vector2(-5.9999995, 3)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon87" parent="LeftBroadside" unique_id=701074984 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon87" parent="LeftBroadside" unique_id=701074984 instance=ExtResource("4_hqtel")]
 position = Vector2(-6.9999995, 3)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon88" parent="LeftBroadside" unique_id=2060423989 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon88" parent="LeftBroadside" unique_id=2060423989 instance=ExtResource("4_hqtel")]
 position = Vector2(-7.9999995, 3)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon89" parent="LeftBroadside" unique_id=843155037 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon89" parent="LeftBroadside" unique_id=843155037 instance=ExtResource("4_hqtel")]
 position = Vector2(-9, 3)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon90" parent="LeftBroadside" unique_id=2085369547 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon90" parent="LeftBroadside" unique_id=2085369547 instance=ExtResource("4_hqtel")]
 position = Vector2(-10, 3)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon91" parent="LeftBroadside" unique_id=143347890 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon91" parent="LeftBroadside" unique_id=143347890 instance=ExtResource("4_hqtel")]
 position = Vector2(-12, 3.000001)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon92" parent="LeftBroadside" unique_id=575291737 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon92" parent="LeftBroadside" unique_id=575291737 instance=ExtResource("4_hqtel")]
 position = Vector2(-13, 3.000001)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon93" parent="LeftBroadside" unique_id=1711778263 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon93" parent="LeftBroadside" unique_id=1711778263 instance=ExtResource("4_hqtel")]
 position = Vector2(-14, 3.000001)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon94" parent="LeftBroadside" unique_id=353788465 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon94" parent="LeftBroadside" unique_id=353788465 instance=ExtResource("4_hqtel")]
 position = Vector2(-15, 3.000001)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon95" parent="LeftBroadside" unique_id=932303057 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon95" parent="LeftBroadside" unique_id=932303057 instance=ExtResource("4_hqtel")]
 position = Vector2(-16, 3.000001)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon96" parent="LeftBroadside" unique_id=1702404464 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon96" parent="LeftBroadside" unique_id=1702404464 instance=ExtResource("4_hqtel")]
 position = Vector2(-18, 3.000001)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon97" parent="LeftBroadside" unique_id=675202320 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon97" parent="LeftBroadside" unique_id=675202320 instance=ExtResource("4_hqtel")]
 position = Vector2(-19, 3.000001)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon98" parent="LeftBroadside" unique_id=1516955656 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon98" parent="LeftBroadside" unique_id=1516955656 instance=ExtResource("4_hqtel")]
 position = Vector2(-20, 3.000001)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon99" parent="LeftBroadside" unique_id=507462444 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon99" parent="LeftBroadside" unique_id=507462444 instance=ExtResource("4_hqtel")]
 position = Vector2(-21, 3.000001)
 rotation = 1.5707963
-broadside = NodePath("..")
 
-[node name="Cannon100" parent="LeftBroadside" unique_id=882429028 node_paths=PackedStringArray("broadside") instance=ExtResource("4_hqtel")]
+[node name="Cannon100" parent="LeftBroadside" unique_id=882429028 instance=ExtResource("4_hqtel")]
 position = Vector2(-22, 3.000001)
 rotation = 1.5707963
-broadside = NodePath("..")
 
 [node name="Health" type="Node2D" parent="." unique_id=1096264317]
 script = ExtResource("5_sweqy")
