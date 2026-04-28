@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-@export var player : CharacterBody2D
+@export var ship : CharacterBody2D
 @export var broadside : Node2D
 @export var shot_strength_variance = 0.1
 @export var despawn_timer : Timer
@@ -12,7 +12,7 @@ var despawn_time_variance = 0.5
 func _ready() -> void:
 	var direction = broadside.global_transform.y
 	var strength = broadside.shot_strength * randf_range(1-shot_strength_variance, 1+shot_strength_variance)
-	apply_impulse( direction * strength + player.velocity)
+	apply_impulse( direction * strength + ship.velocity)
 	despawn_timer.wait_time = randf_range(default_despawn_time - despawn_time_variance, default_despawn_time + despawn_time_variance)
 	despawn_timer.start()
 	
