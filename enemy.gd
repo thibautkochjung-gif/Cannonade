@@ -1,20 +1,22 @@
 extends RigidBody2D
 
-enum BehaviorState {SEEKING, ATTACK, EVADE, DEAD}
-var current_state: BehaviorState = BehaviorState.SEEKING
+enum BehaviorState {SEEK, ATTACK, EVADE, DEAD}
+var current_behavior_state: BehaviorState = BehaviorState.SEEK
 
 var broadside_in_use : Node2D
 var mast_state: MastState
 
 var player : CharacterBody2D
+var angle_to_player: float
+var distance_to_player: float
 var target = Vector2.ZERO
 var angle_to_target: float
 var distance_to_target: float
 
 @export var max_speed: float = 400
 @export var angle_threshold: float = PI/4
-@export var distance_threshold: float = 400
-@export var turning_speed: float = 50
+@export var distance_threshold: float = 250
+@export var turning_speed: float = 100
 @export var range: float = 500
 @export var accuracy: float = 0.1
 
@@ -29,22 +31,22 @@ var SPEED_MAP = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	change_behavior_state(BehaviorState.SEEKING)
+	change_behavior_state(BehaviorState.SEEK)
 	player = get_tree().get_first_node_in_group("player")
 
 func change_behavior_state(new_state: BehaviorState) -> void:
-	current_state = new_state
+	current_behavior_state = new_state
 	match new_state:
-		BehaviorState.SEEKING:
-			print("Entered SEEKING")
+		BehaviorState.SEEK:
+			print("Entered SEEK")
 		BehaviorState.ATTACK:
 			print("Entered ATTACK")
 		BehaviorState.EVADE:
-			print("Entered ATTACK")
+			print("Entered EVADE")
 		BehaviorState.DEAD:
 			print("Entered DEAD")
 			
-func tick_seeking(delta: float) -> void:
+func tick_seek(delta: float) -> void:
 	mast_state = get_mast_state()
 	var speed = SPEED_MAP[mast_state]
 	
@@ -55,18 +57,34 @@ func tick_seeking(delta: float) -> void:
 func tick_attack(delta: float) -> void:
 	var mast_state = get_mast_state()
 	var speed = SPEED_MAP[mast_state]
-	var angle_to_player = transform.x.angle_to(player.position-global_position)
+	var broadside_direction = transform.y if broadside_in_use == $RightBroadside else -transform.y
+	var angle_from_broadside_to_player = broadside_direction.angle_to(player.global_position - global_position)
 	
 	target = _get_target_position(player.position, player.velocity)
 	apply_force(transform.x*speed*max_speed)
-	if abs(angle_to_player) < PI/2 - accuracy or abs(angle_to_player) < PI/2 + accuracy:
-		apply_torque(-angle_to_player*turning_speed*mass)
+	if abs(angle_from_broadside_to_player) > accuracy:
+		apply_torque(angle_from_broadside_to_player*turning_speed*mass)
 	else:
 		broadside_in_use.fire()
+		print("Fire")
+
 
 	# broadside logic goes here later
 
 func tick_evade(delta: float) -> void:
+	#If the enemy is behind the player, they should rotate to player.transform.y
+	#If the enemy is in front of the player, they should rotate to -player.transform.y
+	var player_to_enemy = global_position - player.global_position
+	var dot = player_to_enemy.dot(-player.transform.y)
+	
+	var evade_direction = player.transform.y if dot < 0 else -player.transform.y
+	var angle_to_evade = transform.x.angle_to(evade_direction)
+	
+	apply_torque(angle_to_evade * turning_speed * mass)
+	apply_force(transform.x * SPEED_MAP[MastState.FULL_MAST] * max_speed)
+
+	
+	
 	pass
 	# death logic goes here later
 
@@ -77,8 +95,9 @@ func tick_dead(delta: float) -> void:
 func get_mast_state() -> MastState:
 	#Mast state is : full if aligned and at great distance, half if one is untrue, stop if both are untrue
 	
-	var angle_to_target = transform.x.angle_to(target - global_position)
+	angle_to_target = transform.x.angle_to(target - global_position)
 	var distance_to_target = global_position.distance_to(target)
+
 	
 	if distance_to_target > distance_threshold:
 		if abs(angle_to_target) > angle_threshold:
@@ -86,7 +105,7 @@ func get_mast_state() -> MastState:
 		else:
 			return MastState.FULL_MAST
 	else:
-		if abs(angle_to_target) > angle_threshold:
+		if abs(angle_to_player) > angle_threshold:
 			return MastState.STOP
 		else:
 			return MastState.HALF_MAST
@@ -94,7 +113,6 @@ func get_mast_state() -> MastState:
 func _get_target_position(player_position, player_velocity) -> Vector2:
 	if linear_velocity.length() == 0 or player_velocity.length() < 5:
 		return player_position
-	var distance_to_player = (player_position - global_position).length()
 	var time_to_intercept = distance_to_player / linear_velocity.length()
 	var intercept = player_position + player_velocity * time_to_intercept
 	return intercept
@@ -103,41 +121,62 @@ func _get_target_position(player_position, player_velocity) -> Vector2:
 func _process(delta: float) -> void:
 	pass
 	
+func decide_behavior() -> void:
+	var should_attack: bool
+	var should_seek: bool
+	var enough_cannons_are_ready: bool
+	var broadside_in_use_is_aligned_to_target: bool
+	
+	enough_cannons_are_ready = broadside_in_use.cannon_ready_count > broadside_in_use.cannon_count * 0.7
+	print(broadside_in_use.cannon_ready_count)
+
+	if (angle_to_target > 0 and broadside_in_use == $LeftBroadside) or (angle_to_target < 0 and broadside_in_use == $RightBroadside):
+		broadside_in_use_is_aligned_to_target = false
+	else: 
+		broadside_in_use_is_aligned_to_target = true
+		
+	if enough_cannons_are_ready :
+		if distance_to_player < range:
+			should_attack = true
+		else:
+			should_seek = true
+
+	if should_attack and current_behavior_state != BehaviorState.ATTACK:
+		change_behavior_state(BehaviorState.ATTACK)
+	
+	if should_seek and current_behavior_state != BehaviorState.SEEK:
+		change_behavior_state(BehaviorState.SEEK)
+	
+	if !enough_cannons_are_ready and current_behavior_state != BehaviorState.EVADE:
+		if broadside_in_use_is_aligned_to_target:
+			change_behavior_state(BehaviorState.EVADE)
+	
+	
+	
 func _physics_process(delta: float) -> void:
 	angle_to_target = transform.x.angle_to(target-global_position)
 	distance_to_target = (target-global_position).length()
-	var should_attack: bool
+	angle_to_player = transform.x.angle_to(player.position-global_position)
+	distance_to_player = (player.position - global_position).length()
+
 	
-	if angle_to_target > 0:
+	if angle_to_player > 0:
 		broadside_in_use = $RightBroadside
 	else:
 		broadside_in_use = $LeftBroadside
 	
-	if distance_to_target < range and broadside_in_use.cannon_ready_count > broadside_in_use.cannon_count * 0.7 :
-		should_attack = true
-		
-	if should_attack:
-		change_behavior_state(BehaviorState.ATTACK)
 	
-	match current_state:
-		BehaviorState.SEEKING:
-			tick_seeking(delta)
+	match current_behavior_state:
+		BehaviorState.SEEK:
+			tick_seek(delta)
 		BehaviorState.ATTACK:
 			tick_attack(delta)
 		BehaviorState.EVADE:
 			tick_evade(delta)
 		BehaviorState.DEAD:
 			tick_dead(delta)
-
-
-	
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_1"):
-		change_behavior_state(BehaviorState.SEEKING)
-	if event.is_action_pressed("ui_2"):
-		change_behavior_state(BehaviorState.ATTACK)
-	if event.is_action_pressed("ui_3"):
-		change_behavior_state(BehaviorState.DEAD)
+			
+	decide_behavior()
 	
 func _on_health_health_depleted() -> void:
 	queue_free()

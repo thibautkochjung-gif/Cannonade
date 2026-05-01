@@ -10,17 +10,21 @@ var cannon_ready_count: int
 func _ready() -> void:
 	cannon_count = get_children().filter(func(child): return child.is_in_group("cannon")).size()
 	cannon_ready_count = cannon_count
+	for cannon in get_children():
+		cannon.ready_to_fire_signal.connect(_on_cannon_ready)
+
 	
 func fire():
 	for cannon in get_children():
 		var delay = randf_range(0.0, shot_delay_max)
-		get_tree().create_timer(delay).timeout.connect(func(): cannon.cannon_fire(self))
+		get_tree().create_timer(delay).timeout.connect(func(c = cannon): c.cannon_fire(self))
 	cannon_ready_count = 0
 	
-func _on_cannon_cannon_ready() -> void:
-	cannon_ready_count += 1
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print("Cannons ready: ", cannon_ready_count)
+	pass
+
+
+func _on_cannon_ready() -> void:
+	cannon_ready_count += 1

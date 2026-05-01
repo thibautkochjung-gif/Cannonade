@@ -8,5 +8,6 @@ script = ExtResource("1_i10un")
 cannonball_scene = ExtResource("2_23j6s")
 
 [node name="CooldownTimer" type="Timer" parent="." unique_id=841594144]
+one_shot = true
 
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

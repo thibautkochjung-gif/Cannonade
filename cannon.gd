@@ -7,18 +7,13 @@ extends Node2D
 var ship : Node2D
 var ready_to_fire = true
 
-signal cannon_ready
+signal ready_to_fire_signal
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print("Broadside ready, children: ", get_children().size())
 	ship = get_parent().get_parent()
 	$CooldownTimer.wait_time = randf_range(cooldown_time_avg - cooldown_time_variance, cooldown_time_avg + cooldown_time_variance)
 
-var cannon_ready_count: int:
-	set(value):
-		print("cannon_ready_count changed to: ", value)
-		cannon_ready_count = value
 
 func cannon_fire(broadside_firing):
 	
@@ -44,4 +39,4 @@ func _process(delta: float) -> void:
 func _on_cooldown_timer_timeout() -> void:
 	ready_to_fire = true
 	$CooldownTimer.wait_time = randf_range(cooldown_time_avg - cooldown_time_variance, cooldown_time_avg + cooldown_time_variance)
-	cannon_ready.emit()
+	ready_to_fire_signal.emit()
