@@ -17,7 +17,7 @@ var distance_to_target: float
 @export var angle_threshold: float = PI/4
 @export var distance_threshold: float = 250
 @export var turning_speed: float = 100
-@export var range: float = 500
+@export var attack_range: float = 500
 @export var accuracy: float = 0.1
 
 enum MastState {FULL_MAST, HALF_MAST, STOP, REVERSE}
@@ -29,7 +29,6 @@ var SPEED_MAP = {
 	MastState.REVERSE: -20.0,
 }
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	change_behavior_state(BehaviorState.SEEK)
 	player = get_tree().get_first_node_in_group("player")
@@ -55,7 +54,7 @@ func tick_seek(delta: float) -> void:
 	apply_torque(angle_to_target*turning_speed*mass)
 
 func tick_attack(delta: float) -> void:
-	var mast_state = get_mast_state()
+	mast_state = get_mast_state()
 	var speed = SPEED_MAP[mast_state]
 	var broadside_direction = transform.y if broadside_in_use == $RightBroadside else -transform.y
 	var angle_from_broadside_to_player = broadside_direction.angle_to(player.global_position - global_position)
@@ -67,9 +66,6 @@ func tick_attack(delta: float) -> void:
 	else:
 		broadside_in_use.fire()
 		print("Fire")
-
-
-	# broadside logic goes here later
 
 func tick_evade(delta: float) -> void:
 	#If the enemy is behind the player, they should rotate to player.transform.y
@@ -83,11 +79,6 @@ func tick_evade(delta: float) -> void:
 	apply_torque(angle_to_evade * turning_speed * mass)
 	apply_force(transform.x * SPEED_MAP[MastState.FULL_MAST] * max_speed)
 
-	
-	
-	pass
-	# death logic goes here later
-
 func tick_dead(delta: float) -> void:
 	pass
 	# death logic goes here later
@@ -96,8 +87,7 @@ func get_mast_state() -> MastState:
 	#Mast state is : full if aligned and at great distance, half if one is untrue, stop if both are untrue
 	
 	angle_to_target = transform.x.angle_to(target - global_position)
-	var distance_to_target = global_position.distance_to(target)
-
+	distance_to_target = global_position.distance_to(target)
 	
 	if distance_to_target > distance_threshold:
 		if abs(angle_to_target) > angle_threshold:
@@ -110,16 +100,12 @@ func get_mast_state() -> MastState:
 		else:
 			return MastState.HALF_MAST
 
-func _get_target_position(player_position, player_velocity) -> Vector2:
+func _get_target_position(player_position: Vector2, player_velocity:Vector2) -> Vector2:
 	if linear_velocity.length() == 0 or player_velocity.length() < 5:
 		return player_position
 	var time_to_intercept = distance_to_player / linear_velocity.length()
 	var intercept = player_position + player_velocity * time_to_intercept
 	return intercept
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 	
 func decide_behavior() -> void:
 	var should_attack: bool
@@ -128,7 +114,6 @@ func decide_behavior() -> void:
 	var broadside_in_use_is_aligned_to_target: bool
 	
 	enough_cannons_are_ready = broadside_in_use.cannon_ready_count > broadside_in_use.cannon_count * 0.7
-	print(broadside_in_use.cannon_ready_count)
 
 	if (angle_to_target > 0 and broadside_in_use == $LeftBroadside) or (angle_to_target < 0 and broadside_in_use == $RightBroadside):
 		broadside_in_use_is_aligned_to_target = false
@@ -136,7 +121,7 @@ func decide_behavior() -> void:
 		broadside_in_use_is_aligned_to_target = true
 		
 	if enough_cannons_are_ready :
-		if distance_to_player < range:
+		if distance_to_player < attack_range:
 			should_attack = true
 		else:
 			should_seek = true
@@ -151,20 +136,16 @@ func decide_behavior() -> void:
 		if broadside_in_use_is_aligned_to_target:
 			change_behavior_state(BehaviorState.EVADE)
 	
-	
-	
 func _physics_process(delta: float) -> void:
 	angle_to_target = transform.x.angle_to(target-global_position)
 	distance_to_target = (target-global_position).length()
 	angle_to_player = transform.x.angle_to(player.position-global_position)
 	distance_to_player = (player.position - global_position).length()
 
-	
 	if angle_to_player > 0:
 		broadside_in_use = $RightBroadside
 	else:
 		broadside_in_use = $LeftBroadside
-	
 	
 	match current_behavior_state:
 		BehaviorState.SEEK:
@@ -175,8 +156,9 @@ func _physics_process(delta: float) -> void:
 			tick_evade(delta)
 		BehaviorState.DEAD:
 			tick_dead(delta)
-			
-	decide_behavior()
 	
 func _on_health_health_depleted() -> void:
 	queue_free()
+
+func _on_behavior_decision_timer_timeout() -> void:
+	decide_behavior()

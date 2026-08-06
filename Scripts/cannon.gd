@@ -28,7 +28,7 @@ func cannon_fire(broadside_firing):
 	
 	ready_to_fire = false
 	$CooldownTimer.start()
-
+	$MuzzleSmoke.restart()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

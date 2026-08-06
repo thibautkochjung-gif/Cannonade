@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://b08xuwdt6htlc"]
 
-[ext_resource type="Script" uid="uid://duud0gmx2bcw7" path="res://cannonball.gd" id="1_246s8"]
-[ext_resource type="Texture2D" uid="uid://cnwm7ybyxy3vh" path="res://Sprites/dot.png" id="1_jmdrc"]
+[ext_resource type="Script" uid="uid://duud0gmx2bcw7" path="res://Scripts/cannonball.gd" id="1_5s3b7"]
+[ext_resource type="PackedScene" uid="uid://clgaj3j2th04d" path="res://Nodes/water_splash.tscn" id="2_pc1yr"]
+[ext_resource type="Texture2D" uid="uid://cnwm7ybyxy3vh" path="res://Sprites/dot.png" id="3_am0hp"]
+[ext_resource type="PackedScene" uid="uid://heoa7fhmjvp4" path="res://Nodes/damage_particles.tscn" id="3_pc1yr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_246s8"]
 radius = 1.64
@@ -13,12 +15,15 @@ gravity_scale = 0.0
 contact_monitor = true
 max_contacts_reported = 1
 linear_damp = 0.4
-script = ExtResource("1_246s8")
+script = ExtResource("1_5s3b7")
 despawn_timer = NodePath("DespawnTimer")
+splash_scene = ExtResource("2_pc1yr")
+despawn_time_variance = 0.15
+damage_fx_scene = ExtResource("3_pc1yr")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=618693192]
 scale = Vector2(0.03, 0.03)
-texture = ExtResource("1_jmdrc")
+texture = ExtResource("3_am0hp")
 
 [node name="DespawnTimer" type="Timer" parent="." unique_id=1031330977]
 wait_time = 2.0

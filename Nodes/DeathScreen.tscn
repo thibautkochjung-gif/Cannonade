@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://1b2e1ui1hsra"]
+
+[ext_resource type="Script" uid="uid://yrak3mk1lf7p" path="res://Nodes/death_screen.gd" id="1_q4u3t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ubi4q"]
+bg_color = Color(0.56078434, 0.07058824, 0.21568628, 1)
+
+[node name="DeathScreen" type="CanvasLayer" unique_id=1568775561 node_paths=PackedStringArray("restart_button", "exit_button", "survival_label")]
+script = ExtResource("1_q4u3t")
+restart_button = NodePath("Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/RestartButton")
+exit_button = NodePath("Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/ExitButton")
+survival_label = NodePath("Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/You survived")
+
+[node name="Control" type="Control" parent="." unique_id=1438227201]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Control" unique_id=451539155]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/CenterContainer" unique_id=1690558255]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ubi4q")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/CenterContainer/PanelContainer" unique_id=114037238]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer/PanelContainer/MarginContainer" unique_id=692195796]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="You died" type="Label" parent="Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=849170316]
+layout_mode = 2
+text = "You died"
+horizontal_alignment = 1
+
+[node name="You survived" type="Label" parent="Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1553463257]
+layout_mode = 2
+text = "You survived some time"
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=999172351]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/CenterContainer" unique_id=368698093]
+layout_mode = 2
+
+[node name="ExitButton" type="Button" parent="Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer" unique_id=515605119]
+layout_mode = 2
+text = "Quit"
+
+[node name="RestartButton" type="Button" parent="Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer" unique_id=314808780]
+layout_mode = 2
+text = "Restart"

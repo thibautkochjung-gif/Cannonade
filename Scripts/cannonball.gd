@@ -4,9 +4,12 @@ extends RigidBody2D
 @export var broadside : Node2D
 @export var shot_strength_variance = 0.1
 @export var despawn_timer : Timer
+@export var splash_scene : PackedScene
+@export var despawn_time_variance = 0.5
+@export var damage_fx_scene : PackedScene
+
 
 var default_despawn_time = 1.3
-var despawn_time_variance = 0.5
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -36,8 +39,24 @@ func _process(delta: float) -> void:
 
 
 func _on_timer_timeout() -> void:
+	
+	var splash = splash_scene.instantiate()
+	splash.global_position = global_position
+	get_tree().current_scene.add_child(splash)
+	splash.get_node("DropletParticles").emitting = true
+
 	queue_free()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	body.get_node("Health").take_damage(10)
+	body.get_node("Health").take_damage(10, linear_velocity.normalized())
+	
+	var dmg_fx = damage_fx_scene.instantiate()
+	dmg_fx.global_position = global_position
+	get_tree().current_scene.add_child(dmg_fx)
+	var particles = dmg_fx.get_node("GPUParticles2D")
+	particles.rotation = linear_velocity.angle()
+	particles.restart()
+	particles.emitting = true
+	
+	print("hit registered")
 	queue_free()

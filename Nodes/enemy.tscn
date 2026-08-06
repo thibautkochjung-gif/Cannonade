@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://dmgtoi1wc10s4"]
 
 [ext_resource type="Texture2D" uid="uid://csaqijxd3ktso" path="res://Sprites/boat 1.png" id="1_7k104"]
-[ext_resource type="Script" uid="uid://iybdaoquofu0" path="res://enemy.gd" id="1_qi2p4"]
-[ext_resource type="Script" uid="uid://bgi08qd4y6nc2" path="res://health.gd" id="2_4gyqm"]
-[ext_resource type="Script" uid="uid://kburknm5j816" path="res://right_broadside.gd" id="4_epg4t"]
-[ext_resource type="PackedScene" uid="uid://c1jujcp8ukeio" path="res://cannon.tscn" id="4_iifgy"]
+[ext_resource type="Script" uid="uid://iybdaoquofu0" path="res://Scripts/enemy.gd" id="1_qi2p4"]
+[ext_resource type="Script" uid="uid://bgi08qd4y6nc2" path="res://Scripts/health.gd" id="2_4gyqm"]
+[ext_resource type="Script" uid="uid://kburknm5j816" path="res://Scripts/right_broadside.gd" id="4_epg4t"]
+[ext_resource type="PackedScene" uid="uid://c1jujcp8ukeio" path="res://Nodes/cannon.tscn" id="4_iifgy"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_4gyqm"]
 points = PackedVector2Array(37, -1, 22, 10, -33, 10, -38, 7, -38, -8, -33, -12, 21, -12)
@@ -128,4 +128,9 @@ position = Vector2(4.999999, 17)
 [node name="Cannon30" parent="LeftBroadside" unique_id=304809330 groups=["cannon"] instance=ExtResource("4_iifgy")]
 position = Vector2(4.999999, 20)
 
+[node name="BehaviorDecisionTimer" type="Timer" parent="." unique_id=1861967548]
+wait_time = 0.2
+autostart = true
+
 [connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]
+[connection signal="timeout" from="BehaviorDecisionTimer" to="." method="_on_behavior_decision_timer_timeout"]

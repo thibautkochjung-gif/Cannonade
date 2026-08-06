@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://heoa7fhmjvp4"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_35tmt"]
+particle_flag_disable_z = true
+spread = 70.0
+initial_velocity_min = 18.4
+initial_velocity_max = 64.119995
+gravity = Vector3(0, 0, 0)
+damping_min = 20.185001
+damping_max = 27.28
+scale_min = 1.5
+scale_max = 4.0
+color = Color(0.47638643, 0.11520409, 1.2321472e-05, 1)
+
+[node name="DamageParticles" type="Node2D" unique_id=415706782]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=959072435]
+emitting = false
+amount = 2
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+trail_lifetime = 0.15000000000000002
+process_material = SubResource("ParticleProcessMaterial_35tmt")

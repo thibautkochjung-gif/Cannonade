@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://bvpsthsbdx3mi"]
 
 [ext_resource type="Texture2D" uid="uid://csaqijxd3ktso" path="res://Sprites/boat 1.png" id="1_4flbx"]
-[ext_resource type="Script" uid="uid://dj1r0kltpi8yc" path="res://player.gd" id="1_onrkg"]
-[ext_resource type="Script" uid="uid://bgji731bqpfhw" path="res://camera_2d.gd" id="3_2hs0m"]
-[ext_resource type="Script" uid="uid://kburknm5j816" path="res://right_broadside.gd" id="3_i3pqv"]
-[ext_resource type="PackedScene" uid="uid://c1jujcp8ukeio" path="res://cannon.tscn" id="4_hqtel"]
-[ext_resource type="Script" uid="uid://bgi08qd4y6nc2" path="res://health.gd" id="5_sweqy"]
+[ext_resource type="Script" uid="uid://dj1r0kltpi8yc" path="res://Scripts/player.gd" id="1_onrkg"]
+[ext_resource type="Script" uid="uid://bgji731bqpfhw" path="res://Scripts/camera_2d.gd" id="3_2hs0m"]
+[ext_resource type="Script" uid="uid://kburknm5j816" path="res://Scripts/right_broadside.gd" id="3_i3pqv"]
+[ext_resource type="PackedScene" uid="uid://c1jujcp8ukeio" path="res://Nodes/cannon.tscn" id="4_hqtel"]
+[ext_resource type="Script" uid="uid://bgi08qd4y6nc2" path="res://Scripts/health.gd" id="5_sweqy"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_onrkg"]
 points = PackedVector2Array(-42, -13.999999, -48, -8.999999, -48, 9.000001, -42, 14.000001, 27, 14, 47, -5.604694e-07, 27, -14)
@@ -27,8 +27,19 @@ shape = SubResource("ConvexPolygonShape2D_onrkg")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1375824766]
 zoom = Vector2(0.8, 0.8)
+limit_left = -7613
+limit_top = -3870
+limit_right = 10366
+limit_bottom = 7008
 script = ExtResource("3_2hs0m")
 min_zoom = 0.5
+max_jitter_offset = 5.0
+jitter_decay_speed = 0.5
+kick_decay_speed = 2.0
+kick_relative_force = 1.5
+recoil_strength = 1.5
+recoil_stiffness = 30.0
+recoil_damping = 5.0
 
 [node name="RightBroadside" type="Node2D" parent="." unique_id=11000823]
 position = Vector2(7, 0)
@@ -442,3 +453,7 @@ rotation = 1.5707963
 
 [node name="Health" type="Node2D" parent="." unique_id=1096264317]
 script = ExtResource("5_sweqy")
+max_health = 1000.0
+
+[connection signal="health_changed" from="Health" to="." method="_on_health_health_changed"]
+[connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]

@@ -15,6 +15,11 @@ run/main_scene="uid://bfd3qg0u8tmag"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://Sprites/icon.svg"
 
+[autoload]
+
+GameManagerScene="*uid://bigngfkvbgi6p"
+Fx="*uid://cta74vajfb3xk"
+
 [input]
 
 steer_left={

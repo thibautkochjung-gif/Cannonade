@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://c76rwplyu7tp0"]
+
+[ext_resource type="Script" uid="uid://bhn5ylq7yk4le" path="res://Scripts/main_menu.gd" id="1_5ni5v"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yb2kq"]
+font_size = 35
+
+[node name="Control" type="Control" unique_id=1137356158 node_paths=PackedStringArray("new_game_button", "exit_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5ni5v")
+new_game_button = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/NewGameButton")
+exit_button = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ExitButton")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1566635885]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.53782195, 0.53970665, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=660763305]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=1920681179]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer" unique_id=1734456095]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer" unique_id=697005064]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1529388909]
+layout_mode = 2
+text = "Cannonade"
+label_settings = SubResource("LabelSettings_yb2kq")
+
+[node name="NewGameButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=63928828]
+layout_mode = 2
+text = "New Game"
+
+[node name="SettingsButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=304113673]
+layout_mode = 2
+text = "Settings"
+
+[node name="CreditsButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=929651947]
+layout_mode = 2
+text = "Credits"
+
+[node name="ExitButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1242696251]
+layout_mode = 2
+text = "Exit"
