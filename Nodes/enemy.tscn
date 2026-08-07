@@ -167,16 +167,17 @@ z_index = 1
 rotation = 0.0
 scale = Vector2(0.007, 0.007)
 
-[node name="HullCollision" type="Area2D" parent="." unique_id=2099251645 node_paths=PackedStringArray("ship", "collision_damage")]
+[node name="HullCollision" type="Area2D" parent="." unique_id=2099251645 node_paths=PackedStringArray("collision_damage")]
+collision_layer = 8
 script = ExtResource("9_rlak2")
-ship = NodePath("..")
 collision_damage = NodePath("../CollisionDamage")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HullCollision" unique_id=1638404714]
 shape = ExtResource("3_rlak2")
 
-[node name="CollisionDamage" type="Node" parent="." unique_id=531740055]
+[node name="CollisionDamage" type="Node" parent="." unique_id=531740055 node_paths=PackedStringArray("ship")]
 script = ExtResource("10_83h23")
+ship = NodePath("..")
 metadata/_custom_type_script = "uid://dx0q637jadc3s"
 
 [connection signal="health_changed" from="Health" to="." method="_on_health_health_changed"]

@@ -42,15 +42,6 @@ func _ready() -> void:
 
 func change_behavior_state(new_state: BehaviorState) -> void:
 	current_behavior_state = new_state
-	match new_state:
-		BehaviorState.SEEK:
-			print("Entered SEEK")
-		BehaviorState.ATTACK:
-			print("Entered ATTACK")
-		BehaviorState.EVADE:
-			print("Entered EVADE")
-		BehaviorState.DEAD:
-			print("Entered DEAD")
 			
 func tick_seek(delta: float) -> void:
 	mast_state = get_mast_state()
@@ -72,7 +63,6 @@ func tick_attack(delta: float) -> void:
 		apply_torque(angle_from_broadside_to_player*turning_speed*mass)
 	else:
 		broadside_in_use.fire()
-		print("Fire")
 
 func tick_evade(delta: float) -> void:
 	#If the enemy is behind the player, they should rotate to player.transform.y

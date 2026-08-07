@@ -489,10 +489,11 @@ position = Vector2(0, -43.000004)
 rotation = -2.1158807
 size_multiplier = 1.6
 
-[node name="HullCollision" type="Area2D" parent="." unique_id=1038201373 node_paths=PackedStringArray("ship", "collision_damage")]
+[node name="HullCollision" type="Area2D" parent="." unique_id=1038201373 node_paths=PackedStringArray("collision_damage")]
 rotation = 4.712389
+collision_layer = 8
+collision_mask = 4
 script = ExtResource("10_e3gfx")
-ship = NodePath("..")
 collision_damage = NodePath("../CollisionDamage")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HullCollision" unique_id=136057702]
@@ -500,8 +501,9 @@ visible = false
 shape = ExtResource("4_x5p36")
 debug_color = Color(0.9647059, 0, 0.4862745, 0.6313726)
 
-[node name="CollisionDamage" type="Node" parent="." unique_id=1805878]
+[node name="CollisionDamage" type="Node" parent="." unique_id=1805878 node_paths=PackedStringArray("ship")]
 script = ExtResource("11_x5p36")
+ship = NodePath("..")
 
 [connection signal="health_changed" from="Health" to="." method="_on_health_health_changed"]
 [connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]

@@ -63,7 +63,6 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _on_screenshake_requested(amount: float, direction: Vector2) -> void:
-	print("screenshake requested", amount, direction)
 	trauma = clamp(trauma + amount, 0.0, 1.0)
 	kick_offset += direction * (max_jitter_offset * kick_relative_force) * amount
 	

@@ -20,7 +20,6 @@ func fire():
 	for cannon in get_children():
 		var delay = randf_range(0.0, shot_delay_max)
 		get_tree().create_timer(delay).timeout.connect(func(c = cannon): c.cannon_fire(self))
-	print(cannon_ready_count)
 	fired.emit(cannon_ready_count, -global_transform.y)
 	cannon_ready_count = 0
 	

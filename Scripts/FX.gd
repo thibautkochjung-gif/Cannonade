@@ -22,7 +22,6 @@ func _process(delta: float) -> void:
 
 func shake(amount: float, direction: Vector2 = Vector2.ZERO) -> void:
 	screenshake_requested.emit(amount, direction)
-	print("screenshake signal sent")
 	
 func recoil(amount: int, direction: Vector2 = Vector2.ZERO) -> void:
 	recoil_requested.emit(amount, direction)
