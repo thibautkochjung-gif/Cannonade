@@ -170,5 +170,8 @@ func _physics_process(delta: float) -> void:
 func _on_health_health_depleted() -> void:
 	queue_free()
 
+func _on_health_health_changed(damage: float, max_health: float, current_health: float, hit_direction: Vector2) -> void:
+	$DamageDecals.update_health_ratio(current_health / max_health)
+
 func _on_behavior_decision_timer_timeout() -> void:
 	decide_behavior()

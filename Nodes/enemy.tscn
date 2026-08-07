@@ -3,15 +3,16 @@
 [ext_resource type="Texture2D" uid="uid://csaqijxd3ktso" path="res://Sprites/boat 1.png" id="1_7k104"]
 [ext_resource type="Script" uid="uid://iybdaoquofu0" path="res://Scripts/enemy.gd" id="1_qi2p4"]
 [ext_resource type="Script" uid="uid://bgi08qd4y6nc2" path="res://Scripts/health.gd" id="2_4gyqm"]
+[ext_resource type="Shape2D" uid="uid://cmp8ng4hv57fu" path="res://Polygons/enemy_boat_polygon.tres" id="3_a47nb"]
+[ext_resource type="Shape2D" uid="uid://bt0d0wucw6x5p" path="res://Polygons/enemy_boat_polygon_for_ship_collision.tres" id="3_rlak2"]
 [ext_resource type="Script" uid="uid://kburknm5j816" path="res://Scripts/right_broadside.gd" id="4_epg4t"]
 [ext_resource type="PackedScene" uid="uid://c1jujcp8ukeio" path="res://Nodes/cannon.tscn" id="4_iifgy"]
 [ext_resource type="PackedScene" uid="uid://crvui5s7wiseo" path="res://Nodes/wake.tscn" id="6_vkesy"]
 [ext_resource type="PackedScene" uid="uid://crs7n0co3nu2p" path="res://Nodes/damage_decals.tscn" id="7_wsd4a"]
+[ext_resource type="Script" uid="uid://dyjbyttyd74sk" path="res://Scripts/hull_collision.gd" id="9_rlak2"]
+[ext_resource type="Script" uid="uid://dx0q637jadc3s" path="res://Scripts/collision_damage.gd" id="10_83h23"]
 
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_4gyqm"]
-points = PackedVector2Array(37, -1, 22, 10, -33, 10, -38, 7, -38, -8, -33, -12, 21, -12)
-
-[node name="Enemy" type="RigidBody2D" unique_id=483788940]
+[node name="Enemy" type="RigidBody2D" unique_id=483788940 groups=["ship"]]
 collision_layer = 4
 collision_mask = 3
 mass = 2000.0
@@ -25,8 +26,9 @@ modulate = Color(0.7310533, 0.013564329, 0.23212478, 1)
 scale = Vector2(0.04, 0.04)
 texture = ExtResource("1_7k104")
 
-[node name="EnemyHitbox" type="CollisionShape2D" parent="." unique_id=584272288]
-shape = SubResource("ConvexPolygonShape2D_4gyqm")
+[node name="EnemyHitbox" type="CollisionShape2D" parent="." unique_id=584272288 groups=["ship"]]
+visible = false
+shape = ExtResource("3_a47nb")
 
 [node name="Health" type="Node2D" parent="." unique_id=1267936006]
 script = ExtResource("2_4gyqm")
@@ -161,6 +163,22 @@ rotation = 1.8072772
 scale = Vector2(0.71, 0.71)
 
 [node name="DamageDecals" parent="." unique_id=550950358 instance=ExtResource("7_wsd4a")]
+z_index = 1
+rotation = 0.0
+scale = Vector2(0.007, 0.007)
 
+[node name="HullCollision" type="Area2D" parent="." unique_id=2099251645 node_paths=PackedStringArray("ship", "collision_damage")]
+script = ExtResource("9_rlak2")
+ship = NodePath("..")
+collision_damage = NodePath("../CollisionDamage")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HullCollision" unique_id=1638404714]
+shape = ExtResource("3_rlak2")
+
+[node name="CollisionDamage" type="Node" parent="." unique_id=531740055]
+script = ExtResource("10_83h23")
+metadata/_custom_type_script = "uid://dx0q637jadc3s"
+
+[connection signal="health_changed" from="Health" to="." method="_on_health_health_changed"]
 [connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]
 [connection signal="timeout" from="BehaviorDecisionTimer" to="." method="_on_behavior_decision_timer_timeout"]

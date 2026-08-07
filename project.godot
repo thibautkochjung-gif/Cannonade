@@ -20,6 +20,10 @@ config/icon="res://Sprites/icon.svg"
 GameManagerScene="*uid://bigngfkvbgi6p"
 Fx="*uid://cta74vajfb3xk"
 
+[global_group]
+
+ship=""
+
 [input]
 
 steer_left={

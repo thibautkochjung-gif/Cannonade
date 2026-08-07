@@ -1,0 +1,53 @@
+[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://dth1a22v2dpj5"]
+
+[sub_resource type="Curve" id="Curve_yui7t"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.22292992, 0.45365286), -1.5800631, -1.5800631, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_jemgt"]
+curve = SubResource("Curve_yui7t")
+
+[sub_resource type="Curve" id="Curve_xbfxk"]
+_limits = [0.0, 162.34143, 0.0, 1.0]
+_data = [Vector2(0.0031847134, 36.345108), 0.0, 140.0, 0, 0, Vector2(0.14012739, 63.69957), 94.64794, 94.64794, 0, 0, Vector2(0.9872612, 61.2128), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_yui7t"]
+curve = SubResource("Curve_xbfxk")
+
+[sub_resource type="Curve" id="Curve_btla7"]
+_limits = [0.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0, 2.2427337), 0.0, 1.4, 0, 0, Vector2(0.35031846, 2.9831107), 0.12146251, 0.12146251, 0, 0, Vector2(1, 1.7321286), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_3vt7s"]
+curve = SubResource("Curve_btla7")
+
+[sub_resource type="Curve" id="Curve_3vt7s"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_xbfxk"]
+curve = SubResource("Curve_3vt7s")
+
+[resource]
+lifetime_randomness = 0.45
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(5, 0, 0)
+inherit_velocity_ratio = 1.0
+spread = 180.0
+initial_velocity_min = 24.08
+initial_velocity_max = 76.02
+gravity = Vector3(0, 0, 0)
+damping_min = 0.45400003
+damping_max = 1.0
+damping_curve = SubResource("CurveTexture_yui7t")
+attractor_interaction_enabled = false
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_3vt7s")
+scale_over_velocity_curve = SubResource("CurveTexture_xbfxk")
+color = Color(0.45323175, 0.4532318, 0.45323163, 1)
+alpha_curve = SubResource("CurveTexture_jemgt")
+turbulence_enabled = true
+turbulence_noise_strength = 1.77

@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://x4pq3juqbbbo"]
+
+[ext_resource type="Material" uid="uid://dth1a22v2dpj5" path="res://Particles/ExplosionSmoke.tres" id="1_f5ie8"]
+[ext_resource type="Material" uid="uid://cejpyom8vggt7" path="res://Particles/DamageParticlesReverse.tres" id="2_kwcsq"]
+
+[sub_resource type="Curve" id="Curve_l4vhm"]
+_data = [Vector2(0, 1), 0.0, -2.3918275e-07, 0, 0, Vector2(0.4888179, 0.50295615), -2.2774851, -2.2774851, 0, 0, Vector2(0.99361026, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_pouay"]
+curve = SubResource("Curve_l4vhm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ikxos"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 180.0
+initial_velocity_min = 60.89
+initial_velocity_max = 116.04
+gravity = Vector3(0, 0, 0)
+damping_min = 58.626003
+damping_max = 120.368004
+scale_min = 2.0
+scale_max = 6.0
+scale_curve = SubResource("CurveTexture_pouay")
+color = Color(0.9372549, 0.48235294, 0, 1)
+hue_variation_min = 0.009999977
+hue_variation_max = 0.059999976
+
+[node name="Explosion" type="Node2D" unique_id=1569529172]
+
+[node name="RedParticles" type="GPUParticles2D" parent="." unique_id=1508377687 groups=["explosion_particles"]]
+emitting = false
+amount = 50
+lifetime = 4.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ikxos")
+
+[node name="ExplosionSmoke" type="GPUParticles2D" parent="." unique_id=545484230 groups=["explosion_particles"]]
+emitting = false
+amount = 150
+lifetime = 20.67
+one_shot = true
+explosiveness = 1.0
+process_material = ExtResource("1_f5ie8")
+
+[node name="DebrisParticles" type="GPUParticles2D" parent="." unique_id=131715866 groups=["explosion_particles"]]
+emitting = false
+amount = 30
+lifetime = 2.07
+one_shot = true
+speed_scale = 3.0
+explosiveness = 1.0
+process_material = ExtResource("2_kwcsq")

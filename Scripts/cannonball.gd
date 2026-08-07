@@ -7,6 +7,8 @@ extends RigidBody2D
 @export var splash_scene : PackedScene
 @export var despawn_time_variance = 0.5
 @export var damage_fx_scene : PackedScene
+@export var explosion_scene : PackedScene
+@export var critical_hit_chance : float = 0.1
 
 
 var default_despawn_time = 1.3
@@ -58,5 +60,12 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	particles.restart()
 	particles.emitting = true
 	
-	print("hit registered")
+	if randf() < critical_hit_chance:
+		print("EXPLOSION")
+		var explosion = explosion_scene.instantiate()
+		explosion.global_position = global_position
+		get_tree().current_scene.add_child(explosion)
+		for explosion_particle_fx in explosion.get_children().filter(func(child): return child.is_in_group("explosion_particles")):
+			explosion_particle_fx.restart()
+	
 	queue_free()

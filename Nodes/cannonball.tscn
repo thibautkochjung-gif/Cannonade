@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://clgaj3j2th04d" path="res://Nodes/water_splash.tscn" id="2_pc1yr"]
 [ext_resource type="Texture2D" uid="uid://cnwm7ybyxy3vh" path="res://Sprites/dot.png" id="3_am0hp"]
 [ext_resource type="PackedScene" uid="uid://heoa7fhmjvp4" path="res://Nodes/damage_particles.tscn" id="3_pc1yr"]
+[ext_resource type="PackedScene" uid="uid://x4pq3juqbbbo" path="res://Particles/explosion.tscn" id="4_am0hp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_246s8"]
 radius = 1.64
@@ -20,6 +21,8 @@ despawn_timer = NodePath("DespawnTimer")
 splash_scene = ExtResource("2_pc1yr")
 despawn_time_variance = 0.15
 damage_fx_scene = ExtResource("3_pc1yr")
+explosion_scene = ExtResource("4_am0hp")
+critical_hit_chance = 0.01
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=618693192]
 scale = Vector2(0.03, 0.03)

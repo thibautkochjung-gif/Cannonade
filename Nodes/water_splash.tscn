@@ -1,60 +1,22 @@
 [gd_scene format=3 uid="uid://clgaj3j2th04d"]
 
 [ext_resource type="Script" uid="uid://lyqmuvsdmb76" path="res://Scripts/water_splash.gd" id="1_u0xmg"]
-
-[sub_resource type="Gradient" id="Gradient_xbbsj"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.3254902)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_u0xmg"]
-gradient = SubResource("Gradient_xbbsj")
-
-[sub_resource type="Curve" id="Curve_xbbsj"]
-_data = [Vector2(0, 0.36685002), 0.0, 1.4, 0, 0, Vector2(0.56050956, 1), 0.0, 0.0, 0, 0, Vector2(0.9936305, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_u0xmg"]
-curve = SubResource("Curve_xbbsj")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xbbsj"]
-particle_flag_disable_z = true
-emission_shape = 1
-emission_sphere_radius = 1.0
-inherit_velocity_ratio = 0.449
-direction = Vector3(0, -1, 0)
-spread = 23.793
-initial_velocity_min = 39.1
-initial_velocity_max = 84.95
-gravity = Vector3(0, 98, 0)
-scale_min = 2.0
-scale_max = 4.0
-scale_curve = SubResource("CurveTexture_u0xmg")
-color_ramp = SubResource("GradientTexture1D_u0xmg")
-
-[sub_resource type="Gradient" id="Gradient_u0xmg"]
-offsets = PackedFloat32Array(0, 0.35380116, 0.4239766, 0.54385966, 0.6608187, 0.7894737, 1)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_4qrvk"]
-gradient = SubResource("Gradient_u0xmg")
-width = 16
-height = 16
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.5)
+[ext_resource type="Material" uid="uid://bagvsp3u50nsa" path="res://Particles/DropletParticleProcessMaterial.tres" id="2_4qrvk"]
+[ext_resource type="Texture2D" uid="uid://dbthqnffhunu" path="res://Textures/WaterRingGradientTextureTree.tres" id="3_n0rfg"]
 
 [node name="WaterSplash" type="Node2D" unique_id=1964678353]
 script = ExtResource("1_u0xmg")
 
 [node name="DropletParticles" type="GPUParticles2D" parent="." unique_id=445839074]
 emitting = false
-lifetime = 1.6500000000000001
+lifetime = 1.65
 one_shot = true
 explosiveness = 0.76
 randomness = 0.53
-process_material = SubResource("ParticleProcessMaterial_xbbsj")
+process_material = ExtResource("2_4qrvk")
 
 [node name="WaterRingSprite" type="Sprite2D" parent="." unique_id=1110360913]
 z_index = 10
 texture_filter = 1
 scale = Vector2(2, 2)
-texture = SubResource("GradientTexture2D_4qrvk")
+texture = ExtResource("3_n0rfg")

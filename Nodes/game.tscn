@@ -582,7 +582,7 @@ collision_mask = 516
 acceleration_factor = 0.002
 
 [node name="Enemy" parent="." unique_id=293385268 instance=ExtResource("30_kq58d")]
-position = Vector2(790.99994, -26)
+position = Vector2(483, -262)
 rotation = 1.5489051
 
 [node name="EnemySpawner" type="Node" parent="." unique_id=350886573]
