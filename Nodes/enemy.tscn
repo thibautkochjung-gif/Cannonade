@@ -5,6 +5,8 @@
 [ext_resource type="Script" uid="uid://bgi08qd4y6nc2" path="res://Scripts/health.gd" id="2_4gyqm"]
 [ext_resource type="Script" uid="uid://kburknm5j816" path="res://Scripts/right_broadside.gd" id="4_epg4t"]
 [ext_resource type="PackedScene" uid="uid://c1jujcp8ukeio" path="res://Nodes/cannon.tscn" id="4_iifgy"]
+[ext_resource type="PackedScene" uid="uid://crvui5s7wiseo" path="res://Nodes/wake.tscn" id="6_vkesy"]
+[ext_resource type="PackedScene" uid="uid://crs7n0co3nu2p" path="res://Nodes/damage_decals.tscn" id="7_wsd4a"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_4gyqm"]
 points = PackedVector2Array(37, -1, 22, 10, -33, 10, -38, 7, -38, -8, -33, -12, 21, -12)
@@ -16,6 +18,7 @@ mass = 2000.0
 gravity_scale = 0.0
 linear_damp = 0.745
 script = ExtResource("1_qi2p4")
+acceleration_force = 600.0
 
 [node name="EnemySprite" type="Sprite2D" parent="." unique_id=1911777988]
 modulate = Color(0.7310533, 0.013564329, 0.23212478, 1)
@@ -27,6 +30,7 @@ shape = SubResource("ConvexPolygonShape2D_4gyqm")
 
 [node name="Health" type="Node2D" parent="." unique_id=1267936006]
 script = ExtResource("2_4gyqm")
+max_health = 200.0
 
 [node name="RightBroadside" type="Node2D" parent="." unique_id=730625093]
 position = Vector2(0, 5)
@@ -131,6 +135,32 @@ position = Vector2(4.999999, 20)
 [node name="BehaviorDecisionTimer" type="Timer" parent="." unique_id=1861967548]
 wait_time = 0.2
 autostart = true
+
+[node name="Wake3" parent="." unique_id=1337320244 groups=["wake"] instance=ExtResource("6_vkesy")]
+z_index = -1
+position = Vector2(36, 1)
+rotation = -0.4508146
+scale = Vector2(0.50409997, 0.50409997)
+
+[node name="Wake4" parent="." unique_id=970369636 groups=["wake"] instance=ExtResource("6_vkesy")]
+z_index = -1
+position = Vector2(-33, 6)
+rotation = 0.016365603
+scale = Vector2(0.50409997, 0.50409997)
+
+[node name="Wake5" parent="." unique_id=1158210401 groups=["wake"] instance=ExtResource("6_vkesy")]
+z_index = -1
+position = Vector2(-35, -8.000002)
+rotation = 0.83442134
+scale = Vector2(0.50409997, 0.50409997)
+
+[node name="Wake2" parent="." unique_id=430249500 groups=["wake"] instance=ExtResource("6_vkesy")]
+z_index = -1
+position = Vector2(36, 0)
+rotation = 1.8072772
+scale = Vector2(0.71, 0.71)
+
+[node name="DamageDecals" parent="." unique_id=550950358 instance=ExtResource("7_wsd4a")]
 
 [connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]
 [connection signal="timeout" from="BehaviorDecisionTimer" to="." method="_on_behavior_decision_timer_timeout"]

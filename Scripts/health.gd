@@ -16,8 +16,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 	
-func take_damage(amount: int, hit_direction: Vector2 = Vector2.ZERO):
+func take_damage(amount: float, hit_direction: Vector2 = Vector2.ZERO):
 	current_health = current_health - amount
-	health_changed.emit(amount/max_health, hit_direction)
+	health_changed.emit(amount, max_health, current_health, hit_direction)
 	if current_health <= 0:
 		health_depleted.emit()

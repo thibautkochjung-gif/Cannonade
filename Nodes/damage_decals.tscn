@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://crs7n0co3nu2p"]
+
+[ext_resource type="Script" uid="uid://vxic1v117it" path="res://Scripts/damage_decals.gd" id="1_5bytx"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fkb73"]
+
+[node name="DamageDecals" type="Node2D" unique_id=550950358]
+rotation = -1.5707964
+scale = Vector2(0.05, 0.05)
+script = ExtResource("1_5bytx")
+
+[node name="DamageDecal1" type="Sprite2D" parent="." unique_id=1760408492]
+visible = false
+z_index = 1
+position = Vector2(439.99997, -20.000004)
+scale = Vector2(169.31595, 169.31595)
+texture = SubResource("PlaceholderTexture2D_fkb73")
+
+[node name="DamageDecal2" type="Sprite2D" parent="." unique_id=93101918]
+visible = false
+z_index = 1
+position = Vector2(-40, -19.999996)
+scale = Vector2(169.31595, 169.31595)
+texture = SubResource("PlaceholderTexture2D_fkb73")
+
+[node name="DamageDecal3" type="Sprite2D" parent="." unique_id=1052061450]
+visible = false
+z_index = 1
+position = Vector2(-440, -19.999994)
+scale = Vector2(169.31595, 169.31595)
+texture = SubResource("PlaceholderTexture2D_fkb73")

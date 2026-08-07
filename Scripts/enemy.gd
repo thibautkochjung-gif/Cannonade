@@ -13,14 +13,18 @@ var target = Vector2.ZERO
 var angle_to_target: float
 var distance_to_target: float
 
-@export var max_speed: float = 400
+@export var acceleration_force: float = 400
 @export var angle_threshold: float = PI/4
 @export var distance_threshold: float = 250
 @export var turning_speed: float = 100
 @export var attack_range: float = 500
 @export var accuracy: float = 0.1
+@export var linear_damp_value: float = 0.745
+
 
 enum MastState {FULL_MAST, HALF_MAST, STOP, REVERSE}
+
+var max_velocity: float
 
 var SPEED_MAP = {
 	MastState.FULL_MAST: 100.0,
@@ -32,6 +36,9 @@ var SPEED_MAP = {
 func _ready() -> void:
 	change_behavior_state(BehaviorState.SEEK)
 	player = get_tree().get_first_node_in_group("player")
+	var top_speed_force = SPEED_MAP[MastState.FULL_MAST] * acceleration_force
+	max_velocity = top_speed_force / (mass * linear_damp_value)
+
 
 func change_behavior_state(new_state: BehaviorState) -> void:
 	current_behavior_state = new_state
@@ -50,7 +57,7 @@ func tick_seek(delta: float) -> void:
 	var speed = SPEED_MAP[mast_state]
 	
 	target = _get_target_position(player.position, player.velocity)
-	apply_force(transform.x*speed*max_speed)
+	apply_force(transform.x*speed*acceleration_force)
 	apply_torque(angle_to_target*turning_speed*mass)
 
 func tick_attack(delta: float) -> void:
@@ -60,7 +67,7 @@ func tick_attack(delta: float) -> void:
 	var angle_from_broadside_to_player = broadside_direction.angle_to(player.global_position - global_position)
 	
 	target = _get_target_position(player.position, player.velocity)
-	apply_force(transform.x*speed*max_speed)
+	apply_force(transform.x*speed*acceleration_force)
 	if abs(angle_from_broadside_to_player) > accuracy:
 		apply_torque(angle_from_broadside_to_player*turning_speed*mass)
 	else:
@@ -77,7 +84,7 @@ func tick_evade(delta: float) -> void:
 	var angle_to_evade = transform.x.angle_to(evade_direction)
 	
 	apply_torque(angle_to_evade * turning_speed * mass)
-	apply_force(transform.x * SPEED_MAP[MastState.FULL_MAST] * max_speed)
+	apply_force(transform.x * SPEED_MAP[MastState.FULL_MAST] * acceleration_force)
 
 func tick_dead(delta: float) -> void:
 	pass
@@ -156,7 +163,10 @@ func _physics_process(delta: float) -> void:
 			tick_evade(delta)
 		BehaviorState.DEAD:
 			tick_dead(delta)
-	
+			
+	for wake in get_children().filter(func(child): return child.is_in_group("wake")):
+		wake.update_speed(linear_velocity.length() / max_velocity)
+		
 func _on_health_health_depleted() -> void:
 	queue_free()
 
