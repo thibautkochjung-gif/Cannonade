@@ -5,6 +5,7 @@ class_name HUD
 @export var mast_state_indicator: HBoxContainer
 @export var right_broadside_indicator: TextureProgressBar
 @export var left_broadside_indicator: TextureProgressBar
+@export var survival_timer_label: SurvivalTimerLabel
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

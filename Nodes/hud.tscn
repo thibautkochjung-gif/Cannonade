@@ -4,14 +4,16 @@
 [ext_resource type="Script" uid="uid://cbg7sjmlkjoy8" path="res://Scripts/health_indicator.gd" id="2_2c8d1"]
 [ext_resource type="Texture2D" uid="uid://35iovteobcij" path="res://Textures/Solid_black.png" id="2_ft8jm"]
 [ext_resource type="Script" uid="uid://cyjhvy55lo7ua" path="res://Scripts/mast_state_indicator.gd" id="2_skpb5"]
+[ext_resource type="Script" uid="uid://c3reoobxccino" path="res://Scripts/survival_timer.gd" id="2_uspgt"]
 [ext_resource type="Script" uid="uid://bjkux17k1fgek" path="res://Scripts/right_broadside_indicator.gd" id="5_uspgt"]
 
-[node name="HUD" type="CanvasLayer" unique_id=1318984358 node_paths=PackedStringArray("health_indicator", "mast_state_indicator", "right_broadside_indicator", "left_broadside_indicator")]
+[node name="HUD" type="CanvasLayer" unique_id=1318984358 node_paths=PackedStringArray("health_indicator", "mast_state_indicator", "right_broadside_indicator", "left_broadside_indicator", "survival_timer_label")]
 script = ExtResource("1_50iqg")
 health_indicator = NodePath("Root/MarginContainer2/BottomCluster/CenterStack/HealthIndicator")
 mast_state_indicator = NodePath("Root/MarginContainer2/BottomCluster/CenterStack/MastStateIndicator")
 right_broadside_indicator = NodePath("Root/MarginContainer2/BottomCluster/RightBroadsideIndicator")
 left_broadside_indicator = NodePath("Root/MarginContainer2/BottomCluster/LeftBroadsideIndicator")
+survival_timer_label = NodePath("Root/MarginContainer/SurvivalTimerLabel")
 
 [node name="Root" type="Control" parent="." unique_id=1877811523]
 layout_mode = 3
@@ -30,10 +32,11 @@ offset_bottom = 23.0
 grow_horizontal = 2
 theme_override_constants/margin_top = 20
 
-[node name="SurvivalTimer" type="Label" parent="Root/MarginContainer" unique_id=1341059657]
+[node name="SurvivalTimerLabel" type="Label" parent="Root/MarginContainer" unique_id=1341059657]
 layout_mode = 2
 text = "Time"
 horizontal_alignment = 1
+script = ExtResource("2_uspgt")
 
 [node name="MarginContainer2" type="MarginContainer" parent="Root" unique_id=839101541]
 layout_mode = 1

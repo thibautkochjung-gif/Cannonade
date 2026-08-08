@@ -578,7 +578,7 @@ tile_map_data = PackedByteArray("AAAS/9cACgAAAAAAAAAS/9gACgAAAAEAAAAS/9kACgAAAAI
 tile_set = SubResource("TileSet_16pp4")
 
 [node name="Player" parent="." unique_id=2092264728 instance=ExtResource("29_rnkwl")]
-position = Vector2(210, -288)
+position = Vector2(-6731, -2371)
 collision_mask = 516
 acceleration_factor = 0.002
 
@@ -596,6 +596,6 @@ enemy_scene = ExtResource("30_kq58d")
 wait_time = 10.0
 autostart = true
 
-[node name="HUD" parent="." unique_id=1318984358 groups=["hud"] instance=ExtResource("32_432tf")]
+[node name="hud" parent="." unique_id=1318984358 groups=["hud"] instance=ExtResource("32_432tf")]
 
 [connection signal="timeout" from="EnemySpawner/Timer" to="EnemySpawner" method="_on_timer_timeout"]
