@@ -1,0 +1,23 @@
+extends CanvasLayer
+class_name HUD
+
+@export var health_indicator: Control
+@export var mast_state_indicator: HBoxContainer
+@export var right_broadside_indicator: TextureProgressBar
+@export var left_broadside_indicator: TextureProgressBar
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func connect_to_player(player: Node) -> void:
+	player.health.health_changed.connect(health_indicator.update_health)
+	player.mast_state_changed.connect(mast_state_indicator.update_mast_state)
+	player.right_broadside.reload_percentage_changed.connect(right_broadside_indicator.update_reload_indicator)
+	player.left_broadside.reload_percentage_changed.connect(left_broadside_indicator.update_reload_indicator)

@@ -6,10 +6,18 @@ extends Node
 
 var start_time: int
 var death_time_msec: int
+var player: CharacterBody2D
+var hud: CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
+
+
+func on_player_ready(spawned_player: CharacterBody2D) -> void:
+	player = spawned_player
+	hud = get_tree().get_first_node_in_group("hud")
+	hud.connect_to_player(player)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -20,6 +28,7 @@ func _process(delta: float) -> void:
 func player_death() -> void:
 	death_time_msec = Time.get_ticks_msec()
 	var total_seconds = int((death_time_msec-start_time) / 1000.0)
+	@warning_ignore("integer_division")
 	var minutes = total_seconds / 60
 	var seconds = total_seconds % 60
 	var time_survived_text = "You survived %d minutes %d seconds" % [minutes, seconds]

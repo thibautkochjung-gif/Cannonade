@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://bvpsthsbdx3mi" path="res://Nodes/player.tscn" id="29_rnkwl"]
 [ext_resource type="PackedScene" uid="uid://dmgtoi1wc10s4" path="res://Nodes/enemy.tscn" id="30_kq58d"]
 [ext_resource type="Script" uid="uid://n5abw0fyhoq2" path="res://Scripts/enemy_spawner.gd" id="31_qkrwb"]
+[ext_resource type="PackedScene" uid="uid://o5v4htw75hg8" path="res://Nodes/hud.tscn" id="32_432tf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_037st"]
 texture = ExtResource("1_qsp4k")
@@ -594,5 +595,7 @@ enemy_scene = ExtResource("30_kq58d")
 [node name="Timer" type="Timer" parent="EnemySpawner" unique_id=1093549279]
 wait_time = 10.0
 autostart = true
+
+[node name="HUD" parent="." unique_id=1318984358 groups=["hud"] instance=ExtResource("32_432tf")]
 
 [connection signal="timeout" from="EnemySpawner/Timer" to="EnemySpawner" method="_on_timer_timeout"]

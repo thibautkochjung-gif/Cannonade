@@ -5,6 +5,11 @@ extends CharacterBody2D
 @export var angular_acceleration_factor = 0.005
 @export var max_angular_speed = 0.5
 
+@onready var health: Health = $Health
+@onready var left_broadside: Node = $LeftBroadside
+@onready var right_broadside: Node = $RightBroadside
+
+signal mast_state_changed(new_state: MastState)
 enum MastState {FULL_MAST, HALF_MAST, STOP, REVERSE}
 
 var SPEED_MAP = {
@@ -28,6 +33,7 @@ var current_angular_speed = ANGULAR_SPEED_MAP[current_mast_state] * max_angular_
 func _ready() -> void:
 	$LeftBroadside.fired.connect(_on_broadside_fired)
 	$RightBroadside.fired.connect(_on_broadside_fired)
+	GameManagerScene.on_player_ready(self)
 
 func _unhandled_input(event: InputEvent) -> void:
 	
@@ -35,6 +41,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		current_mast_state = clampi(current_mast_state - 1, MastState.FULL_MAST, MastState.REVERSE) as MastState
 	elif event.is_action_pressed("slow_down"):
 		current_mast_state = clampi(current_mast_state + 1, MastState.FULL_MAST, MastState.REVERSE) as MastState
+
+	mast_state_changed.emit(current_mast_state)
 
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:

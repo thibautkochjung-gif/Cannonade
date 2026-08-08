@@ -502,6 +502,8 @@ debug_color = Color(0.9647059, 0, 0.4862745, 0.6313726)
 [node name="CollisionDamage" type="Node" parent="." unique_id=1805878 node_paths=PackedStringArray("ship")]
 script = ExtResource("11_x5p36")
 ship = NodePath("..")
+front_damage = 0.8
+side_back_damage = 1.6
 
 [connection signal="health_changed" from="Health" to="." method="_on_health_health_changed"]
 [connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]
