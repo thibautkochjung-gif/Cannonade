@@ -1,0 +1,131 @@
+[gd_scene format=3 uid="uid://o5v4htw75hg8"]
+
+[sub_resource type="Gradient" id="Gradient_hhf61"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_50iqg"]
+gradient = SubResource("Gradient_hhf61")
+
+[sub_resource type="Gradient" id="Gradient_2c8d1"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_skpb5"]
+gradient = SubResource("Gradient_2c8d1")
+
+[node name="HUD" type="CanvasLayer" unique_id=1318984358]
+
+[node name="Root" type="Control" parent="." unique_id=1877811523]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Root" unique_id=1934066352]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 20
+
+[node name="SurvivalTimer" type="Label" parent="Root/MarginContainer" unique_id=1341059657]
+layout_mode = 2
+text = "Time"
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Root" unique_id=839101541]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -44.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="BottomCluster" type="HBoxContainer" parent="Root/MarginContainer2" unique_id=1480663319]
+layout_mode = 2
+
+[node name="BroadsideLeft" type="TextureProgressBar" parent="Root/MarginContainer2/BottomCluster" unique_id=1256270493]
+layout_mode = 2
+size_flags_horizontal = 0
+fill_mode = 3
+texture_progress = SubResource("GradientTexture1D_50iqg")
+
+[node name="CenterStack" type="VBoxContainer" parent="Root/MarginContainer2/BottomCluster" unique_id=7131807]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="MastStateIndicator" type="HBoxContainer" parent="Root/MarginContainer2/BottomCluster/CenterStack" unique_id=692826822]
+layout_mode = 2
+
+[node name="MastState 1" type="ColorRect" parent="Root/MarginContainer2/BottomCluster/CenterStack/MastStateIndicator" unique_id=683066656]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="MastState 2" type="ColorRect" parent="Root/MarginContainer2/BottomCluster/CenterStack/MastStateIndicator" unique_id=811288789]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="MastState 3" type="ColorRect" parent="Root/MarginContainer2/BottomCluster/CenterStack/MastStateIndicator" unique_id=1790088139]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="MastState 4" type="ColorRect" parent="Root/MarginContainer2/BottomCluster/CenterStack/MastStateIndicator" unique_id=325281857]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="HealthIndicator" type="Control" parent="Root/MarginContainer2/BottomCluster/CenterStack" unique_id=1216217067]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="BackgroundRect" type="ColorRect" parent="Root/MarginContainer2/BottomCluster/CenterStack/HealthIndicator" unique_id=1742656911]
+z_index = 2
+custom_minimum_size = Vector2(500, 20)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GhostFillRect" type="ColorRect" parent="Root/MarginContainer2/BottomCluster/CenterStack/HealthIndicator" unique_id=787833945]
+z_index = 3
+custom_minimum_size = Vector2(500, 20)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.19607843, 0, 1)
+
+[node name="FillRect" type="ColorRect" parent="Root/MarginContainer2/BottomCluster/CenterStack/HealthIndicator" unique_id=739243304]
+z_index = 4
+custom_minimum_size = Vector2(500, 20)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.7943986, 3.2247603e-06, 9.62615e-07, 1)
+
+[node name="BroadsideRight" type="TextureProgressBar" parent="Root/MarginContainer2/BottomCluster" unique_id=1129275745]
+layout_mode = 2
+texture_progress = SubResource("GradientTexture1D_skpb5")
