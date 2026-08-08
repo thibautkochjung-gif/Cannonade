@@ -46,7 +46,7 @@ func _process(delta: float) -> void:
 	recoil_offset += recoil_velocity * delta
 	
 	# Jitter: noise-driven, scaled by trauma squared
-	var shake_amount = trauma * trauma
+	var shake_amount = trauma * trauma * 4
 	noise_seed_x += delta * 60.0
 	noise_seed_y += delta * 60.0
 	var jitter_x = noise.get_noise_1d(noise_seed_x) * max_jitter_offset * shake_amount

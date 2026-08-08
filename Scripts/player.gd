@@ -42,11 +42,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			var mouse_world_position = get_viewport().canvas_transform.affine_inverse() * event.position
 			var vector_to_mouse = mouse_world_position - position
-			var vector_right_side = transform.y.orthogonal()
+			var vector_right_side = transform.x.orthogonal()
 			if vector_to_mouse.dot(vector_right_side) > 0 :
-				$RightBroadside.fire()
-			else :
 				$LeftBroadside.fire()
+			else :
+				$RightBroadside.fire()
 
 
 func _physics_process(delta: float) -> void:
@@ -61,7 +61,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("steer_left"):
 		rotation -= current_angular_speed * delta
 		
-	velocity = Vector2.UP.rotated(rotation) * current_speed
+	velocity = Vector2.RIGHT.rotated(rotation) * current_speed
 	move_and_slide()
 	
 	for wake in get_children().filter(func(child): return child.is_in_group("wake")):
@@ -76,14 +76,15 @@ func _on_health_health_depleted() -> void:
 	GameManagerScene.player_death()
 
 
-func _on_health_health_changed(damage: float, max_health: float, current_health: float, hit_direction: Vector2) -> void:
+func _on_health_health_changed(damage: float, max_health: float, current_health: float, hit_direction: Vector2, source: String) -> void:
 	
 	var damage_to_max_health_ratio: float = damage / max_health
 	if damage_to_max_health_ratio > 0.0:
-		Fx.shake(shake_strength_from(damage_to_max_health_ratio), hit_direction)
+		Fx.shake(shake_strength_from(damage_to_max_health_ratio, source), hit_direction)
 		
 	$DamageDecals.update_health_ratio(current_health / max_health)
 
 
-func shake_strength_from(damage_to_max_health_ratio: float) -> float:
-	return clamp(damage_to_max_health_ratio, 0.05, 1.0)
+func shake_strength_from(damage: float, source: String) -> float:
+	var base = clamp(damage / $Health.max_health, 0.1, 1.0)
+	return base * 10.0 if source == "collision" else base
