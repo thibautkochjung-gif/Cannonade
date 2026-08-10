@@ -9,30 +9,29 @@ extends RigidBody2D
 @export var damage_fx_scene : PackedScene
 @export var explosion_scene : PackedScene
 @export var critical_hit_chance : float = 0.1
-
-@onready var hull_damage: HullDamage = $HullDamage
-@onready var sail_damage: SailDamage = $SailDamage
+@export var ammo_data : AmmoData
 
 var default_despawn_time = 1.3
+var direction: Vector2
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var strength = broadside.shot_strength * randf_range(1-shot_strength_variance, 1+shot_strength_variance)
-		
+	
 	if ship.is_in_group("player"):
-		var direction = broadside.global_transform.y
 		$Area2D.set_collision_layer_value(2, 1)
 		$Area2D.set_collision_mask_value(3, 1) 
 		apply_impulse( direction * strength + ship.velocity)
 
 		
 	else:
-		var direction = broadside.global_transform.x
 		$Area2D.set_collision_layer_value(3, true)
 		$Area2D.set_collision_mask_value(1, true) 
 		apply_impulse( direction * strength + ship.linear_velocity)
 
-		
+	linear_damp = ammo_data.drag
+	
 	despawn_timer.wait_time = randf_range(default_despawn_time - despawn_time_variance, default_despawn_time + despawn_time_variance)
 	despawn_timer.start()
 	
@@ -54,9 +53,27 @@ func _on_timer_timeout() -> void:
 	queue_free()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	body.get_node("Health").take_damage(hull_damage.amount, linear_velocity.normalized())
-	body.get_node("SailCondition").take_damage(sail_damage.amount)
-
+	
+	if ammo_data.hull_damage > 0:
+		body.get_node("Health").take_damage(
+			ammo_data.hull_damage,
+			linear_velocity.normalized()
+		)
+		
+	if ammo_data.sail_damage > 0:
+		body.get_node("SailCondition").take_damage(
+			ammo_data.sail_damage
+		)
+	
+	if ammo_data.stun_trauma > 0:
+		body.get_node("StatusEffects").apply_stun(
+			ammo_data.stun_trauma
+		)
+		
+	if ammo_data.burn_amount > 0:
+		body.get_node("StatusEffects").apply_burn(
+			ammo_data.burn_amount
+		)
 	
 	var dmg_fx = damage_fx_scene.instantiate()
 	dmg_fx.global_position = global_position

@@ -9,6 +9,8 @@ extends CharacterBody2D
 @onready var health: Health = $Health
 @onready var left_broadside: Node = $LeftBroadside
 @onready var right_broadside: Node = $RightBroadside
+@onready var status_effects: StatusEffects = $StatusEffects
+@onready var ammo_manager: AmmoManager = $AmmoManager
 
 signal mast_state_changed(new_state: MastState)
 enum MastState {FULL_MAST, HALF_MAST, STOP, REVERSE}
@@ -38,6 +40,10 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	
+	if status_effects.is_stunned():
+		return
+
+	
 	if event.is_action_pressed("speed_up"):
 		current_mast_state = clampi(current_mast_state - 1, MastState.FULL_MAST, MastState.REVERSE) as MastState
 	elif event.is_action_pressed("slow_down"):
@@ -56,9 +62,22 @@ func _unhandled_input(event: InputEvent) -> void:
 				$LeftBroadside.fire()
 			else :
 				$RightBroadside.fire()
+	
+	if event.is_action_pressed("ammo_1"):
+		ammo_manager.select_ammo(1)
+	elif event.is_action_pressed("ammo_2"):
+		ammo_manager.select_ammo(2)
+	elif event.is_action_pressed("ammo_3"):
+		ammo_manager.select_ammo(3)
+	elif event.is_action_pressed("ammo_4"):
+		ammo_manager.select_ammo(4)
 
 
 func _physics_process(delta: float) -> void:
+	
+	if status_effects.is_stunned():
+		move_and_slide()
+		return
 	
 	var target_speed = SPEED_MAP[current_mast_state] * max_speed * sail_condition.get_speed_multiplier()
 	current_speed = lerp(current_speed, target_speed, acceleration_factor)

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AmmoData" format=3 uid="uid://dbw7nhlpjyek5"]
+
+[ext_resource type="Script" uid="uid://baeompqa7erkx" path="res://Scripts/ammo_data.gd" id="1_ne6c1"]
+
+[resource]
+script = ExtResource("1_ne6c1")
+hull_damage = 2.0
+sail_damage = 1.0
+stun_trauma = 3.0
+drag = 3.0
+spread_angle = 30.0
+metadata/_custom_type_script = "uid://baeompqa7erkx"

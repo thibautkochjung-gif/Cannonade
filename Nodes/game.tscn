@@ -21,12 +21,13 @@ tile_map_data = PackedByteArray("AADx/wYAAAABAAEAAAD1/wYAAAADAAEAAAD1/woAAAADAAI
 tile_set = ExtResource("2_424rh")
 
 [node name="Player" parent="." unique_id=2092264728 instance=ExtResource("29_rnkwl")]
-position = Vector2(-1728, 606)
+position = Vector2(-1828, 886)
+rotation = -0.93294996
 collision_mask = 548
 acceleration_factor = 0.002
 
 [node name="Enemy" parent="." unique_id=293385268 instance=ExtResource("30_kq58d")]
-position = Vector2(-1708.9999, 968)
+position = Vector2(-1572, 1073)
 rotation = -0.026347637
 
 [node name="EnemySpawner" type="Node" parent="." unique_id=350886573]

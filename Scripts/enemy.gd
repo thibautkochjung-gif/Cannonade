@@ -44,6 +44,7 @@ var SPEED_MAP = {
 @export var avoidance_normal_threshold: float = 0.3
 @export var force_reduction_amount: float = 0.7
 
+@onready var status_effects : StatusEffects = $StatusEffects
 
 func _ready() -> void:
 	change_behavior_state(BehaviorState.SEEK)
@@ -156,6 +157,9 @@ func decide_behavior() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if status_effects.is_stunned():
+		return
+		
 	angle_to_target = transform.x.angle_to(target-global_position)
 	distance_to_target = (target-global_position).length()
 	angle_to_player = transform.x.angle_to(player.position-global_position)
