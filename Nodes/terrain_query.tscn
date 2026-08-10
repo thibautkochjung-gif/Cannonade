@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dbdefkdf55li4"]
+
+[ext_resource type="Script" uid="uid://c0bjoj5hcj22c" path="res://Scripts/terrain_query.gd" id="1_v0hml"]
+
+[node name="TerrainQuery" type="Node2D" unique_id=922207994]
+script = ExtResource("1_v0hml")

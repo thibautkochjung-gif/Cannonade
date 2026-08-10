@@ -12,6 +12,7 @@ var distance_to_player: float
 var target = Vector2.ZERO
 var angle_to_target: float
 var distance_to_target: float
+var current_avoidance_direction: float = 0.0  # -1 = left, 1 = right, 0 = none
 
 @export var acceleration_force: float = 400
 @export var angle_threshold: float = PI/4
@@ -20,6 +21,13 @@ var distance_to_target: float
 @export var attack_range: float = 500
 @export var accuracy: float = 0.1
 @export var linear_damp_value: float = 0.745
+@export var avoidance_ray_length: float = 200.0
+@export var avoidance_ray_spread_degrees: float = 35.0
+@export var avoidance_strength: float = 1.5
+@export var avoidance_normal_threshold: float = 0.3
+@export var force_reduction_amount: float = 0.7
+@export var opportunistic_fire_window: float = 0.3
+@export var opportunistic_fire_urgency_ceiling: float = 0.5
 
 
 enum MastState {FULL_MAST, HALF_MAST, STOP, REVERSE}
@@ -38,33 +46,43 @@ func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 	var top_speed_force = SPEED_MAP[MastState.FULL_MAST] * acceleration_force
 	max_velocity = top_speed_force / (mass * linear_damp_value)
+	
+	var spread_rad = deg_to_rad(avoidance_ray_spread_degrees)
+	$AvoidanceRaycasts/AvoidanceRayCenter.target_position = Vector2(avoidance_ray_length, 0)
+	$AvoidanceRaycasts/AvoidanceRayLeft.target_position = Vector2(cos(-spread_rad), sin(-spread_rad)) * avoidance_ray_length
+	$AvoidanceRaycasts/AvoidanceRayRight.target_position = Vector2(cos(spread_rad), sin(spread_rad)) * avoidance_ray_length
 
 
 func change_behavior_state(new_state: BehaviorState) -> void:
 	current_behavior_state = new_state
 			
-func tick_seek(delta: float) -> void:
+func tick_seek(delta: float) -> Dictionary:
 	mast_state = get_mast_state()
 	var speed = SPEED_MAP[mast_state]
 	
 	target = _get_target_position(player.position, player.velocity)
-	apply_force(transform.x*speed*acceleration_force)
-	apply_torque(angle_to_target*turning_speed*mass)
-
-func tick_attack(delta: float) -> void:
+	return {"speed": speed, "torque": angle_to_target*turning_speed*mass, "bypass_suppression": false}
+	
+func tick_attack(delta: float) -> Dictionary:
 	mast_state = get_mast_state()
 	var speed = SPEED_MAP[mast_state]
 	var broadside_direction = transform.y if broadside_in_use == $RightBroadside else -transform.y
 	var angle_from_broadside_to_player = broadside_direction.angle_to(player.global_position - global_position)
+	var torque = 0.0
+	var bypass_suppression = false
+
 	
 	target = _get_target_position(player.position, player.velocity)
 	apply_force(transform.x*speed*acceleration_force)
 	if abs(angle_from_broadside_to_player) > accuracy:
-		apply_torque(angle_from_broadside_to_player*turning_speed*mass)
+		torque = angle_from_broadside_to_player*turning_speed*mass
+		bypass_suppression = abs(angle_from_broadside_to_player) < opportunistic_fire_window
+
 	else:
 		broadside_in_use.fire()
+	return {"speed": speed, "torque": torque, "bypass_suppression": bypass_suppression}
 
-func tick_evade(delta: float) -> void:
+func tick_evade(delta: float) -> Dictionary:
 	#If the enemy is behind the player, they should rotate to player.transform.y
 	#If the enemy is in front of the player, they should rotate to -player.transform.y
 	var player_to_enemy = global_position - player.global_position
@@ -73,11 +91,10 @@ func tick_evade(delta: float) -> void:
 	var evade_direction = player.transform.y if dot < 0 else -player.transform.y
 	var angle_to_evade = transform.x.angle_to(evade_direction)
 	
-	apply_torque(angle_to_evade * turning_speed * mass)
-	apply_force(transform.x * SPEED_MAP[MastState.FULL_MAST] * acceleration_force)
+	return {"speed": SPEED_MAP[MastState.FULL_MAST], "torque": angle_to_evade * turning_speed * mass, "bypass_suppression": false}
 
-func tick_dead(delta: float) -> void:
-	pass
+func tick_dead(delta: float) -> Dictionary:
+	return {"speed": 0.0, "torque": 0.0, "bypass_suppression": false}
 	# death logic goes here later
 
 func get_mast_state() -> MastState:
@@ -138,6 +155,7 @@ func _physics_process(delta: float) -> void:
 	distance_to_target = (target-global_position).length()
 	angle_to_player = transform.x.angle_to(player.position-global_position)
 	distance_to_player = (player.position - global_position).length()
+	var behavior_result: Dictionary
 
 	if angle_to_player > 0:
 		broadside_in_use = $RightBroadside
@@ -146,22 +164,99 @@ func _physics_process(delta: float) -> void:
 	
 	match current_behavior_state:
 		BehaviorState.SEEK:
-			tick_seek(delta)
+			behavior_result = tick_seek(delta)
 		BehaviorState.ATTACK:
-			tick_attack(delta)
+			behavior_result = tick_attack(delta)
 		BehaviorState.EVADE:
-			tick_evade(delta)
+			behavior_result = tick_evade(delta)
 		BehaviorState.DEAD:
-			tick_dead(delta)
-			
+			behavior_result = tick_dead(delta)
+
+	var avoidance_result = get_avoidance_torque(delta)
+	var urgency = avoidance_result["urgency"]
+	var allow_bypass = behavior_result["bypass_suppression"] and urgency < opportunistic_fire_urgency_ceiling
+
+	var blended_torque: float
+	if allow_bypass:
+		blended_torque = behavior_result["torque"]
+	else:
+		blended_torque = behavior_result["torque"] * (1.0 - urgency) + avoidance_result["torque"]
+	
+	var blended_speed = behavior_result["speed"] * (1.0 - urgency * force_reduction_amount)
+
+	apply_force(transform.x * blended_speed * acceleration_force)
+	apply_torque(blended_torque)
+
 	for wake in get_children().filter(func(child): return child.is_in_group("wake")):
 		wake.update_speed(linear_velocity.length() / max_velocity)
 		
 func _on_health_health_depleted() -> void:
 	queue_free()
 
-func _on_health_health_changed(damage: float, max_health: float, current_health: float, hit_direction: Vector2) -> void:
+func _on_health_health_changed(damage: float, max_health: float, current_health: float, hit_direction: Vector2, source) -> void:
 	$DamageDecals.update_health_ratio(current_health / max_health)
 
 func _on_behavior_decision_timer_timeout() -> void:
 	decide_behavior()
+	
+
+func get_avoidance_torque(delta: float) -> Dictionary:
+	var ray_data = {
+		"center": null,
+		"left": null,
+		"right": null,
+	}
+
+	for ray_name in ray_data.keys():
+		var ray = get_node("AvoidanceRaycasts/AvoidanceRay" + ray_name.capitalize())
+		if ray.is_colliding():
+			ray_data[ray_name] = {
+				"distance": global_position.distance_to(ray.get_collision_point()),
+				"normal": ray.get_collision_normal(),
+			}
+
+	var steer_direction: float = 0.0
+
+	if ray_data["center"] != null:
+		# Direct/urgent case - center is hit, need a real direction decision
+		if ray_data["left"] == null:
+			steer_direction = -1.0
+		elif ray_data["right"] == null:
+			steer_direction = 1.0
+		else:
+			var sideways = ray_data["center"]["normal"].dot(transform.y)
+			if sideways > avoidance_normal_threshold:
+				steer_direction = 1.0
+			elif sideways < -avoidance_normal_threshold:
+				steer_direction = -1.0
+			else:
+				var left_dist = ray_data["left"]["distance"]
+				var right_dist = ray_data["right"]["distance"]
+				steer_direction = -1.0 if left_dist > right_dist else 1.0
+	elif ray_data["left"] != null:
+		# Peripheral scrape on the left only - nudge right, away from it
+		steer_direction = 1.0
+	elif ray_data["right"] != null:
+		# Peripheral scrape on the right only - nudge left, away from it
+		steer_direction = -1.0
+
+	# Persistent bias: once committed to a direction, keep it until fully clear of obstacles
+	if steer_direction != 0.0:
+		if current_avoidance_direction == 0.0:
+			current_avoidance_direction = steer_direction
+		steer_direction = current_avoidance_direction
+	else:
+		current_avoidance_direction = 0.0
+
+	if steer_direction == 0.0:
+		return {"torque": 0.0, "urgency": 0.0}
+
+	var closest_hit_distance = avoidance_ray_length
+	for ray_name in ray_data.keys():
+		if ray_data[ray_name] != null:
+			closest_hit_distance = min(closest_hit_distance, ray_data[ray_name]["distance"])
+
+	var urgency = clamp(1.0 - (closest_hit_distance / avoidance_ray_length), 0.0, 1.0)
+	urgency = sqrt(urgency)
+	var torque = steer_direction * urgency * turning_speed * mass * avoidance_strength
+	return {"torque": torque, "urgency": urgency}

@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://dx0q637jadc3s" path="res://Scripts/collision_damage.gd" id="11_x5p36"]
 
 [node name="Player" type="CharacterBody2D" unique_id=2092264728 groups=["player", "ship"]]
-collision_mask = 4
+collision_mask = 36
 script = ExtResource("1_onrkg")
 metadata/_edit_group_ = true
 

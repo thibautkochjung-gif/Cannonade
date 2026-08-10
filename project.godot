@@ -19,6 +19,7 @@ config/icon="res://Sprites/icon.svg"
 
 GameManagerScene="*uid://bigngfkvbgi6p"
 Fx="*uid://cta74vajfb3xk"
+TerrainQuery="*uid://dbdefkdf55li4"
 
 [global_group]
 
@@ -53,4 +54,5 @@ slow_down={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"

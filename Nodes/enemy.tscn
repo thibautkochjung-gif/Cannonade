@@ -14,12 +14,16 @@
 
 [node name="Enemy" type="RigidBody2D" unique_id=483788940 groups=["ship"]]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 35
 mass = 2000.0
 gravity_scale = 0.0
 linear_damp = 0.745
 script = ExtResource("1_qi2p4")
-acceleration_force = 600.0
+turning_speed = 300.0
+avoidance_ray_length = 400.0
+avoidance_ray_spread_degrees = 30.0
+avoidance_normal_threshold = 0.2
+force_reduction_amount = 0.0
 
 [node name="EnemySprite" type="Sprite2D" parent="." unique_id=1911777988]
 modulate = Color(0.7310533, 0.013564329, 0.23212478, 1)
@@ -179,6 +183,18 @@ shape = ExtResource("3_rlak2")
 script = ExtResource("10_83h23")
 ship = NodePath("..")
 metadata/_custom_type_script = "uid://dx0q637jadc3s"
+
+[node name="AvoidanceRaycasts" type="Node2D" parent="." unique_id=1992685917]
+position = Vector2(35, 0)
+
+[node name="AvoidanceRayCenter" type="RayCast2D" parent="AvoidanceRaycasts" unique_id=949460146]
+collision_mask = 32
+
+[node name="AvoidanceRayLeft" type="RayCast2D" parent="AvoidanceRaycasts" unique_id=319403917]
+collision_mask = 32
+
+[node name="AvoidanceRayRight" type="RayCast2D" parent="AvoidanceRaycasts" unique_id=1865122820]
+collision_mask = 32
 
 [connection signal="health_changed" from="Health" to="." method="_on_health_health_changed"]
 [connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]

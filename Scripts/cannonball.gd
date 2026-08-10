@@ -42,11 +42,13 @@ func _process(delta: float) -> void:
 
 func _on_timer_timeout() -> void:
 	
-	var splash = splash_scene.instantiate()
-	splash.global_position = global_position
-	get_tree().current_scene.add_child(splash)
-	splash.get_node("DropletParticles").emitting = true
-
+	if 	TerrainQuery.is_over_land(global_position) == false :
+		var splash = splash_scene.instantiate()
+		splash.global_position = global_position
+		get_tree().current_scene.add_child(splash)
+		splash.get_node("DropletParticles").emitting = true
+	
+	
 	queue_free()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
