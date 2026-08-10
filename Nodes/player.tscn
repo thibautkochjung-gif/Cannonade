@@ -467,26 +467,26 @@ rotation = 1.5707964
 [node name="Wake" parent="Wakes" unique_id=1337320244 groups=["wake"] instance=ExtResource("7_wmu34")]
 z_index = -1
 position = Vector2(0, -42)
-rotation = -0.14630556
-size_multiplier = 1.6
+rotation = 0.6409582
+size_multiplier = 2.2
 
 [node name="Wake3" parent="Wakes" unique_id=1624203952 groups=["wake"] instance=ExtResource("7_wmu34")]
 z_index = -1
 position = Vector2(-11.000001, 30)
 rotation = -0.87061584
-size_multiplier = 1.6
+size_multiplier = 2.2
 
 [node name="Wake4" parent="Wakes" unique_id=1288649292 groups=["wake"] instance=ExtResource("7_wmu34")]
 z_index = -1
 position = Vector2(12.000001, 31)
 rotation = -1.3778968
-size_multiplier = 1.6
+size_multiplier = 2.2
 
 [node name="Wake2" parent="Wakes" unique_id=1955647243 groups=["wake"] instance=ExtResource("7_wmu34")]
 z_index = -1
 position = Vector2(0, -43.000004)
-rotation = -2.1158807
-size_multiplier = 1.6
+rotation = -2.4886146
+size_multiplier = 2.2
 
 [node name="HullCollision" type="Area2D" parent="." unique_id=1038201373 node_paths=PackedStringArray("collision_damage")]
 collision_layer = 8

@@ -142,30 +142,6 @@ position = Vector2(4.999999, 20)
 wait_time = 0.2
 autostart = true
 
-[node name="Wake3" parent="." unique_id=1337320244 groups=["wake"] instance=ExtResource("6_vkesy")]
-z_index = -1
-position = Vector2(36, 1)
-rotation = -0.4508146
-scale = Vector2(0.50409997, 0.50409997)
-
-[node name="Wake4" parent="." unique_id=970369636 groups=["wake"] instance=ExtResource("6_vkesy")]
-z_index = -1
-position = Vector2(-33, 6)
-rotation = 0.016365603
-scale = Vector2(0.50409997, 0.50409997)
-
-[node name="Wake5" parent="." unique_id=1158210401 groups=["wake"] instance=ExtResource("6_vkesy")]
-z_index = -1
-position = Vector2(-35, -8.000002)
-rotation = 0.83442134
-scale = Vector2(0.50409997, 0.50409997)
-
-[node name="Wake2" parent="." unique_id=430249500 groups=["wake"] instance=ExtResource("6_vkesy")]
-z_index = -1
-position = Vector2(36, 0)
-rotation = 1.8072772
-scale = Vector2(0.71, 0.71)
-
 [node name="DamageDecals" parent="." unique_id=550950358 instance=ExtResource("7_wsd4a")]
 z_index = 1
 rotation = 0.0
@@ -195,6 +171,36 @@ collision_mask = 32
 
 [node name="AvoidanceRayRight" type="RayCast2D" parent="AvoidanceRaycasts" unique_id=1865122820]
 collision_mask = 32
+
+[node name="Wakes" type="Node2D" parent="." unique_id=1455166856]
+
+[node name="Wake3" parent="Wakes" unique_id=1337320244 groups=["wake"] instance=ExtResource("6_vkesy")]
+z_index = -1
+position = Vector2(36, 1)
+rotation = -0.4508146
+scale = Vector2(0.50409997, 0.50409997)
+size_multiplier = 0.9
+
+[node name="Wake4" parent="Wakes" unique_id=970369636 groups=["wake"] instance=ExtResource("6_vkesy")]
+z_index = -1
+position = Vector2(-33, 6)
+rotation = 0.016365604
+scale = Vector2(0.50409997, 0.50409997)
+size_multiplier = 0.9
+
+[node name="Wake5" parent="Wakes" unique_id=1158210401 groups=["wake"] instance=ExtResource("6_vkesy")]
+z_index = -1
+position = Vector2(-35, -8.000002)
+rotation = 0.83442134
+scale = Vector2(0.50409997, 0.50409997)
+size_multiplier = 0.9
+
+[node name="Wake2" parent="Wakes" unique_id=430249500 groups=["wake"] instance=ExtResource("6_vkesy")]
+z_index = -1
+position = Vector2(36, 0)
+rotation = 1.8072772
+scale = Vector2(0.7099999, 0.7099999)
+size_multiplier = 0.9
 
 [connection signal="health_changed" from="Health" to="." method="_on_health_health_changed"]
 [connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]

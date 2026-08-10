@@ -72,7 +72,7 @@ func _physics_process(delta: float) -> void:
 	velocity = Vector2.RIGHT.rotated(rotation) * current_speed
 	move_and_slide()
 	
-	for wake in get_children().filter(func(child): return child.is_in_group("wake")):
+	for wake in $Wakes.get_children().filter(func(child): return child.is_in_group("wake")):
 		wake.update_speed(current_speed / max_speed)
 	
 	
