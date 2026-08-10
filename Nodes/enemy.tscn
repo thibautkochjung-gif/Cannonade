@@ -7,12 +7,13 @@
 [ext_resource type="Shape2D" uid="uid://bt0d0wucw6x5p" path="res://Polygons/enemy_boat_polygon_for_ship_collision.tres" id="3_rlak2"]
 [ext_resource type="Script" uid="uid://kburknm5j816" path="res://Scripts/right_broadside.gd" id="4_epg4t"]
 [ext_resource type="PackedScene" uid="uid://c1jujcp8ukeio" path="res://Nodes/cannon.tscn" id="4_iifgy"]
+[ext_resource type="Script" uid="uid://enl5yu8t2c3j" path="res://Scripts/sail_condition.gd" id="5_1ksyb"]
 [ext_resource type="PackedScene" uid="uid://crvui5s7wiseo" path="res://Nodes/wake.tscn" id="6_vkesy"]
 [ext_resource type="PackedScene" uid="uid://crs7n0co3nu2p" path="res://Nodes/damage_decals.tscn" id="7_wsd4a"]
 [ext_resource type="Script" uid="uid://dyjbyttyd74sk" path="res://Scripts/hull_collision.gd" id="9_rlak2"]
 [ext_resource type="Script" uid="uid://dx0q637jadc3s" path="res://Scripts/collision_damage.gd" id="10_83h23"]
 
-[node name="Enemy" type="RigidBody2D" unique_id=483788940 groups=["ship"]]
+[node name="Enemy" type="RigidBody2D" unique_id=483788940 node_paths=PackedStringArray("sail_condition") groups=["ship"]]
 collision_layer = 4
 collision_mask = 35
 mass = 2000.0
@@ -20,6 +21,7 @@ gravity_scale = 0.0
 linear_damp = 0.745
 script = ExtResource("1_qi2p4")
 turning_speed = 300.0
+sail_condition = NodePath("SailCondition")
 avoidance_ray_length = 400.0
 avoidance_ray_spread_degrees = 30.0
 avoidance_normal_threshold = 0.2
@@ -36,7 +38,10 @@ shape = ExtResource("3_a47nb")
 
 [node name="Health" type="Node2D" parent="." unique_id=1267936006]
 script = ExtResource("2_4gyqm")
-max_health = 200.0
+max_health = 400.0
+
+[node name="SailCondition" type="Node" parent="." unique_id=1532703816]
+script = ExtResource("5_1ksyb")
 
 [node name="RightBroadside" type="Node2D" parent="." unique_id=730625093]
 position = Vector2(0, 5)

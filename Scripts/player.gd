@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var acceleration_factor = 0.1
 @export var angular_acceleration_factor = 0.005
 @export var max_angular_speed = 0.5
+@export var sail_condition : SailCondition
 
 @onready var health: Health = $Health
 @onready var left_broadside: Node = $LeftBroadside
@@ -59,9 +60,9 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	
-	var target_speed = SPEED_MAP[current_mast_state] * max_speed
+	var target_speed = SPEED_MAP[current_mast_state] * max_speed * sail_condition.get_speed_multiplier()
 	current_speed = lerp(current_speed, target_speed, acceleration_factor)
-	var target_angular_speed = ANGULAR_SPEED_MAP[current_mast_state] * max_angular_speed
+	var target_angular_speed = ANGULAR_SPEED_MAP[current_mast_state] * max_angular_speed * sail_condition.get_turn_multiplier()
 	current_angular_speed = lerp(current_angular_speed, target_angular_speed, angular_acceleration_factor)
 	
 	if Input.is_action_pressed("steer_right"):

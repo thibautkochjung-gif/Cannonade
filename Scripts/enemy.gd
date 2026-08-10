@@ -34,6 +34,8 @@ var SPEED_MAP = {
 @export var accuracy: float = 0.1
 @export var opportunistic_fire_window: float = 0.3
 @export var opportunistic_fire_urgency_ceiling: float = 0.5
+@export var sail_condition : SailCondition
+
 
 @export_group("Avoidance")
 @export var avoidance_ray_length: float = 200.0
@@ -76,7 +78,6 @@ func tick_attack(delta: float) -> Dictionary:
 	var bypass_suppression = false
 
 	target = _get_target_position(player.position, player.velocity)
-	apply_force(transform.x*speed*acceleration_force)
 	if abs(angle_from_broadside_to_player) > accuracy:
 		torque = angle_from_broadside_to_player*turning_speed*mass
 		bypass_suppression = abs(angle_from_broadside_to_player) < opportunistic_fire_window
@@ -188,7 +189,7 @@ func _physics_process(delta: float) -> void:
 
 	var blended_speed = behavior_result["speed"] * (1.0 - urgency * force_reduction_amount)
 
-	apply_force(transform.x * blended_speed * acceleration_force)
+	apply_force(transform.x * blended_speed * acceleration_force * sail_condition.get_condition_ratio())
 	apply_torque(blended_torque)
 
 	for wake in $Wakes.get_children().filter(func(child): return child.is_in_group("wake")):

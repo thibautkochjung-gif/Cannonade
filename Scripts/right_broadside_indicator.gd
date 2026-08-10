@@ -11,5 +11,4 @@ func _process(delta: float) -> void:
 
 
 func update_reload_indicator(percent: float) -> void:
-	print("setting reload indic to ", percent)
 	value = percent * max_value

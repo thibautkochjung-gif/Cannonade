@@ -26,7 +26,6 @@ func _process(delta: float) -> void:
 
 func update_health(amount, max_health, current_health, hit_direction, source) -> void:
 	var percent_health_left: float = current_health / max_health
-	print("called method to resize fill rect to", percent_health_left)
 	fill_rect.size.x = fill_rect.get_parent().size.x * percent_health_left
 	
 	# Ghost bar: cancel any in-progress catch-up, hold at its current

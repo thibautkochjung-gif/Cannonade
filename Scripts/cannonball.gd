@@ -2,14 +2,16 @@ extends RigidBody2D
 
 @export var ship : Node2D
 @export var broadside : Node2D
-@export var shot_strength_variance = 0.1
+@export var shot_strength_variance : float = 0.1
 @export var despawn_timer : Timer
 @export var splash_scene : PackedScene
-@export var despawn_time_variance = 0.5
+@export var despawn_time_variance : float = 0.5
 @export var damage_fx_scene : PackedScene
 @export var explosion_scene : PackedScene
 @export var critical_hit_chance : float = 0.1
 
+@onready var hull_damage: HullDamage = $HullDamage
+@onready var sail_damage: SailDamage = $SailDamage
 
 var default_despawn_time = 1.3
 
@@ -52,7 +54,9 @@ func _on_timer_timeout() -> void:
 	queue_free()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	body.get_node("Health").take_damage(10, linear_velocity.normalized())
+	body.get_node("Health").take_damage(hull_damage.amount, linear_velocity.normalized())
+	body.get_node("SailCondition").take_damage(sail_damage.amount)
+
 	
 	var dmg_fx = damage_fx_scene.instantiate()
 	dmg_fx.global_position = global_position
