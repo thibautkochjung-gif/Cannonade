@@ -10,6 +10,8 @@
 [ext_resource type="Script" uid="uid://enl5yu8t2c3j" path="res://Scripts/sail_condition.gd" id="5_1ksyb"]
 [ext_resource type="Script" uid="uid://v2cm1krxfx6r" path="res://Scripts/status_effects.gd" id="6_t3hhj"]
 [ext_resource type="PackedScene" uid="uid://crvui5s7wiseo" path="res://Nodes/wake.tscn" id="6_vkesy"]
+[ext_resource type="Script" uid="uid://cxoe1nktlbrai" path="res://Scripts/burn_fx.gd" id="7_l6wwd"]
+[ext_resource type="PackedScene" uid="uid://dkkon17opb2vg" path="res://Nodes/burn_dot_particles.tscn" id="7_n83r8"]
 [ext_resource type="PackedScene" uid="uid://crs7n0co3nu2p" path="res://Nodes/damage_decals.tscn" id="7_wsd4a"]
 [ext_resource type="Script" uid="uid://8rrvjia8ih27" path="res://Scripts/ammo_manager.gd" id="9_ejsdj"]
 [ext_resource type="Script" uid="uid://dyjbyttyd74sk" path="res://Scripts/hull_collision.gd" id="9_rlak2"]
@@ -48,6 +50,11 @@ max_health = 800.0
 
 [node name="SailCondition" type="Node" parent="." unique_id=1532703816]
 script = ExtResource("5_1ksyb")
+
+[node name="BurnFX" type="Node2D" parent="." unique_id=1150656937 node_paths=PackedStringArray("status_effects")]
+script = ExtResource("7_l6wwd")
+burn_fx_scene = ExtResource("7_n83r8")
+status_effects = NodePath("../StatusEffects")
 
 [node name="StatusEffects" type="Node" parent="." unique_id=148415690 node_paths=PackedStringArray("health")]
 script = ExtResource("6_t3hhj")

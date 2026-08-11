@@ -5,7 +5,7 @@ extends Node2D
 
 
 
-func setup(water_ring_size : float, particle_multiplier : float) -> void :
+func setup(water_ring_size : float, particle_multiplier : float, particle_scale_modifier : float) -> void :
 
 	var tween = create_tween()
 	
@@ -16,6 +16,8 @@ func setup(water_ring_size : float, particle_multiplier : float) -> void :
 	$WaterRingSprite.scale = Vector2(start_scale, start_scale)
 	
 	droplet_particles.amount = droplet_particles.amount * particle_multiplier
+	droplet_particles.process_material.scale_min *=  particle_scale_modifier
+	droplet_particles.process_material.scale_max *=  particle_scale_modifier
 	
 	
 	tween.parallel().tween_property(

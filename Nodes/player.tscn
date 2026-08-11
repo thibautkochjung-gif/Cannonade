@@ -19,6 +19,8 @@
 [ext_resource type="Script" uid="uid://dyjbyttyd74sk" path="res://Scripts/hull_collision.gd" id="10_e3gfx"]
 [ext_resource type="Resource" uid="uid://cr6lfdvq780r4" path="res://Resources/HeatedShot.tres" id="10_ynwet"]
 [ext_resource type="Script" uid="uid://dx0q637jadc3s" path="res://Scripts/collision_damage.gd" id="11_x5p36"]
+[ext_resource type="PackedScene" uid="uid://dkkon17opb2vg" path="res://Nodes/burn_dot_particles.tscn" id="15_o3lat"]
+[ext_resource type="Script" uid="uid://cxoe1nktlbrai" path="res://Scripts/burn_fx.gd" id="16_u4dl4"]
 
 [node name="Player" type="CharacterBody2D" unique_id=2092264728 node_paths=PackedStringArray("sail_condition") groups=["player", "ship"]]
 collision_mask = 36
@@ -475,6 +477,11 @@ rotation = 1.5707963
 [node name="Health" type="Node2D" parent="." unique_id=1096264317]
 script = ExtResource("5_sweqy")
 max_health = 400.0
+
+[node name="BurnFX" type="Node2D" parent="." unique_id=1858726663 node_paths=PackedStringArray("status_effects")]
+script = ExtResource("16_u4dl4")
+burn_fx_scene = ExtResource("15_o3lat")
+status_effects = NodePath("../StatusEffects")
 
 [node name="StatusEffects" type="Node" parent="." unique_id=352159893 node_paths=PackedStringArray("health")]
 script = ExtResource("9_hjyf3")

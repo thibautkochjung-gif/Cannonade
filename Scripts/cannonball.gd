@@ -9,6 +9,7 @@ extends RigidBody2D
 @export var explosion_scene : PackedScene
 @export var critical_hit_chance : float = 0.1
 @export var ammo_data : AmmoData
+@export var base_cannonball_scale : Vector2 = Vector2(0.03,0.03)
 
 var default_despawn_time = 1.1
 var direction: Vector2
@@ -36,6 +37,7 @@ func _ready() -> void:
 		apply_impulse( direction * strength + ship.linear_velocity)
 
 	linear_damp = ammo_data.drag
+	$Sprite2D.scale = base_cannonball_scale * ammo_data.projectile_scale
 	
 	despawn_timer.wait_time = randf_range(
 		default_despawn_time - despawn_time_variance, 
@@ -58,6 +60,7 @@ func _on_timer_timeout() -> void:
 			get_tree().current_scene.add_child(splash)
 			splash.setup(
 				ammo_data.water_splash_size,
+				ammo_data.water_splash_particle_scale,
 				ammo_data.water_splash_particle_multiplier
 			)
 			splash.get_node("DropletParticles").emitting = true
@@ -85,7 +88,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		
 	if ammo_data.burn_amount > 0:
 		body.get_node("StatusEffects").apply_burn(
-			ammo_data.burn_amount
+			ammo_data.burn_amount,
+			global_position
 		)
 	
 	var dmg_fx = damage_fx_scene.instantiate()
@@ -101,7 +105,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		var explosion = explosion_scene.instantiate()
 		explosion.global_position = global_position
 		get_tree().current_scene.add_child(explosion)
-		for explosion_particle_fx in explosion.get_children().filter(func(child): return child.is_in_group("explosion_particles")):
+		for explosion_particle_fx in explosion.get_children().filter(
+			func(child): return child.is_in_group("explosion_particles")):
 			explosion_particle_fx.restart()
 	
 	queue_free()

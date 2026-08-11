@@ -1,0 +1,40 @@
+[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://6j272qhjm65"]
+
+[ext_resource type="Gradient" uid="uid://beddcnsdeyaau" path="res://Resources/fire_gradient.tres" id="1_ps1ms"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wc7q6"]
+gradient = ExtResource("1_ps1ms")
+
+[sub_resource type="Curve" id="Curve_m77o4"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_syy64"]
+curve = SubResource("Curve_m77o4")
+
+[sub_resource type="Curve" id="Curve_oxn7x"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5256411, 0.61431956), -1.4193041, -1.4193041, 0, 0, Vector2(1, 0.02294302), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_pgx7l"]
+curve = SubResource("Curve_oxn7x")
+
+[resource]
+particle_flag_disable_z = true
+direction = Vector3(1, -0.8, 0)
+spread = 30.0
+initial_velocity_min = 80.0
+initial_velocity_max = 120.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -10.000002
+linear_accel_max = -10.000002
+linear_accel_curve = SubResource("CurveTexture_syy64")
+tangential_accel_min = -250.0
+tangential_accel_max = -250.0
+damping_min = 100.00001
+damping_max = 100.00001
+scale_min = 2.0
+scale_max = 6.0
+scale_curve = SubResource("CurveTexture_pgx7l")
+color_ramp = SubResource("GradientTexture1D_wc7q6")

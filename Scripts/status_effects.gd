@@ -14,11 +14,15 @@ extends Node
 @export var burn_decay: float = 1.0
 
 
+
 var stun_trauma: float = 0.0
 var stun_time: float = 0.0
 
 var burn: float = 0.0
 var burn_tick_timer: float = 0.0
+
+signal burn_applied(position: Vector2)
+signal burn_stopped
 
 func apply_stun(trauma: float) -> void:
 	# Cannot accumulate trauma while already stunned.
@@ -44,10 +48,11 @@ func _trigger_stun() -> void:
 	stun_trauma = 0.0
 
 
-func apply_burn(amount: float) -> void:
+func apply_burn(amount: float, position: Vector2) -> void:
 	burn += amount
-
-
+	
+	var local_position = get_parent().to_local(position)
+	burn_applied.emit(local_position)
 
 func _process(delta: float) -> void:
 	#STUN
@@ -62,6 +67,8 @@ func _process(delta: float) -> void:
 
 		if burn_tick_timer <= 0.0:
 			health.take_damage(burn, Vector2.ZERO)
-
 			burn = max(burn - burn_decay, 0.0)
 			burn_tick_timer = burn_tick_interval	
+	
+		if burn <= 0.0:
+			burn_stopped.emit()

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://clgaj3j2th04d" path="res://Nodes/water_splash.tscn" id="2_pc1yr"]
 [ext_resource type="Texture2D" uid="uid://cnwm7ybyxy3vh" path="res://Sprites/dot.png" id="3_am0hp"]
 [ext_resource type="PackedScene" uid="uid://heoa7fhmjvp4" path="res://Nodes/damage_particles.tscn" id="3_pc1yr"]
-[ext_resource type="PackedScene" uid="uid://x4pq3juqbbbo" path="res://Particles/explosion.tscn" id="4_am0hp"]
+[ext_resource type="PackedScene" uid="uid://x4pq3juqbbbo" path="res://Nodes/explosion.tscn" id="4_am0hp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_246s8"]
 radius = 1.64
