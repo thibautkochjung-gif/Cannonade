@@ -3,6 +3,7 @@
 [ext_resource type="Material" uid="uid://7dwwtv0ofdum" path="res://Particles/DamageParticleProcessMaterial.tres" id="1_wxk8j"]
 
 [node name="DamageParticles" type="Node2D" unique_id=415706782]
+scale = Vector2(2, 2)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=959072435]
 emitting = false

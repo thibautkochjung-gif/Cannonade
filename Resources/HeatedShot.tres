@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_dj670")
 hull_damage = 10.0
-burn_amount = 0.5
+burn_amount = 2.0
 amount = 1.0
 velocity_variance = 0.2
 drag = 0.7

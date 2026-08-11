@@ -478,14 +478,14 @@ rotation = 1.5707963
 script = ExtResource("5_sweqy")
 max_health = 400.0
 
+[node name="StatusEffects" type="Node" parent="." unique_id=352159893 node_paths=PackedStringArray("health")]
+script = ExtResource("9_hjyf3")
+health = NodePath("../Health")
+
 [node name="BurnFX" type="Node2D" parent="." unique_id=1858726663 node_paths=PackedStringArray("status_effects")]
 script = ExtResource("16_u4dl4")
 burn_fx_scene = ExtResource("15_o3lat")
 status_effects = NodePath("../StatusEffects")
-
-[node name="StatusEffects" type="Node" parent="." unique_id=352159893 node_paths=PackedStringArray("health")]
-script = ExtResource("9_hjyf3")
-health = NodePath("../Health")
 
 [node name="SailCondition" type="Node" parent="." unique_id=1231109862]
 script = ExtResource("9_6nrtn")

@@ -2,6 +2,7 @@ extends CanvasLayer
 class_name HUD
 
 @export var health_indicator: Control
+@export var sail_condition_indicator: Control
 @export var mast_state_indicator: HBoxContainer
 @export var right_broadside_indicator: TextureProgressBar
 @export var left_broadside_indicator: TextureProgressBar
@@ -22,3 +23,4 @@ func connect_to_player(player: Node) -> void:
 	player.mast_state_changed.connect(mast_state_indicator.update_mast_state)
 	player.right_broadside.reload_percentage_changed.connect(right_broadside_indicator.update_reload_indicator)
 	player.left_broadside.reload_percentage_changed.connect(left_broadside_indicator.update_reload_indicator)
+	player.sail_condition.sail_condition_changed.connect(sail_condition_indicator.update_sail_condition)

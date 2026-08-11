@@ -53,7 +53,7 @@ func _process(delta: float) -> void:
 
 func _on_timer_timeout() -> void:
 	
-	if 	TerrainQuery.is_over_land(global_position) == false :
+	if TerrainQuery.is_over_land(global_position) == false :
 		if randf() <= ammo_data.splash_chance:
 			var splash = splash_scene.instantiate()
 			splash.global_position = global_position

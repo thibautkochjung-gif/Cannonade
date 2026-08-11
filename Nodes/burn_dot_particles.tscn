@@ -7,8 +7,9 @@
 [node name="BurnDotParticles" type="Node2D" unique_id=811084492 groups=["burn_particle_parent_node"]]
 
 [node name="FlameFlow1" type="GPUParticles2D" parent="." unique_id=415750652 groups=["flame_flow"]]
+position = Vector2(2.0000005, 1.1920929e-07)
 rotation = -0.26797473
-scale = Vector2(0.35, 0.35)
+scale = Vector2(2, 2)
 amount = 50
 lifetime = 0.7
 speed_scale = 0.6
@@ -17,8 +18,9 @@ local_coords = true
 process_material = ExtResource("1_etn05")
 
 [node name="FlameFlow2" type="GPUParticles2D" parent="." unique_id=1601232100 groups=["flame_flow"]]
+position = Vector2(-2, 0)
 rotation = 3.55128
-scale = Vector2(0.35, 0.35)
+scale = Vector2(2, 2)
 amount = 50
 lifetime = 0.7
 speed_scale = 0.6
@@ -28,7 +30,7 @@ process_material = ExtResource("2_bw6e1")
 
 [node name="FlameFlow3" type="GPUParticles2D" parent="." unique_id=220926136 groups=["flame_flow"]]
 rotation = 4.0316434
-scale = Vector2(0.35, 0.35)
+scale = Vector2(2, 2)
 amount = 50
 speed_scale = 0.6
 randomness = 0.5

@@ -4,6 +4,7 @@ extends Node
 @export var max_condition: float = 100.0
 
 var condition: float
+signal sail_condition_changed(amount : float, max_condition : float, current_condition : float)
 
 
 func _ready() -> void:
@@ -12,6 +13,7 @@ func _ready() -> void:
 
 func take_damage(amount: float) -> void:
 	condition = max(condition - amount, 0.0)
+	sail_condition_changed.emit(amount, max_condition, condition)
 	
 
 func get_condition_ratio() -> float:

@@ -46,7 +46,7 @@ shape = ExtResource("3_a47nb")
 
 [node name="Health" type="Node2D" parent="." unique_id=1267936006]
 script = ExtResource("2_4gyqm")
-max_health = 800.0
+max_health = 20000.0
 
 [node name="SailCondition" type="Node" parent="." unique_id=1532703816]
 script = ExtResource("5_1ksyb")
