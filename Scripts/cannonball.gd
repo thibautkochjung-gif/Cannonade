@@ -2,7 +2,6 @@ extends RigidBody2D
 
 @export var ship : Node2D
 @export var broadside : Node2D
-@export var shot_strength_variance : float = 0.1
 @export var despawn_timer : Timer
 @export var splash_scene : PackedScene
 @export var despawn_time_variance : float = 0.5
@@ -11,13 +10,19 @@ extends RigidBody2D
 @export var critical_hit_chance : float = 0.1
 @export var ammo_data : AmmoData
 
-var default_despawn_time = 1.3
+var default_despawn_time = 1.1
 var direction: Vector2
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var strength = broadside.shot_strength * randf_range(1-shot_strength_variance, 1+shot_strength_variance)
+	var velocity_multiplier = randf_range(
+	1.0 - ammo_data.velocity_variance,
+	1.0 + ammo_data.velocity_variance
+	)	
+	
+	var strength = broadside.shot_strength * velocity_multiplier
+
 	
 	if ship.is_in_group("player"):
 		$Area2D.set_collision_layer_value(2, 1)
@@ -32,7 +37,10 @@ func _ready() -> void:
 
 	linear_damp = ammo_data.drag
 	
-	despawn_timer.wait_time = randf_range(default_despawn_time - despawn_time_variance, default_despawn_time + despawn_time_variance)
+	despawn_timer.wait_time = randf_range(
+		default_despawn_time - despawn_time_variance, 
+		default_despawn_time + despawn_time_variance)
+	despawn_timer.wait_time *= despawn_timer.wait_time * sqrt(velocity_multiplier)
 	despawn_timer.start()
 	
 
@@ -44,10 +52,15 @@ func _process(delta: float) -> void:
 func _on_timer_timeout() -> void:
 	
 	if 	TerrainQuery.is_over_land(global_position) == false :
-		var splash = splash_scene.instantiate()
-		splash.global_position = global_position
-		get_tree().current_scene.add_child(splash)
-		splash.get_node("DropletParticles").emitting = true
+		if randf() <= ammo_data.splash_chance:
+			var splash = splash_scene.instantiate()
+			splash.global_position = global_position
+			get_tree().current_scene.add_child(splash)
+			splash.setup(
+				ammo_data.water_splash_size,
+				ammo_data.water_splash_particle_multiplier
+			)
+			splash.get_node("DropletParticles").emitting = true
 	
 	
 	queue_free()

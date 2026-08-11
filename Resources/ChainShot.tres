@@ -7,5 +7,6 @@ script = ExtResource("1_6rpp5")
 hull_damage = 5.0
 sail_damage = 5.0
 amount = 1.0
+velocity_variance = 0.3
 drag = 1.5
 metadata/_custom_type_script = "uid://baeompqa7erkx"
