@@ -1,20 +1,38 @@
 [gd_scene format=3 uid="uid://clgaj3j2th04d"]
 
 [ext_resource type="Script" uid="uid://lyqmuvsdmb76" path="res://Scripts/water_splash.gd" id="1_u0xmg"]
-[ext_resource type="Material" uid="uid://bagvsp3u50nsa" path="res://Particles/DropletParticleProcessMaterial.tres" id="2_4qrvk"]
 [ext_resource type="Texture2D" uid="uid://dbthqnffhunu" path="res://Textures/WaterRingGradientTextureTree.tres" id="3_n0rfg"]
+
+[sub_resource type="Curve" id="Curve_xbbsj"]
+_data = [Vector2(0, 0.36685002), 0.0, 1.4, 0, 0, Vector2(0.56050956, 1), 0.0, 0.0, 0, 0, Vector2(0.9936305, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_xbbsj"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.3254902)
 
 [node name="WaterSplash" type="Node2D" unique_id=1964678353 node_paths=PackedStringArray("despawn_timer")]
 script = ExtResource("1_u0xmg")
 despawn_timer = NodePath("DespawnTimer")
 
-[node name="DropletParticles" type="GPUParticles2D" parent="." unique_id=445839074]
+[node name="DropletParticles" type="CPUParticles2D" parent="." unique_id=2074885867]
 emitting = false
 lifetime = 1.65
 one_shot = true
 explosiveness = 0.76
 randomness = 0.53
-process_material = ExtResource("2_4qrvk")
+fixed_fps = 30
+draw_order = 1
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector2(0, -1)
+spread = 23.793
+gravity = Vector2(0, 98)
+initial_velocity_min = 39.1
+initial_velocity_max = 84.95
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_xbbsj")
+color_ramp = SubResource("Gradient_xbbsj")
 
 [node name="WaterRingSprite" type="Sprite2D" parent="." unique_id=1110360913]
 z_index = 10

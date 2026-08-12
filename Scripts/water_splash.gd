@@ -2,7 +2,7 @@ extends Node2D
 
 @export var despawn_timer : Timer
 @onready var water_ring: Sprite2D = $WaterRingSprite
-@onready var droplet_particles: GPUParticles2D = $DropletParticles
+@onready var droplet_particles: CPUParticles2D = $DropletParticles
 
 func setup(water_ring_size : float, particle_multiplier : float, particle_scale_modifier : float) -> void :
 	var tween = create_tween()
@@ -13,8 +13,8 @@ func setup(water_ring_size : float, particle_multiplier : float, particle_scale_
 	$WaterRingSprite.scale = Vector2(start_scale, start_scale)
 	
 	droplet_particles.amount = droplet_particles.amount * particle_multiplier
-	droplet_particles.process_material.scale_min *= particle_scale_modifier
-	droplet_particles.process_material.scale_max *= particle_scale_modifier
+	droplet_particles.scale_amount_min *= particle_scale_modifier
+	droplet_particles.scale_amount_max *= particle_scale_modifier
 	droplet_particles.restart()
 	
 	tween.parallel().tween_property(
