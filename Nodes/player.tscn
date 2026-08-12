@@ -488,6 +488,10 @@ health = NodePath("../Health")
 script = ExtResource("16_u4dl4")
 burn_fx_scene = ExtResource("15_o3lat")
 status_effects = NodePath("../StatusEffects")
+min_flame_scale = null
+max_flame_scale = null
+growth_duration = null
+flame_lerp_speed = null
 
 [node name="DamageFxController" type="Node2D" parent="." unique_id=1374909528 node_paths=PackedStringArray("health", "burst_reset_timer")]
 script = ExtResource("22_ynwet")

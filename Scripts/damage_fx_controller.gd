@@ -10,7 +10,6 @@ func _ready() -> void:
 
 func _on_health_changed(amount, max_health, current_health, hit_direction, source, fx_trigger_chance) -> void:
 	var should_trigger = false
-	print(fx_trigger_chance, "chance to fire FX")
 	if not in_burst:
 		should_trigger = true
 		in_burst = true
@@ -20,7 +19,6 @@ func _on_health_changed(amount, max_health, current_health, hit_direction, sourc
 	burst_reset_timer.start()
 	
 	if should_trigger:
-		print("Triggered damage fx")
 		var dmg_fx = damage_fx_scene.instantiate()
 		dmg_fx.global_position = global_position
 		get_tree().current_scene.add_child(dmg_fx)

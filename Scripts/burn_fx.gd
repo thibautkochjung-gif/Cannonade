@@ -78,7 +78,9 @@ func _on_burn_changed(current: float, peak: float) -> void:
 	target_flame_scale = lerp(min_flame_scale, max_flame_scale, ratio)
 
 func _on_burn_stopped() -> void:
+	print("RECEDE BURN FX")
 	target_flame_scale = 0.0
+	fx_state = FxState.RECEDING
 	despawn_pending = true
 	for flame_flow in flame_flows:
 		flame_flow.emitting = false

@@ -52,6 +52,9 @@ func _trigger_stun() -> void:
 
 
 func apply_burn(amount: float, position: Vector2) -> void:
+	if burn <= 0.0:
+		burn_tick_timer = burn_tick_interval
+
 	burn += amount
 	peak_burn = max(peak_burn, burn)
 
