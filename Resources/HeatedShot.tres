@@ -10,4 +10,5 @@ explosion_chance = 0.08
 amount = 1.0
 velocity_variance = 0.2
 drag = 0.7
+display_name = "Heated Shot"
 metadata/_custom_type_script = "uid://baeompqa7erkx"

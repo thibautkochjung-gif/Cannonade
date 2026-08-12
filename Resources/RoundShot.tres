@@ -10,4 +10,5 @@ explosion_chance = 0.06
 amount = 1.0
 velocity_variance = 0.15
 drag = 0.7
+display_name = "Round Shot"
 metadata/_custom_type_script = "uid://baeompqa7erkx"

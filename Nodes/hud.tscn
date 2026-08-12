@@ -6,9 +6,10 @@
 [ext_resource type="Script" uid="uid://cyjhvy55lo7ua" path="res://Scripts/mast_state_indicator.gd" id="2_skpb5"]
 [ext_resource type="Script" uid="uid://c3reoobxccino" path="res://Scripts/survival_timer.gd" id="2_uspgt"]
 [ext_resource type="Script" uid="uid://bjkux17k1fgek" path="res://Scripts/right_broadside_indicator.gd" id="5_uspgt"]
+[ext_resource type="Script" uid="uid://cammix7cro65l" path="res://Scripts/ammo_choice_label.gd" id="5_xic25"]
 [ext_resource type="Script" uid="uid://dxxq0ncgnsush" path="res://Scripts/sail_condition_indicator.gd" id="6_74ep8"]
 
-[node name="HUD" type="CanvasLayer" unique_id=1318984358 node_paths=PackedStringArray("health_indicator", "sail_condition_indicator", "mast_state_indicator", "right_broadside_indicator", "left_broadside_indicator", "survival_timer_label")]
+[node name="HUD" type="CanvasLayer" unique_id=1318984358 node_paths=PackedStringArray("health_indicator", "sail_condition_indicator", "mast_state_indicator", "right_broadside_indicator", "left_broadside_indicator", "survival_timer_label", "ammo_choice_label")]
 script = ExtResource("1_50iqg")
 health_indicator = NodePath("Root/MarginContainer2/BottomCluster/CenterStack/HealthIndicator")
 sail_condition_indicator = NodePath("Root/MarginContainer2/BottomCluster/CenterStack/MastStateIndicator/SailConditionIndicator")
@@ -16,6 +17,7 @@ mast_state_indicator = NodePath("Root/MarginContainer2/BottomCluster/CenterStack
 right_broadside_indicator = NodePath("Root/MarginContainer2/BottomCluster/RightBroadsideIndicator")
 left_broadside_indicator = NodePath("Root/MarginContainer2/BottomCluster/LeftBroadsideIndicator")
 survival_timer_label = NodePath("Root/MarginContainer/SurvivalTimerLabel")
+ammo_choice_label = NodePath("Root/MarginContainer2/BottomCluster/CenterStack/AmmoChoiceLabel")
 
 [node name="Root" type="Control" parent="." unique_id=1877811523]
 layout_mode = 3
@@ -70,6 +72,12 @@ script = ExtResource("5_uspgt")
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
+
+[node name="AmmoChoiceLabel" type="Label" parent="Root/MarginContainer2/BottomCluster/CenterStack" unique_id=1691165382]
+layout_mode = 2
+text = "Ammo type :"
+horizontal_alignment = 1
+script = ExtResource("5_xic25")
 
 [node name="MastStateIndicator" type="HBoxContainer" parent="Root/MarginContainer2/BottomCluster/CenterStack" unique_id=692826822]
 layout_direction = 3
