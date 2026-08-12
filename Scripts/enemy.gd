@@ -204,7 +204,7 @@ func _on_health_health_depleted() -> void:
 	queue_free()
 
 
-func _on_health_health_changed(damage: float, max_health: float, current_health: float, hit_direction: Vector2, source) -> void:
+func _on_health_health_changed(_damage: float, max_health: float, current_health: float, _hit_direction: Vector2, _source: String, _fx_trigger_chance: float) -> void:
 	$DamageDecals.update_health_ratio(current_health / max_health)
 
 

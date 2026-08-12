@@ -4,8 +4,9 @@
 [ext_resource type="Material" uid="uid://bagvsp3u50nsa" path="res://Particles/DropletParticleProcessMaterial.tres" id="2_4qrvk"]
 [ext_resource type="Texture2D" uid="uid://dbthqnffhunu" path="res://Textures/WaterRingGradientTextureTree.tres" id="3_n0rfg"]
 
-[node name="WaterSplash" type="Node2D" unique_id=1964678353]
+[node name="WaterSplash" type="Node2D" unique_id=1964678353 node_paths=PackedStringArray("despawn_timer")]
 script = ExtResource("1_u0xmg")
+despawn_timer = NodePath("DespawnTimer")
 
 [node name="DropletParticles" type="GPUParticles2D" parent="." unique_id=445839074]
 emitting = false
@@ -20,3 +21,8 @@ z_index = 10
 texture_filter = 1
 scale = Vector2(2, 2)
 texture = ExtResource("3_n0rfg")
+
+[node name="DespawnTimer" type="Timer" parent="." unique_id=1281865678]
+one_shot = true
+
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

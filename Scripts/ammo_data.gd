@@ -6,6 +6,7 @@ extends Resource
 @export var sail_damage: float = 0.0
 @export var stun_trauma: float = 0.0
 @export var burn_amount: float = 0.0
+@export var explosion_chance: float = 0.01
 
 @export_group("Projectile")
 @export var amount: float = 6.0
@@ -19,6 +20,7 @@ extends Resource
 @export var water_splash_size: float = 1.0
 @export var water_splash_particle_multiplier: float = 1.0
 @export var water_splash_particle_scale: float = 1
+@export var damage_fx_trigger_chance: float = 1.0
 
 @export_group("Special")
 @export var explosion_vulnerability: float = 0.0

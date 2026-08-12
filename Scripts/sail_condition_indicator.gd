@@ -27,9 +27,7 @@ func _process(delta: float) -> void:
 func update_sail_condition(amount : float, max_condition : float, current_condition : float) -> void:
 	var percent_condition_left: float = current_condition / max_condition
 	fill_rect.size.x = fill_rect.get_parent().size.x * percent_condition_left
-	
-	print("received ", amount, "sail damage for indicator update to", percent_condition_left)
-	
+		
 	# Ghost bar: cancel any in-progress catch-up, hold at its current
 	# size, and restart the delay before catching up to the new value.
 	if ghost_tween:

@@ -7,7 +7,6 @@ extends RigidBody2D
 @export var despawn_time_variance : float = 0.5
 @export var damage_fx_scene : PackedScene
 @export var explosion_scene : PackedScene
-@export var critical_hit_chance : float = 0.1
 @export var ammo_data : AmmoData
 @export var base_cannonball_scale : Vector2 = Vector2(0.03,0.03)
 
@@ -42,7 +41,7 @@ func _ready() -> void:
 	despawn_timer.wait_time = randf_range(
 		default_despawn_time - despawn_time_variance, 
 		default_despawn_time + despawn_time_variance)
-	despawn_timer.wait_time *= despawn_timer.wait_time * sqrt(velocity_multiplier)
+	despawn_timer.wait_time *= sqrt(velocity_multiplier)
 	despawn_timer.start()
 	
 
@@ -63,7 +62,6 @@ func _on_timer_timeout() -> void:
 				ammo_data.water_splash_particle_scale,
 				ammo_data.water_splash_particle_multiplier
 			)
-			splash.get_node("DropletParticles").emitting = true
 	
 	
 	queue_free()
@@ -73,40 +71,32 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if ammo_data.hull_damage > 0:
 		body.get_node("Health").take_damage(
 			ammo_data.hull_damage,
-			linear_velocity.normalized()
+			linear_velocity.normalized(),
+			"cannon",
+			ammo_data.damage_fx_trigger_chance
 		)
 		
 	if ammo_data.sail_damage > 0:
 		body.get_node("SailCondition").take_damage(
-			ammo_data.sail_damage
+			ammo_data.sail_damage,
 		)
 	
 	if ammo_data.stun_trauma > 0:
 		body.get_node("StatusEffects").apply_stun(
-			ammo_data.stun_trauma
+			ammo_data.stun_trauma,
 		)
 		
 	if ammo_data.burn_amount > 0:
 		body.get_node("StatusEffects").apply_burn(
 			ammo_data.burn_amount,
-			global_position
+			global_position,
 		)
 	
-	var dmg_fx = damage_fx_scene.instantiate()
-	dmg_fx.global_position = global_position
-	get_tree().current_scene.add_child(dmg_fx)
-	var particles = dmg_fx.get_node("GPUParticles2D")
-	particles.rotation = linear_velocity.angle()
-	particles.restart()
-	particles.emitting = true
 	
-	if randf() < critical_hit_chance:
+	if randf() < ammo_data.explosion_chance:
 		print("EXPLOSION")
 		var explosion = explosion_scene.instantiate()
 		explosion.global_position = global_position
 		get_tree().current_scene.add_child(explosion)
-		for explosion_particle_fx in explosion.get_children().filter(
-			func(child): return child.is_in_group("explosion_particles")):
-			explosion_particle_fx.restart()
 	
 	queue_free()

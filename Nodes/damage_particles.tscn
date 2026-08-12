@@ -1,11 +1,14 @@
 [gd_scene format=3 uid="uid://heoa7fhmjvp4"]
 
+[ext_resource type="Script" uid="uid://br0q61rq0gp33" path="res://Scripts/damage_particles.gd" id="1_ioyfn"]
 [ext_resource type="Material" uid="uid://7dwwtv0ofdum" path="res://Particles/DamageParticleProcessMaterial.tres" id="1_wxk8j"]
 
-[node name="DamageParticles" type="Node2D" unique_id=415706782]
+[node name="DamageParticles" type="Node2D" unique_id=415706782 node_paths=PackedStringArray("despawn_timer")]
 scale = Vector2(2, 2)
+script = ExtResource("1_ioyfn")
+despawn_timer = NodePath("DespawnTimer")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=959072435]
+[node name="DamageParticleFX" type="GPUParticles2D" parent="." unique_id=959072435]
 emitting = false
 amount = 2
 one_shot = true
@@ -13,3 +16,8 @@ explosiveness = 1.0
 randomness = 1.0
 trail_lifetime = 0.15000000000000002
 process_material = ExtResource("1_wxk8j")
+
+[node name="DespawnTimer" type="Timer" parent="." unique_id=854089894]
+one_shot = true
+
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

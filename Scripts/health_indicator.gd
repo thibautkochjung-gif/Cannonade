@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 	pass
 
 
-func update_health(amount, max_health, current_health, hit_direction, source) -> void:
+func update_health(_amount, max_health, current_health, _hit_direction, _source, _fx_trigger_chance) -> void:
 	var percent_health_left: float = current_health / max_health
 	fill_rect.size.x = fill_rect.get_parent().size.x * percent_health_left
 	

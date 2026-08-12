@@ -20,6 +20,8 @@
 [ext_resource type="Resource" uid="uid://dbw7nhlpjyek5" path="res://Resources/GrapeShot.tres" id="11_l6wwd"]
 [ext_resource type="Resource" uid="uid://cc1q4bj1tr0ta" path="res://Resources/ChainShot.tres" id="12_hadhx"]
 [ext_resource type="Resource" uid="uid://cr6lfdvq780r4" path="res://Resources/HeatedShot.tres" id="13_3brvt"]
+[ext_resource type="Script" uid="uid://ba0hejjnxqapd" path="res://Scripts/damage_fx_controller.gd" id="21_3brvt"]
+[ext_resource type="PackedScene" uid="uid://heoa7fhmjvp4" path="res://Nodes/damage_particles.tscn" id="22_d3xy7"]
 
 [node name="Enemy" type="RigidBody2D" unique_id=483788940 node_paths=PackedStringArray("sail_condition") groups=["ship"]]
 collision_layer = 4
@@ -46,7 +48,7 @@ shape = ExtResource("3_a47nb")
 
 [node name="Health" type="Node2D" parent="." unique_id=1267936006]
 script = ExtResource("2_4gyqm")
-max_health = 20000.0
+max_health = 2000.0
 
 [node name="SailCondition" type="Node" parent="." unique_id=1532703816]
 script = ExtResource("5_1ksyb")
@@ -55,6 +57,15 @@ script = ExtResource("5_1ksyb")
 script = ExtResource("7_l6wwd")
 burn_fx_scene = ExtResource("7_n83r8")
 status_effects = NodePath("../StatusEffects")
+
+[node name="DamageFxController" type="Node2D" parent="." unique_id=768508096 node_paths=PackedStringArray("health", "burst_reset_timer")]
+script = ExtResource("21_3brvt")
+health = NodePath("../Health")
+damage_fx_scene = ExtResource("22_d3xy7")
+burst_reset_timer = NodePath("BurstTimer")
+
+[node name="BurstTimer" type="Timer" parent="DamageFxController" unique_id=2080200604]
+wait_time = 0.5
 
 [node name="StatusEffects" type="Node" parent="." unique_id=148415690 node_paths=PackedStringArray("health")]
 script = ExtResource("6_t3hhj")

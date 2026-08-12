@@ -104,7 +104,7 @@ func _on_health_health_depleted() -> void:
 	GameManagerScene.player_death()
 
 
-func _on_health_health_changed(damage: float, max_health: float, current_health: float, hit_direction: Vector2, source: String) -> void:
+func _on_health_health_changed(damage: float, max_health: float, current_health: float, hit_direction: Vector2, source: String, _fx_trigger_chance: float) -> void:
 	
 	var damage_to_max_health_ratio: float = damage / max_health
 	if damage_to_max_health_ratio > 0.0:

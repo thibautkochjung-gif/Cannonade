@@ -22,7 +22,6 @@ splash_scene = ExtResource("2_pc1yr")
 despawn_time_variance = 0.15
 damage_fx_scene = ExtResource("3_pc1yr")
 explosion_scene = ExtResource("4_am0hp")
-critical_hit_chance = 0.01
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=618693192]
 scale = Vector2(0.03, 0.03)
