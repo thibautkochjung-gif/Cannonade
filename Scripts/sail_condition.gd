@@ -13,7 +13,7 @@ func _ready() -> void:
 
 func take_damage(amount: float) -> void:
 	condition = max(condition - amount, 0.0)
-	sail_condition_changed.emit(amount, max_condition, condition)
+	sail_condition_changed.emit(-amount, max_condition, condition)
 	
 
 func get_condition_ratio() -> float:

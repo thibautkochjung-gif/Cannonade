@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_wgnhp")
 hull_damage = 10.0
-sail_damage = 5.0
+sail_damage = 0.1
 explosion_chance = 0.06
 amount = 1.0
 velocity_variance = 0.15

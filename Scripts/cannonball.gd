@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends Node2D
 
 @export var ship : Node2D
 @export var broadside : Node2D
@@ -12,6 +12,7 @@ extends RigidBody2D
 
 var default_despawn_time = 1.1
 var direction: Vector2
+var velocity: Vector2
 
 
 # Called when the node enters the scene tree for the first time.
@@ -27,15 +28,14 @@ func _ready() -> void:
 	if ship.is_in_group("player"):
 		$Area2D.set_collision_layer_value(2, 1)
 		$Area2D.set_collision_mask_value(3, 1) 
-		apply_impulse( direction * strength + ship.velocity)
+		velocity = direction * strength + ship.velocity
 
 		
 	else:
 		$Area2D.set_collision_layer_value(3, true)
 		$Area2D.set_collision_mask_value(1, true) 
-		apply_impulse( direction * strength + ship.linear_velocity)
+		velocity = direction * strength + ship.linear_velocity
 
-	linear_damp = ammo_data.drag
 	$Sprite2D.scale = base_cannonball_scale * ammo_data.projectile_scale
 	
 	despawn_timer.wait_time = randf_range(
@@ -45,9 +45,9 @@ func _ready() -> void:
 	despawn_timer.start()
 	
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _physics_process(delta: float) -> void:
+	velocity = velocity.lerp(Vector2.ZERO, ammo_data.drag * delta)
+	global_position += velocity * delta
 
 
 func _on_timer_timeout() -> void:
@@ -71,7 +71,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if ammo_data.hull_damage > 0:
 		body.get_node("Health").take_damage(
 			ammo_data.hull_damage,
-			linear_velocity.normalized(),
+			velocity.normalized(),
 			"cannon",
 			ammo_data.damage_fx_trigger_chance
 		)

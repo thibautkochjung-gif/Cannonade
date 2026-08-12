@@ -9,13 +9,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_246s8"]
 radius = 1.64
 
-[node name="Cannonball" type="RigidBody2D" unique_id=1209814358 node_paths=PackedStringArray("despawn_timer")]
-collision_layer = 0
-collision_mask = 0
-gravity_scale = 0.0
-contact_monitor = true
-max_contacts_reported = 1
-linear_damp = 0.4
+[node name="Cannonball" type="Node2D" unique_id=1517206458 node_paths=PackedStringArray("despawn_timer")]
 script = ExtResource("1_5s3b7")
 despawn_timer = NodePath("DespawnTimer")
 splash_scene = ExtResource("2_pc1yr")
@@ -38,6 +32,5 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2032489167]
 shape = SubResource("CircleShape2D_246s8")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="DespawnTimer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
