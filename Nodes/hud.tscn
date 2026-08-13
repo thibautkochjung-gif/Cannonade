@@ -8,6 +8,8 @@
 [ext_resource type="Script" uid="uid://bjkux17k1fgek" path="res://Scripts/right_broadside_indicator.gd" id="5_uspgt"]
 [ext_resource type="Script" uid="uid://cammix7cro65l" path="res://Scripts/ammo_choice_label.gd" id="5_xic25"]
 [ext_resource type="Script" uid="uid://dxxq0ncgnsush" path="res://Scripts/sail_condition_indicator.gd" id="6_74ep8"]
+[ext_resource type="Script" uid="uid://bfuw7sawb42f4" path="res://Scripts/enemy_off_screen_indicator.gd" id="7_offscr"]
+[ext_resource type="Texture2D" uid="uid://dt8bn8efsx7lj" path="res://Sprites/Enemy Offmap Arrow.png" id="10_f8pak"]
 
 [node name="HUD" type="CanvasLayer" unique_id=1318984358 node_paths=PackedStringArray("health_indicator", "sail_condition_indicator", "mast_state_indicator", "right_broadside_indicator", "left_broadside_indicator", "survival_timer_label", "ammo_choice_label")]
 script = ExtResource("1_50iqg")
@@ -194,3 +196,14 @@ size_flags_vertical = 4
 nine_patch_stretch = true
 texture_progress = ExtResource("2_ft8jm")
 script = ExtResource("5_uspgt")
+
+[node name="OffScreenIndicators" type="Control" parent="Root" unique_id=12518265]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("7_offscr")
+indicator_texture = ExtResource("10_f8pak")

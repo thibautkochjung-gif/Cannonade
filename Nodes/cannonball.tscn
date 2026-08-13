@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cnwm7ybyxy3vh" path="res://Sprites/dot.png" id="3_am0hp"]
 [ext_resource type="PackedScene" uid="uid://heoa7fhmjvp4" path="res://Nodes/damage_particles.tscn" id="3_pc1yr"]
 [ext_resource type="PackedScene" uid="uid://x4pq3juqbbbo" path="res://Nodes/explosion.tscn" id="4_am0hp"]
+[ext_resource type="Script" uid="uid://ct1vref886fl0" path="res://Scripts/sprite_2d.gd" id="6_fmjeb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_246s8"]
 radius = 1.64
@@ -17,9 +18,10 @@ despawn_time_variance = 0.15
 damage_fx_scene = ExtResource("3_pc1yr")
 explosion_scene = ExtResource("4_am0hp")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=618693192]
+[node name="BallSprite" type="Sprite2D" parent="." unique_id=618693192]
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("3_am0hp")
+script = ExtResource("6_fmjeb")
 
 [node name="DespawnTimer" type="Timer" parent="." unique_id=1031330977]
 wait_time = 2.0

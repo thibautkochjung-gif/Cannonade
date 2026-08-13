@@ -15,12 +15,16 @@ extends Resource
 @export var spread_angle: float = 0.0
 @export var projectile_scale: float = 1.0
 
-@export_group("Visuals")
+@export_group("VisualFX")
 @export_range(0.0, 1.0) var splash_chance: float = 1.0
 @export var water_splash_size: float = 1.0
 @export var water_splash_particle_multiplier: float = 1.0
 @export var water_splash_particle_scale: float = 1
 @export var damage_fx_trigger_chance: float = 1.0
+
+@export_group("Ball Sprite")
+@export var ball_texture: Texture2D
+@export var ball_spin_speed_range: Vector2 = Vector2.ZERO  # zero = no spin
 
 @export_group("Special")
 @export var explosion_vulnerability: float = 0.0

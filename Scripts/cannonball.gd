@@ -14,13 +14,17 @@ var default_despawn_time = 1.1
 var direction: Vector2
 var velocity: Vector2
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var velocity_multiplier = randf_range(
 	1.0 - ammo_data.velocity_variance,
 	1.0 + ammo_data.velocity_variance
 	)	
+	
+	$BallSprite.configure(
+		ammo_data.ball_texture, 
+		ammo_data.ball_spin_speed_range, 
+		base_cannonball_scale * ammo_data.projectile_scale * Vector2(1,1))
 	
 	var strength = broadside.shot_strength * velocity_multiplier
 
@@ -35,8 +39,6 @@ func _ready() -> void:
 		$Area2D.set_collision_layer_value(3, true)
 		$Area2D.set_collision_mask_value(1, true) 
 		velocity = direction * strength + ship.linear_velocity
-
-	$Sprite2D.scale = base_cannonball_scale * ammo_data.projectile_scale
 	
 	despawn_timer.wait_time = randf_range(
 		default_despawn_time - despawn_time_variance, 

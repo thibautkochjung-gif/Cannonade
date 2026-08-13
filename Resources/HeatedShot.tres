@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="AmmoData" format=3 uid="uid://cr6lfdvq780r4"]
 
 [ext_resource type="Script" uid="uid://baeompqa7erkx" path="res://Scripts/ammo_data.gd" id="1_dj670"]
+[ext_resource type="Texture2D" uid="uid://cnwm7ybyxy3vh" path="res://Sprites/dot.png" id="1_mp07w"]
 
 [resource]
 script = ExtResource("1_dj670")
@@ -10,5 +11,6 @@ explosion_chance = 0.08
 amount = 1.0
 velocity_variance = 0.2
 drag = 0.7
+ball_texture = ExtResource("1_mp07w")
 display_name = "Heated Shot"
 metadata/_custom_type_script = "uid://baeompqa7erkx"

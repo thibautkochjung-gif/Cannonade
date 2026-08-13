@@ -24,6 +24,7 @@ TerrainQuery="*uid://dbdefkdf55li4"
 [global_group]
 
 ship=""
+enemy=""
 
 [input]
 
