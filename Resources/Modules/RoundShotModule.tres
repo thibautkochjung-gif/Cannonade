@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ModuleData" format=3 uid="uid://bmenav6ihk0o7"]
+
+[ext_resource type="Script" uid="uid://d0o6balsh07kt" path="res://Scripts/module_data.gd" id="1_jhg66"]
+[ext_resource type="Resource" uid="uid://c74jltw2pm4sy" path="res://Resources/Ammo/RoundShot.tres" id="1_w678p"]
+
+[resource]
+script = ExtResource("1_jhg66")
+slot_type = 4
+ammo_data = ExtResource("1_w678p")
+metadata/_custom_type_script = "uid://d0o6balsh07kt"

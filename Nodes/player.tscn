@@ -10,14 +10,14 @@
 [ext_resource type="Shape2D" uid="uid://ddha341unt4ue" path="res://Polygons/Player_boat_polygon_for_ship_collisions.tres" id="4_x5p36"]
 [ext_resource type="Script" uid="uid://bgi08qd4y6nc2" path="res://Scripts/health.gd" id="5_sweqy"]
 [ext_resource type="Script" uid="uid://8rrvjia8ih27" path="res://Scripts/ammo_manager.gd" id="6_8euyb"]
-[ext_resource type="Resource" uid="uid://c74jltw2pm4sy" path="res://Resources/RoundShot.tres" id="7_3522b"]
+[ext_resource type="Resource" uid="uid://c74jltw2pm4sy" path="res://Resources/Ammo/RoundShot.tres" id="7_3522b"]
 [ext_resource type="PackedScene" uid="uid://crvui5s7wiseo" path="res://Nodes/wake.tscn" id="7_wmu34"]
-[ext_resource type="Resource" uid="uid://dbw7nhlpjyek5" path="res://Resources/GrapeShot.tres" id="8_o3lat"]
+[ext_resource type="Resource" uid="uid://dbw7nhlpjyek5" path="res://Resources/Ammo/GrapeShot.tres" id="8_o3lat"]
 [ext_resource type="Script" uid="uid://enl5yu8t2c3j" path="res://Scripts/sail_condition.gd" id="9_6nrtn"]
 [ext_resource type="Script" uid="uid://v2cm1krxfx6r" path="res://Scripts/status_effects.gd" id="9_hjyf3"]
-[ext_resource type="Resource" uid="uid://cc1q4bj1tr0ta" path="res://Resources/ChainShot.tres" id="9_u4dl4"]
+[ext_resource type="Resource" uid="uid://cc1q4bj1tr0ta" path="res://Resources/Ammo/ChainShot.tres" id="9_u4dl4"]
 [ext_resource type="Script" uid="uid://dyjbyttyd74sk" path="res://Scripts/hull_collision.gd" id="10_e3gfx"]
-[ext_resource type="Resource" uid="uid://cr6lfdvq780r4" path="res://Resources/HeatedShot.tres" id="10_ynwet"]
+[ext_resource type="Resource" uid="uid://cr6lfdvq780r4" path="res://Resources/Ammo/HeatedShot.tres" id="10_ynwet"]
 [ext_resource type="Script" uid="uid://dx0q637jadc3s" path="res://Scripts/collision_damage.gd" id="11_x5p36"]
 [ext_resource type="PackedScene" uid="uid://dkkon17opb2vg" path="res://Nodes/burn_dot_particles.tscn" id="15_o3lat"]
 [ext_resource type="Script" uid="uid://cxoe1nktlbrai" path="res://Scripts/burn_fx.gd" id="16_u4dl4"]
@@ -478,7 +478,7 @@ rotation = 1.5707963
 
 [node name="Health" type="Node2D" parent="." unique_id=1096264317]
 script = ExtResource("5_sweqy")
-max_health = 1500.0
+max_health = 1000.0
 
 [node name="StatusEffects" type="Node" parent="." unique_id=352159893 node_paths=PackedStringArray("health")]
 script = ExtResource("9_hjyf3")

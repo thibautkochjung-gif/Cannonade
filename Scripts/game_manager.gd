@@ -1,16 +1,34 @@
 extends Node
 @export var death_screen_scene: PackedScene
+@export var victory_screen_scene: PackedScene
 @export var game_scene: PackedScene
 @export var main_menu: PackedScene
+
 var start_time: int
 var death_time_msec: int
 var player: CharacterBody2D
 var hud: HUD
+var total_enemies: int
+var world_root: Node
 
 func on_player_ready(spawned_player: CharacterBody2D) -> void:
 	player = spawned_player
 	hud = get_tree().get_first_node_in_group("hud")
 	hud.connect_to_player(player)
+
+func register_enemies() -> void:
+	var enemies := get_tree().get_nodes_in_group("enemy")
+	total_enemies = enemies.size()
+	for enemy in enemies:
+		enemy.died.connect(_on_enemy_died)
+
+func _on_enemy_died() -> void:
+	if get_tree().get_nodes_in_group("enemy").is_empty():
+		trigger_victory()
+
+func trigger_victory() -> void:
+	var victory_screen = victory_screen_scene.instantiate()
+	get_tree().current_scene.add_child(victory_screen)
 
 func _process(delta: float) -> void:
 	if hud and player:
@@ -37,5 +55,6 @@ func start_new_game() -> void:
 
 func goto_main_menu() -> void:
 	get_tree().change_scene_to_packed(main_menu)
+
 func quit_game() -> void:
 	get_tree().quit()

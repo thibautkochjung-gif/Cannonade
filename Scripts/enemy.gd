@@ -15,6 +15,8 @@ var distance_to_target: float
 var current_avoidance_direction: float = 0.0  # -1 = left, 1 = right, 0 = none
 var max_velocity: float
 
+signal died
+
 var SPEED_MAP = {
 	MastState.FULL_MAST: 100.0,
 	MastState.HALF_MAST: 50.0,
@@ -201,6 +203,9 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_health_health_depleted() -> void:
+	remove_from_group("enemy")
+	died.emit()
+
 	queue_free()
 
 

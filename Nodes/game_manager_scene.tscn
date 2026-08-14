@@ -2,11 +2,13 @@
 
 [ext_resource type="Script" uid="uid://bgyf4sd1aykvu" path="res://Scripts/game_manager.gd" id="1_jg5c7"]
 [ext_resource type="PackedScene" uid="uid://1b2e1ui1hsra" path="res://Nodes/DeathScreen.tscn" id="2_5704j"]
+[ext_resource type="PackedScene" uid="uid://dwntt4hw5op25" path="res://Nodes/victory_screen.tscn" id="3_5l6bs"]
 [ext_resource type="PackedScene" uid="uid://bfd3qg0u8tmag" path="res://Nodes/game.tscn" id="3_5704j"]
 [ext_resource type="PackedScene" uid="uid://c76rwplyu7tp0" path="res://Nodes/main_menu.tscn" id="4_vm0gq"]
 
 [node name="Node" type="Node" unique_id=1034847525]
 script = ExtResource("1_jg5c7")
 death_screen_scene = ExtResource("2_5704j")
+victory_screen_scene = ExtResource("3_5l6bs")
 game_scene = ExtResource("3_5704j")
 main_menu = ExtResource("4_vm0gq")

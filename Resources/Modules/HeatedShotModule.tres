@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ModuleData" format=3 uid="uid://bndsssvfu1jx3"]
+
+[ext_resource type="Resource" uid="uid://cr6lfdvq780r4" path="res://Resources/Ammo/HeatedShot.tres" id="1_0s680"]
+[ext_resource type="Script" uid="uid://d0o6balsh07kt" path="res://Scripts/module_data.gd" id="1_pfevk"]
+
+[resource]
+script = ExtResource("1_pfevk")
+slot_type = 4
+ammo_data = ExtResource("1_0s680")
+metadata/_custom_type_script = "uid://d0o6balsh07kt"

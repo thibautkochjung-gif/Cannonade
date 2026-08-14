@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ModuleData" format=3 uid="uid://dw8ll6k1nsxnm"]
+
+[ext_resource type="Script" uid="uid://d0o6balsh07kt" path="res://Scripts/module_data.gd" id="1_cqsb7"]
+
+[resource]
+script = ExtResource("1_cqsb7")
+display_name = "Heavy Bow"
+description = "Increased damage dealt when ramming, but reduces speed"
+speed_multiplier = 0.9
+ram_damage_dealt_multiplier = 2.0
+metadata/_custom_type_script = "uid://d0o6balsh07kt"

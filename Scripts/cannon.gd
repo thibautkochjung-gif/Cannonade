@@ -4,6 +4,7 @@ extends Node2D
 @export var cooldown_time_avg = 8.0
 @export var cooldown_time_variance = 2
 
+
 var ship : Node2D
 var ready_to_fire = true
 var ammo_manager: AmmoManager

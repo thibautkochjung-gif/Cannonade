@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://1ogybebgt5vi"]
+
+[ext_resource type="Script" uid="uid://bvjm0ieoqdn2k" path="res://run_state.gd" id="1_bny3y"]
+[ext_resource type="Resource" uid="uid://ddv63ntc6nj6x" path="res://Resources/Module Layouts/BasicLoadoutLayout.tres" id="2_156bp"]
+
+[node name="RunStateRoot" type="Node" unique_id=1998719445]
+script = ExtResource("1_bny3y")
+loadout_layout = ExtResource("2_156bp")

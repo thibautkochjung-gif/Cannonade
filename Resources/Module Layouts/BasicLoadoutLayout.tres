@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="ShipLoadoutLayout" format=3 uid="uid://ddv63ntc6nj6x"]
+
+[ext_resource type="Script" uid="uid://xlc3j6ybg6vq" path="res://Scripts/ship_loadout_layout.gd" id="1_hpfud"]
+
+[resource]
+script = ExtResource("1_hpfud")
+metadata/_custom_type_script = "uid://xlc3j6ybg6vq"

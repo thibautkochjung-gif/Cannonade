@@ -4,6 +4,7 @@ class_name RightBroadside
 @export var shot_delay_max = 0.2
 @export var shot_strength = 700
 
+
 var cannon_count: int
 var cannon_ready_count: int
 var cannon_ready_percentage: float

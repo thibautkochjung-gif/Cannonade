@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ModuleData" format=3 uid="uid://cdhmhdnoo34a"]
+
+[ext_resource type="Script" uid="uid://d0o6balsh07kt" path="res://Scripts/module_data.gd" id="1_qsfb0"]
+[ext_resource type="Resource" uid="uid://cc1q4bj1tr0ta" path="res://Resources/Ammo/ChainShot.tres" id="1_vgbd7"]
+
+[resource]
+script = ExtResource("1_qsfb0")
+slot_type = 4
+ammo_data = ExtResource("1_vgbd7")
+metadata/_custom_type_script = "uid://d0o6balsh07kt"
