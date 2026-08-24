@@ -14,7 +14,19 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	
-	if !body.is_in_group("ship"):
+	if !body.is_in_group("ship") && !body.is_in_group("terrain"):
 		return
 	
-	collision_damage.on_ship_collision(body)
+	if body.is_in_group("terrain"):
+		print("collision detected with terrain")
+		collision_damage.on_terrain_collision()
+		if collision_damage.ship.has_method("zero_velocity"):
+			collision_damage.ship.zero_velocity()
+	
+	if body.is_in_group("ship"):
+		collision_damage.on_ship_collision(body)
+		
+		if collision_damage.ship.has_method("zero_velocity"):
+			collision_damage.ship.zero_velocity()
+		if body.has_method("zero_velocity"):
+			body.zero_velocity()

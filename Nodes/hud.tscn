@@ -11,6 +11,14 @@
 [ext_resource type="Script" uid="uid://bfuw7sawb42f4" path="res://Scripts/enemy_off_screen_indicator.gd" id="7_offscr"]
 [ext_resource type="Texture2D" uid="uid://dt8bn8efsx7lj" path="res://Sprites/Enemy Offmap Arrow.png" id="10_f8pak"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f8pak"]
+bg_color = Color(0.49747366, 0.49747372, 0.49747354, 1)
+border_width_left = 10
+border_width_right = 10
+border_color = Color(0.49803922, 0.49803922, 0.49803922, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pl8jw"]
+
 [node name="HUD" type="CanvasLayer" unique_id=1318984358 node_paths=PackedStringArray("health_indicator", "sail_condition_indicator", "mast_state_indicator", "right_broadside_indicator", "left_broadside_indicator", "survival_timer_label", "ammo_choice_label")]
 script = ExtResource("1_50iqg")
 health_indicator = NodePath("Root/MarginContainer2/BottomCluster/CenterStack/HealthIndicator")
@@ -18,8 +26,8 @@ sail_condition_indicator = NodePath("Root/MarginContainer2/BottomCluster/CenterS
 mast_state_indicator = NodePath("Root/MarginContainer2/BottomCluster/CenterStack/MastStateIndicator")
 right_broadside_indicator = NodePath("Root/MarginContainer2/BottomCluster/RightBroadsideIndicator")
 left_broadside_indicator = NodePath("Root/MarginContainer2/BottomCluster/LeftBroadsideIndicator")
-survival_timer_label = NodePath("Root/MarginContainer/SurvivalTimerLabel")
-ammo_choice_label = NodePath("Root/MarginContainer2/BottomCluster/CenterStack/AmmoChoiceLabel")
+survival_timer_label = NodePath("Root/MarginContainer/PanelContainer/SurvivalTimerLabel")
+ammo_choice_label = NodePath("Root/MarginContainer2/BottomCluster/CenterStack/PanelContainer/AmmoChoiceLabel")
 
 [node name="Root" type="Control" parent="." unique_id=1877811523]
 layout_mode = 3
@@ -32,15 +40,23 @@ mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="Root" unique_id=1934066352]
 layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 23.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -16.0
+offset_right = 16.0
+offset_bottom = 43.0
 grow_horizontal = 2
 theme_override_constants/margin_top = 20
 
-[node name="SurvivalTimerLabel" type="Label" parent="Root/MarginContainer" unique_id=1341059657]
+[node name="PanelContainer" type="PanelContainer" parent="Root/MarginContainer" unique_id=2088473751]
 layout_mode = 2
-text = "Time"
+theme_override_styles/panel = SubResource("StyleBoxFlat_f8pak")
+
+[node name="SurvivalTimerLabel" type="Label" parent="Root/MarginContainer/PanelContainer" unique_id=1341059657]
+layout_mode = 2
+text = "0:00"
+label_settings = SubResource("LabelSettings_pl8jw")
 horizontal_alignment = 1
 script = ExtResource("2_uspgt")
 
@@ -75,9 +91,13 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 
-[node name="AmmoChoiceLabel" type="Label" parent="Root/MarginContainer2/BottomCluster/CenterStack" unique_id=1691165382]
+[node name="PanelContainer" type="PanelContainer" parent="Root/MarginContainer2/BottomCluster/CenterStack" unique_id=1100016529]
 layout_mode = 2
-text = "Ammo type :"
+size_flags_horizontal = 4
+
+[node name="AmmoChoiceLabel" type="Label" parent="Root/MarginContainer2/BottomCluster/CenterStack/PanelContainer" unique_id=1691165382]
+layout_mode = 2
+text = "  Ammo type : Round Shot  "
 horizontal_alignment = 1
 script = ExtResource("5_xic25")
 

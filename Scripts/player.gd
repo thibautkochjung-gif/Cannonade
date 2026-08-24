@@ -112,6 +112,9 @@ func _on_health_health_changed(damage: float, max_health: float, current_health:
 		
 	$DamageDecals.update_health_ratio(current_health / max_health)
 
+func zero_velocity() -> void:
+	current_speed = 0.0
+	velocity = Vector2.ZERO
 
 func shake_strength_from(damage: float, source: String) -> float:
 	var base = clamp(damage / $Health.max_health, 0.1, 1.0)

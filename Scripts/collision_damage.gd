@@ -10,6 +10,13 @@ class_name CollisionDamage
 @export var front_angle_threshold := PI / 3
 
 
+func on_terrain_collision() -> void:
+	var speed: float = get_ship_velocity(ship).length()
+	var damage: float = front_damage * speed * speed * speed_damage_multiplier
+	
+	ship.get_node("Health").take_damage(damage, ship.transform.x, "collision")
+
+
 func on_ship_collision(other_ship: Node2D) -> void:
 	var impact_direction = get_impact_direction(other_ship)
 	var hit_angle = get_hit_angle(other_ship, ship)

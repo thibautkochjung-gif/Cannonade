@@ -1,0 +1,221 @@
+[gd_scene format=3 uid="uid://py4ostu7yt1l"]
+
+[ext_resource type="Script" uid="uid://bcb2whu6ynn0e" path="res://Scripts/help_overlay.gd" id="1_tf3ro"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_klqcb"]
+bg_color = Color(0.37391496, 0.5141032, 0.66024613, 1)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.37391496, 0.5141032, 0.66024613, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tf3ro"]
+font_size = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tf3ro"]
+bg_color = Color(0.5638898, 0.68966377, 0.82092416, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.5647059, 0.6901961, 0.81960785, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_klqcb"]
+font_size = 20
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l16to"]
+bg_color = Color(0.37391496, 0.5141032, 0.66024613, 1)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.37391496, 0.5141032, 0.66024613, 1)
+
+[node name="HelpOverlay" type="CanvasLayer" unique_id=1986132472]
+process_mode = 3
+layer = 20
+script = ExtResource("1_tf3ro")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=562250471]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.12941177)
+
+[node name="AnnotationContainer" type="Control" parent="." unique_id=883184242]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="LeftPanel" type="MarginContainer" parent="." unique_id=296178063]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -237.0
+offset_right = 351.0
+offset_bottom = 237.0
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="GeneralXplnPanel" type="PanelContainer" parent="LeftPanel" unique_id=1374527143]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_klqcb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LeftPanel/GeneralXplnPanel" unique_id=1749278960]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="LeftPanel/GeneralXplnPanel/VBoxContainer" unique_id=1575688283]
+layout_mode = 2
+text = "HOW THE GAME WORKS"
+label_settings = SubResource("LabelSettings_tf3ro")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="LeftPanel/GeneralXplnPanel/VBoxContainer" unique_id=1001610986]
+layout_mode = 2
+text = "Movement is achieved by changing your mast state (full sail, half sail, stop, and reverse)."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label3" type="Label" parent="LeftPanel/GeneralXplnPanel/VBoxContainer" unique_id=1878504774]
+layout_mode = 2
+text = "Cannons take time to reload and ammunition matters: 
+ -Roundshot damage the hull
+- Grapeshot can stun enemies
+- Chainshot permanently cripple their movement
+- Heated shot can burn ships, causing damage over time."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="CenterPanel" type="MarginContainer" parent="." unique_id=1549091152]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -175.5
+offset_top = -474.0
+offset_right = 175.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="CloseIndicatorPanel" type="PanelContainer" parent="CenterPanel" unique_id=2064012465]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_tf3ro")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterPanel/CloseIndicatorPanel" unique_id=533857066]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CenterPanel/CloseIndicatorPanel/VBoxContainer" unique_id=749896797]
+layout_mode = 2
+text = "Press H to open / close
+this overlay"
+label_settings = SubResource("LabelSettings_klqcb")
+horizontal_alignment = 1
+
+[node name="RightPanel" type="VBoxContainer" parent="." unique_id=916232715]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -391.0
+offset_top = -267.0
+offset_bottom = 267.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="RightPanel" unique_id=756128975]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ControlsXplnPanel" type="PanelContainer" parent="RightPanel/MarginContainer" unique_id=1724766763]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_l16to")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RightPanel/MarginContainer/ControlsXplnPanel" unique_id=776346059]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="RightPanel/MarginContainer/ControlsXplnPanel/VBoxContainer" unique_id=957027628]
+layout_mode = 2
+text = "CONTROLS (QWERTY keyboard)"
+label_settings = SubResource("LabelSettings_tf3ro")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="RightPanel/MarginContainer/ControlsXplnPanel/VBoxContainer" unique_id=524711820]
+layout_mode = 2
+text = "- W and S increase / decrease Mast State
+- Q and D steer the ship left / right
+- LMB fires a volley
+- 1-4 changes ammo type
+- ESC toggles pause menu
+- H toggles the help overlay"
+horizontal_alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="RightPanel" unique_id=2131943966]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="MaststatesXplnPanel" type="PanelContainer" parent="RightPanel/MarginContainer3" unique_id=560523972]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_l16to")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RightPanel/MarginContainer3/MaststatesXplnPanel" unique_id=1554644083]
+layout_mode = 2
+
+[node name="MaststateTitle" type="Label" parent="RightPanel/MarginContainer3/MaststatesXplnPanel/VBoxContainer" unique_id=1534704652]
+layout_mode = 2
+text = "MASTSTATES "
+label_settings = SubResource("LabelSettings_tf3ro")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RightPanel/MarginContainer3/MaststatesXplnPanel/VBoxContainer" unique_id=1189358743]
+layout_mode = 2
+alignment = 1
+
+[node name="Column 1" type="Label" parent="RightPanel/MarginContainer3/MaststatesXplnPanel/VBoxContainer/HBoxContainer" unique_id=662133980]
+layout_mode = 2
+text = "Reverse     
+Stop
+Half sail
+Full sail"
+
+[node name="Column 2" type="Label" parent="RightPanel/MarginContainer3/MaststatesXplnPanel/VBoxContainer/HBoxContainer" unique_id=765360214]
+layout_mode = 2
+text = "-10% speed
+0% speed
+50% speed
+100 % speed"
+horizontal_alignment = 1
+
+[node name="Column 3" type="Label" parent="RightPanel/MarginContainer3/MaststatesXplnPanel/VBoxContainer/HBoxContainer" unique_id=968962918]
+layout_mode = 2
+text = "    Low steering
+Low steering
+High steering
+Mid steering"
+horizontal_alignment = 2

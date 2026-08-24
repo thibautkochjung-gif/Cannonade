@@ -534,7 +534,7 @@ size_multiplier = 2.2
 
 [node name="HullCollision" type="Area2D" parent="." unique_id=1038201373 node_paths=PackedStringArray("collision_damage")]
 collision_layer = 8
-collision_mask = 4
+collision_mask = 36
 script = ExtResource("10_e3gfx")
 collision_damage = NodePath("../CollisionDamage")
 

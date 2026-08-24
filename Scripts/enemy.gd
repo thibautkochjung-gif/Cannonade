@@ -296,3 +296,7 @@ func _compute_urgency_and_torque(direction: float, ray_data: Dictionary) -> Dict
 	var torque = direction * urgency * turning_speed * mass * avoidance_strength
 
 	return {"torque": torque, "urgency": urgency}
+	
+
+func zero_velocity() -> void:
+	linear_velocity = Vector2.ZERO
