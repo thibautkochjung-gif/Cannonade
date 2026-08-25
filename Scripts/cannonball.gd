@@ -4,13 +4,11 @@ extends Node2D
 @export var broadside : Node2D
 @export var despawn_timer : Timer
 @export var splash_scene : PackedScene
-@export var despawn_time_variance : float = 0.5
 @export var damage_fx_scene : PackedScene
 @export var explosion_scene : PackedScene
 @export var ammo_data : AmmoData
 @export var base_cannonball_scale : Vector2 = Vector2(0.03,0.03)
 
-var default_despawn_time = 1.1
 var direction: Vector2
 var velocity: Vector2
 var effects_parent: Node
@@ -48,8 +46,8 @@ func _ready() -> void:
 		velocity = direction * strength + ship.linear_velocity
 	
 	despawn_timer.wait_time = randf_range(
-		default_despawn_time - despawn_time_variance, 
-		default_despawn_time + despawn_time_variance)
+		ammo_data.max_flight_time - ammo_data.max_flight_time_variance,
+		ammo_data.max_flight_time + ammo_data.max_flight_time_variance)
 	despawn_timer.wait_time *= sqrt(velocity_multiplier)
 	despawn_timer.start()
 	

@@ -14,6 +14,8 @@ extends Resource
 @export var drag: float = 0.0
 @export var spread_angle: float = 0.0
 @export var projectile_scale: float = 1.0
+@export var max_flight_time: float = 1.1
+@export var max_flight_time_variance: float = 0.5
 
 @export_group("VisualFX")
 @export_range(0.0, 1.0) var splash_chance: float = 1.0
@@ -33,3 +35,9 @@ extends Resource
 
 @export_group("Reload")
 @export var reload_speed_multiplier: float = 1.0
+
+
+func predicted_range(base_velocity: float) -> float:
+	if drag <= 0.0:
+		return base_velocity * max_flight_time
+	return (base_velocity / drag) * (1.0 - exp(-drag * max_flight_time))

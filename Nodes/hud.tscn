@@ -16,9 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://y4e343og5c0i" path="res://Sprites/HUD/Ammo type icons/roundshot icon.png" id="10_617pi"]
 [ext_resource type="Texture2D" uid="uid://dt8bn8efsx7lj" path="res://Sprites/Enemy Offmap Arrow.png" id="10_f8pak"]
 [ext_resource type="Script" uid="uid://c3e0i5am2d5hf" path="res://Scripts/ammo_choice_icon.gd" id="15_kloxh"]
-[ext_resource type="Texture2D" uid="uid://b3syip21ohqwf" path="res://Sprites/HUD/Ammo type icons/grapeshot icon.png" id="16_q1ukj"]
-[ext_resource type="Texture2D" uid="uid://b1d6juraoypg0" path="res://Sprites/HUD/Ammo type icons/chainshot icon.png" id="17_sd74y"]
-[ext_resource type="Texture2D" uid="uid://cjcfc3caartlu" path="res://Sprites/HUD/Ammo type icons/heated shot icon.png" id="18_p3lgw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f8pak"]
 bg_color = Color(0.49747366, 0.49747372, 0.49747354, 1)
@@ -228,7 +225,6 @@ layout_mode = 2
 texture = ExtResource("10_617pi")
 expand_mode = 3
 script = ExtResource("15_kloxh")
-AmmoChoiceIcons = Array[Texture2D]([ExtResource("10_617pi"), ExtResource("16_q1ukj"), ExtResource("17_sd74y"), ExtResource("18_p3lgw")])
 
 [node name="RightBroadsideIndicator" type="TextureProgressBar" parent="Root/MarginContainer2/BottomCluster" unique_id=1129275745]
 custom_minimum_size = Vector2(66, 150)

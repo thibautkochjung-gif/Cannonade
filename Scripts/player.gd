@@ -32,36 +32,37 @@ var ANGULAR_SPEED_MAP = {
 var current_mast_state = MastState.STOP
 var current_speed = SPEED_MAP[current_mast_state] * max_speed
 var current_angular_speed = ANGULAR_SPEED_MAP[current_mast_state] * max_angular_speed
+var is_aiming := false
+var active_broadside: Node2D = null
 
 func _ready() -> void:
 	$LeftBroadside.fired.connect(_on_broadside_fired)
 	$RightBroadside.fired.connect(_on_broadside_fired)
 	GameManagerScene.on_player_ready(self)
 
+
 func _unhandled_input(event: InputEvent) -> void:
 	
 	if status_effects.is_stunned():
 		return
-
 	
 	if event.is_action_pressed("speed_up"):
 		current_mast_state = clampi(current_mast_state - 1, MastState.FULL_MAST, MastState.REVERSE) as MastState
 	elif event.is_action_pressed("slow_down"):
 		current_mast_state = clampi(current_mast_state + 1, MastState.FULL_MAST, MastState.REVERSE) as MastState
-
+	
 	mast_state_changed.emit(current_mast_state)
-
+	
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
-			pass
+			is_aiming = true
+			active_broadside = _broadside_for_mouse(event.position)
+			active_broadside.show_aim()
 		else:
-			var mouse_world_position = get_viewport().canvas_transform.affine_inverse() * event.position
-			var vector_to_mouse = mouse_world_position - position
-			var vector_right_side = transform.x.orthogonal()
-			if vector_to_mouse.dot(vector_right_side) > 0 :
-				$LeftBroadside.fire()
-			else :
-				$RightBroadside.fire()
+			is_aiming = false
+			if active_broadside:
+				active_broadside.fire()
+				active_broadside = null
 	
 	if event.is_action_pressed("ammo_1"):
 		ammo_manager.select_ammo(1)
@@ -73,9 +74,24 @@ func _unhandled_input(event: InputEvent) -> void:
 		ammo_manager.select_ammo(4)
 
 
+func _broadside_for_mouse(screen_position: Vector2) -> Node2D:
+	var mouse_world_position = get_viewport().canvas_transform.affine_inverse() * screen_position
+	var vector_to_mouse = mouse_world_position - position
+	var vector_right_side = transform.x.orthogonal()
+	if vector_to_mouse.dot(vector_right_side) > 0:
+		return $LeftBroadside
+	else:
+		return $RightBroadside
+
+
 func _physics_process(delta: float) -> void:
 	
 	if status_effects.is_stunned():
+		if is_aiming:
+			is_aiming = false
+			if active_broadside:
+				active_broadside.hide_aim()
+				active_broadside = null
 		move_and_slide()
 		return
 	
@@ -94,8 +110,8 @@ func _physics_process(delta: float) -> void:
 	
 	for wake in $Wakes.get_children().filter(func(child): return child.is_in_group("wake")):
 		wake.update_speed(current_speed / max_speed)
-	
-	
+
+
 func _on_broadside_fired(amount, direction) -> void:
 	Fx.recoil(amount, direction)
 
@@ -112,9 +128,11 @@ func _on_health_health_changed(damage: float, max_health: float, current_health:
 		
 	$DamageDecals.update_health_ratio(current_health / max_health)
 
+
 func zero_velocity() -> void:
 	current_speed = 0.0
 	velocity = Vector2.ZERO
+
 
 func shake_strength_from(damage: float, source: String) -> float:
 	var base = clamp(damage / $Health.max_health, 0.1, 1.0)
