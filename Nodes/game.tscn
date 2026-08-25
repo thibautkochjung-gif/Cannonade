@@ -26,7 +26,7 @@ tile_map_data = PackedByteArray("AADx/wYAAAABAAEAAAD1/wYAAAADAAEAAAD1/woAAAADAAI
 tile_set = ExtResource("2_424rh")
 
 [node name="Player" parent="." unique_id=2092264728 instance=ExtResource("29_rnkwl")]
-position = Vector2(-852.0001, 1502)
+position = Vector2(-1325.0001, 1424)
 rotation = -2.341703
 collision_mask = 548
 acceleration_factor = 0.002

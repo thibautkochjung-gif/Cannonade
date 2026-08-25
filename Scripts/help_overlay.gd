@@ -12,7 +12,6 @@ const TOUR_ENTRIES := [
 	{"target": "mast_state_indicator", "text": "Mast state", "style": AnnotationStyle.RIGHT},
 	{"target": "right_broadside_indicator", "text": "Right cannons reload", "style": AnnotationStyle.ABOVE_LEFT},
 	{"target": "left_broadside_indicator", "text": "Left cannons reload", "style": AnnotationStyle.ABOVE_LEFT},
-	{"target": "ammo_choice_label", "text": "Selected ammo type, change with 1-4", "style": AnnotationStyle.ABOVE_CENTER},
 	{"target": "survival_timer_label", "text": "Time survived", "style": AnnotationStyle.BELOW_CENTER},
 ]
 

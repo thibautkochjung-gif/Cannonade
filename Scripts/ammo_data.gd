@@ -29,6 +29,7 @@ extends Resource
 @export_group("Special")
 @export var explosion_vulnerability: float = 0.0
 @export var display_name: String
+@export var icon_texture: Texture2D
 
 @export_group("Reload")
 @export var reload_speed_multiplier: float = 1.0

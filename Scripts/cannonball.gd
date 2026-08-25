@@ -32,15 +32,19 @@ func _ready() -> void:
 
 	
 	if ship.is_in_group("player"):
-		$Area2D.set_collision_layer_value(2, true)
-		$Area2D.set_collision_mask_value(3, true) 
+		$Area2D.set_collision_layer_value(2, true) 
+		$Area2D.set_collision_mask_value(3, true) #enemy layer
+		$Area2D.set_collision_mask_value(6, true) #terrain layer
+
 		velocity = direction * strength + ship.velocity
 
 		
 	else:
 		$Area2D.set_collision_layer_value(4, true)
-		$Area2D.set_collision_mask_value(1, true) 
-		$Area2D.set_collision_mask_value(3, true) 
+		$Area2D.set_collision_mask_value(1, true) #player layer
+		$Area2D.set_collision_mask_value(3, true) #enemy layer
+		$Area2D.set_collision_mask_value(6, true) #terrain layer
+
 		velocity = direction * strength + ship.linear_velocity
 	
 	despawn_timer.wait_time = randf_range(
@@ -69,14 +73,15 @@ func _on_timer_timeout() -> void:
 					ammo_data.water_splash_particle_multiplier
 				)
 	queue_free()
-	
-	
-	queue_free()
+
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body == ship:
 		return
-
+	
+	if body.is_in_group("terrain"):
+		queue_free()
+		return
 	
 	if ammo_data.hull_damage > 0:
 		body.get_node("Health").take_damage(

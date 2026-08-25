@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://cxoe1nktlbrai" path="res://Scripts/burn_fx.gd" id="7_l6wwd"]
 [ext_resource type="PackedScene" uid="uid://dkkon17opb2vg" path="res://Nodes/burn_dot_particles.tscn" id="7_n83r8"]
 [ext_resource type="PackedScene" uid="uid://crs7n0co3nu2p" path="res://Nodes/damage_decals.tscn" id="7_wsd4a"]
+[ext_resource type="Script" uid="uid://cv1cnvaen5ex3" path="res://Scripts/stun_fx.gd" id="8_d3xy7"]
 [ext_resource type="Script" uid="uid://8rrvjia8ih27" path="res://Scripts/ammo_manager.gd" id="9_ejsdj"]
 [ext_resource type="Script" uid="uid://dyjbyttyd74sk" path="res://Scripts/hull_collision.gd" id="9_rlak2"]
 [ext_resource type="Script" uid="uid://dx0q637jadc3s" path="res://Scripts/collision_damage.gd" id="10_83h23"]
@@ -58,6 +59,11 @@ script = ExtResource("7_l6wwd")
 burn_fx_scene = ExtResource("7_n83r8")
 status_effects = NodePath("../StatusEffects")
 
+[node name="StunFX" type="Node2D" parent="." unique_id=978929810 node_paths=PackedStringArray("sprite", "status_effects")]
+script = ExtResource("8_d3xy7")
+sprite = NodePath("../EnemySprite")
+status_effects = NodePath("../StatusEffects")
+
 [node name="DamageFxController" type="Node2D" parent="." unique_id=768508096 node_paths=PackedStringArray("health", "burst_reset_timer")]
 script = ExtResource("21_3brvt")
 health = NodePath("../Health")
@@ -70,6 +76,7 @@ wait_time = 0.5
 [node name="StatusEffects" type="Node" parent="." unique_id=148415690 node_paths=PackedStringArray("health")]
 script = ExtResource("6_t3hhj")
 health = NodePath("../Health")
+stun_duration = 5.0
 metadata/_custom_type_script = "uid://v2cm1krxfx6r"
 
 [node name="RightBroadside" type="Node2D" parent="." unique_id=730625093]

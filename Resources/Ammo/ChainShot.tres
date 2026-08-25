@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://biaslk76mqd5y" path="res://Sprites/Chain Shot 2.png" id="1_4gyq7"]
 [ext_resource type="Script" uid="uid://baeompqa7erkx" path="res://Scripts/ammo_data.gd" id="1_6rpp5"]
+[ext_resource type="Texture2D" uid="uid://b1d6juraoypg0" path="res://Sprites/HUD/Ammo type icons/chainshot icon.png" id="2_v17p8"]
 
 [resource]
 script = ExtResource("1_6rpp5")
@@ -14,4 +15,5 @@ projectile_scale = 10.0
 ball_texture = ExtResource("1_4gyq7")
 ball_spin_speed_range = Vector2(2, 15)
 display_name = "Chain Shot"
+icon_texture = ExtResource("2_v17p8")
 metadata/_custom_type_script = "uid://baeompqa7erkx"

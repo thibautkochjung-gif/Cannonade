@@ -21,6 +21,7 @@
 [ext_resource type="Script" uid="uid://dx0q637jadc3s" path="res://Scripts/collision_damage.gd" id="11_x5p36"]
 [ext_resource type="PackedScene" uid="uid://dkkon17opb2vg" path="res://Nodes/burn_dot_particles.tscn" id="15_o3lat"]
 [ext_resource type="Script" uid="uid://cxoe1nktlbrai" path="res://Scripts/burn_fx.gd" id="16_u4dl4"]
+[ext_resource type="Script" uid="uid://cv1cnvaen5ex3" path="res://Scripts/stun_fx.gd" id="17_bcmgr"]
 [ext_resource type="Script" uid="uid://ba0hejjnxqapd" path="res://Scripts/damage_fx_controller.gd" id="22_ynwet"]
 [ext_resource type="PackedScene" uid="uid://heoa7fhmjvp4" path="res://Nodes/damage_particles.tscn" id="23_wvmdh"]
 
@@ -492,6 +493,11 @@ min_flame_scale = null
 max_flame_scale = null
 growth_duration = null
 flame_lerp_speed = null
+
+[node name="StunFX" type="Node2D" parent="." unique_id=1348099240 node_paths=PackedStringArray("sprite", "status_effects")]
+script = ExtResource("17_bcmgr")
+sprite = NodePath("../ShipSprite")
+status_effects = NodePath("../StatusEffects")
 
 [node name="DamageFxController" type="Node2D" parent="." unique_id=1374909528 node_paths=PackedStringArray("health", "burst_reset_timer")]
 script = ExtResource("22_ynwet")

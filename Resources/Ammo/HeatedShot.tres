@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://baeompqa7erkx" path="res://Scripts/ammo_data.gd" id="1_dj670"]
 [ext_resource type="Texture2D" uid="uid://cnwm7ybyxy3vh" path="res://Sprites/dot.png" id="1_mp07w"]
+[ext_resource type="Texture2D" uid="uid://cjcfc3caartlu" path="res://Sprites/HUD/Ammo type icons/heated shot icon.png" id="2_8h3jn"]
 
 [resource]
 script = ExtResource("1_dj670")
@@ -13,4 +14,5 @@ velocity_variance = 0.2
 drag = 0.7
 ball_texture = ExtResource("1_mp07w")
 display_name = "Heated Shot"
+icon_texture = ExtResource("2_8h3jn")
 metadata/_custom_type_script = "uid://baeompqa7erkx"

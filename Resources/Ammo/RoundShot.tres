@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cnwm7ybyxy3vh" path="res://Sprites/dot.png" id="1_qnlyu"]
 [ext_resource type="Script" uid="uid://baeompqa7erkx" path="res://Scripts/ammo_data.gd" id="1_wgnhp"]
+[ext_resource type="Texture2D" uid="uid://y4e343og5c0i" path="res://Sprites/HUD/Ammo type icons/roundshot icon.png" id="2_ftqmn"]
 
 [resource]
 script = ExtResource("1_wgnhp")
@@ -13,4 +14,5 @@ velocity_variance = 0.15
 drag = 0.7
 ball_texture = ExtResource("1_qnlyu")
 display_name = "Round Shot"
+icon_texture = ExtResource("2_ftqmn")
 metadata/_custom_type_script = "uid://baeompqa7erkx"

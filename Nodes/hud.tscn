@@ -2,14 +2,23 @@
 
 [ext_resource type="Script" uid="uid://d4kaoobx0w0n2" path="res://Scripts/hud.gd" id="1_50iqg"]
 [ext_resource type="Script" uid="uid://cbg7sjmlkjoy8" path="res://Scripts/health_indicator.gd" id="2_2c8d1"]
-[ext_resource type="Texture2D" uid="uid://35iovteobcij" path="res://Textures/Solid_black.png" id="2_ft8jm"]
 [ext_resource type="Script" uid="uid://cyjhvy55lo7ua" path="res://Scripts/mast_state_indicator.gd" id="2_skpb5"]
 [ext_resource type="Script" uid="uid://c3reoobxccino" path="res://Scripts/survival_timer.gd" id="2_uspgt"]
+[ext_resource type="Texture2D" uid="uid://ekaivhr2mt4i" path="res://Sprites/HUD/ammo bar.png" id="3_f8pak"]
 [ext_resource type="Script" uid="uid://bjkux17k1fgek" path="res://Scripts/right_broadside_indicator.gd" id="5_uspgt"]
-[ext_resource type="Script" uid="uid://cammix7cro65l" path="res://Scripts/ammo_choice_label.gd" id="5_xic25"]
+[ext_resource type="Texture2D" uid="uid://dog7tww4qviak" path="res://Sprites/HUD/Mast state icons/stop.png" id="5_vy3c3"]
 [ext_resource type="Script" uid="uid://dxxq0ncgnsush" path="res://Scripts/sail_condition_indicator.gd" id="6_74ep8"]
+[ext_resource type="Script" uid="uid://dvcs1l2wpt112" path="res://Scripts/mast_state_icon.gd" id="6_617pi"]
+[ext_resource type="Texture2D" uid="uid://du10e8ktg0km3" path="res://Sprites/HUD/Mast state icons/full sail.png" id="7_exu65"]
 [ext_resource type="Script" uid="uid://bfuw7sawb42f4" path="res://Scripts/enemy_off_screen_indicator.gd" id="7_offscr"]
+[ext_resource type="Texture2D" uid="uid://ct0bltt7aj4ho" path="res://Sprites/HUD/Mast state icons/half sail.png" id="8_kloxh"]
+[ext_resource type="Texture2D" uid="uid://e8ug3ch7e1vg" path="res://Sprites/HUD/Mast state icons/reverse.png" id="9_5ayy8"]
+[ext_resource type="Texture2D" uid="uid://y4e343og5c0i" path="res://Sprites/HUD/Ammo type icons/roundshot icon.png" id="10_617pi"]
 [ext_resource type="Texture2D" uid="uid://dt8bn8efsx7lj" path="res://Sprites/Enemy Offmap Arrow.png" id="10_f8pak"]
+[ext_resource type="Script" uid="uid://c3e0i5am2d5hf" path="res://Scripts/ammo_choice_icon.gd" id="15_kloxh"]
+[ext_resource type="Texture2D" uid="uid://b3syip21ohqwf" path="res://Sprites/HUD/Ammo type icons/grapeshot icon.png" id="16_q1ukj"]
+[ext_resource type="Texture2D" uid="uid://b1d6juraoypg0" path="res://Sprites/HUD/Ammo type icons/chainshot icon.png" id="17_sd74y"]
+[ext_resource type="Texture2D" uid="uid://cjcfc3caartlu" path="res://Sprites/HUD/Ammo type icons/heated shot icon.png" id="18_p3lgw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f8pak"]
 bg_color = Color(0.49747366, 0.49747372, 0.49747354, 1)
@@ -19,15 +28,16 @@ border_color = Color(0.49803922, 0.49803922, 0.49803922, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_pl8jw"]
 
-[node name="HUD" type="CanvasLayer" unique_id=1318984358 node_paths=PackedStringArray("health_indicator", "sail_condition_indicator", "mast_state_indicator", "right_broadside_indicator", "left_broadside_indicator", "survival_timer_label", "ammo_choice_label")]
+[node name="HUD" type="CanvasLayer" unique_id=1318984358 node_paths=PackedStringArray("health_indicator", "sail_condition_indicator", "mast_state_indicator", "mast_state_icons", "right_broadside_indicator", "left_broadside_indicator", "survival_timer_label", "ammo_choice_icon")]
 script = ExtResource("1_50iqg")
 health_indicator = NodePath("Root/MarginContainer2/BottomCluster/CenterStack/HealthIndicator")
 sail_condition_indicator = NodePath("Root/MarginContainer2/BottomCluster/CenterStack/MastStateIndicator/SailConditionIndicator")
 mast_state_indicator = NodePath("Root/MarginContainer2/BottomCluster/CenterStack/MastStateIndicator")
+mast_state_icons = NodePath("Root/MarginContainer2/BottomCluster/MarginContainer2/MastStateIcon")
 right_broadside_indicator = NodePath("Root/MarginContainer2/BottomCluster/RightBroadsideIndicator")
 left_broadside_indicator = NodePath("Root/MarginContainer2/BottomCluster/LeftBroadsideIndicator")
 survival_timer_label = NodePath("Root/MarginContainer/PanelContainer/SurvivalTimerLabel")
-ammo_choice_label = NodePath("Root/MarginContainer2/BottomCluster/CenterStack/PanelContainer/AmmoChoiceLabel")
+ammo_choice_icon = NodePath("Root/MarginContainer2/BottomCluster/MarginContainer/AmmoChoiceIcon")
 
 [node name="Root" type="Control" parent="." unique_id=1877811523]
 layout_mode = 3
@@ -78,28 +88,29 @@ theme_override_constants/margin_bottom = 20
 layout_mode = 2
 
 [node name="LeftBroadsideIndicator" type="TextureProgressBar" parent="Root/MarginContainer2/BottomCluster" unique_id=1256270493]
-custom_minimum_size = Vector2(200, 40)
+custom_minimum_size = Vector2(66, 150)
 layout_mode = 2
 size_flags_vertical = 4
-fill_mode = 1
+fill_mode = 3
 nine_patch_stretch = true
-texture_progress = ExtResource("2_ft8jm")
+texture_progress = ExtResource("3_f8pak")
 script = ExtResource("5_uspgt")
+
+[node name="MarginContainer2" type="MarginContainer" parent="Root/MarginContainer2/BottomCluster" unique_id=339189210]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+
+[node name="MastStateIcon" type="TextureRect" parent="Root/MarginContainer2/BottomCluster/MarginContainer2" unique_id=841488551]
+layout_mode = 2
+texture = ExtResource("5_vy3c3")
+expand_mode = 3
+script = ExtResource("6_617pi")
+MastStateIcons = Array[Texture2D]([ExtResource("7_exu65"), ExtResource("8_kloxh"), ExtResource("5_vy3c3"), ExtResource("9_5ayy8")])
 
 [node name="CenterStack" type="VBoxContainer" parent="Root/MarginContainer2/BottomCluster" unique_id=7131807]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
-
-[node name="PanelContainer" type="PanelContainer" parent="Root/MarginContainer2/BottomCluster/CenterStack" unique_id=1100016529]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="AmmoChoiceLabel" type="Label" parent="Root/MarginContainer2/BottomCluster/CenterStack/PanelContainer" unique_id=1691165382]
-layout_mode = 2
-text = "  Ammo type : Round Shot  "
-horizontal_alignment = 1
-script = ExtResource("5_xic25")
 
 [node name="MastStateIndicator" type="HBoxContainer" parent="Root/MarginContainer2/BottomCluster/CenterStack" unique_id=692826822]
 layout_direction = 3
@@ -209,12 +220,23 @@ color = Color(0.79607844, 0, 0.0627451, 1)
 
 [node name="GhostDelayTimer" type="Timer" parent="Root/MarginContainer2/BottomCluster/CenterStack/HealthIndicator" unique_id=284696601]
 
+[node name="MarginContainer" type="MarginContainer" parent="Root/MarginContainer2/BottomCluster" unique_id=1605765211]
+layout_mode = 2
+
+[node name="AmmoChoiceIcon" type="TextureRect" parent="Root/MarginContainer2/BottomCluster/MarginContainer" unique_id=902791966]
+layout_mode = 2
+texture = ExtResource("10_617pi")
+expand_mode = 3
+script = ExtResource("15_kloxh")
+AmmoChoiceIcons = Array[Texture2D]([ExtResource("10_617pi"), ExtResource("16_q1ukj"), ExtResource("17_sd74y"), ExtResource("18_p3lgw")])
+
 [node name="RightBroadsideIndicator" type="TextureProgressBar" parent="Root/MarginContainer2/BottomCluster" unique_id=1129275745]
-custom_minimum_size = Vector2(200, 40)
+custom_minimum_size = Vector2(66, 150)
 layout_mode = 2
 size_flags_vertical = 4
+fill_mode = 3
 nine_patch_stretch = true
-texture_progress = ExtResource("2_ft8jm")
+texture_progress = ExtResource("3_f8pak")
 script = ExtResource("5_uspgt")
 
 [node name="OffScreenIndicators" type="Control" parent="Root" unique_id=12518265]

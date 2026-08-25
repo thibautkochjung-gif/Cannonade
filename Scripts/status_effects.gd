@@ -18,6 +18,9 @@ extends Node
 var stun_trauma: float = 0.0
 var stun_time: float = 0.0
 
+signal stun_started
+signal stun_ended
+
 var burn: float = 0.0
 var peak_burn: float = 0.0
 var burn_tick_timer: float = 0.0
@@ -49,6 +52,7 @@ func is_stunned() -> bool:
 func _trigger_stun() -> void:
 	stun_time = stun_duration
 	stun_trauma = 0.0
+	stun_started.emit()
 
 
 func apply_burn(amount: float, position: Vector2) -> void:
@@ -67,6 +71,7 @@ func _process(delta: float) -> void:
 	if stun_time > 0.0:
 		stun_time -= delta
 	else:
+		stun_ended.emit()
 		stun_trauma = max(stun_trauma - stun_trauma_decay * delta, 0.0)
 	
 	#BURN

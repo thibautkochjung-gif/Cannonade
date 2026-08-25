@@ -2,12 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://cnwm7ybyxy3vh" path="res://Sprites/dot.png" id="1_b2fx1"]
 [ext_resource type="Script" uid="uid://baeompqa7erkx" path="res://Scripts/ammo_data.gd" id="1_ne6c1"]
+[ext_resource type="Texture2D" uid="uid://b3syip21ohqwf" path="res://Sprites/HUD/Ammo type icons/grapeshot icon.png" id="2_vty6q"]
 
 [resource]
 script = ExtResource("1_ne6c1")
 hull_damage = 0.5
 sail_damage = 0.1
-stun_trauma = 3.0
+stun_trauma = 0.3
 explosion_chance = 0.0
 amount = 5.0
 velocity_variance = 0.3
@@ -21,4 +22,5 @@ water_splash_particle_scale = 0.2
 damage_fx_trigger_chance = 0.05
 ball_texture = ExtResource("1_b2fx1")
 display_name = "Grape Shot"
+icon_texture = ExtResource("2_vty6q")
 metadata/_custom_type_script = "uid://baeompqa7erkx"
