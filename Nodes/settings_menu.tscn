@@ -1,0 +1,128 @@
+[gd_scene format=3 uid="uid://bqwbkew85r6ic"]
+
+[ext_resource type="Script" uid="uid://b8p6hqfciqbk0" path="res://Scripts/settings_menu.gd" id="1_lpeo3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lpeo3"]
+font_size = 35
+
+[node name="SettingsMenu" type="Control" unique_id=1198788631 node_paths=PackedStringArray("reset_advice_button", "back_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lpeo3")
+reset_advice_button = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ResetAdviceButton")
+back_button = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/BackButton")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=825847321]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -127.5
+offset_top = -29.0
+offset_right = 127.5
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=1827140737]
+custom_minimum_size = Vector2(600, 300)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer" unique_id=1373916603]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer" unique_id=141195446]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=680622498]
+layout_mode = 2
+text = "Settings"
+label_settings = SubResource("LabelSettings_lpeo3")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1206737024]
+layout_mode = 2
+
+[node name="ResetAdviceLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=230216460]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Reset all dismissed advice"
+
+[node name="ResetAdviceButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1546787251]
+layout_mode = 2
+text = "Reset"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1810143170]
+layout_mode = 2
+
+[node name="Placeholder" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=200944997]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Placeholder"
+
+[node name="Placeholder2" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=590496976]
+layout_mode = 2
+text = "Placeholder"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=129545361]
+layout_mode = 2
+
+[node name="Placeholder" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=1308412218]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Placeholder"
+
+[node name="Placeholder2" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=1597842403]
+layout_mode = 2
+text = "Placeholder"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=59177201]
+layout_mode = 2
+
+[node name="Placeholder" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=533840120]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Placeholder"
+
+[node name="Placeholder2" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=1277548760]
+layout_mode = 2
+text = "Placeholder"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1456599861]
+layout_mode = 2
+
+[node name="Placeholder" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5" unique_id=1043947600]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Placeholder"
+
+[node name="Placeholder2" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5" unique_id=1137758051]
+layout_mode = 2
+text = "Placeholder"
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=802166998]
+layout_mode = 2
+
+[node name="Placeholder" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer6" unique_id=1343929288]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Placeholder"
+
+[node name="Placeholder2" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer6" unique_id=1212257806]
+layout_mode = 2
+text = "Placeholder"
+
+[node name="BackButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1605952373]
+layout_mode = 2
+text = "Back"

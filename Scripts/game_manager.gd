@@ -15,6 +15,9 @@ func on_player_ready(spawned_player: CharacterBody2D) -> void:
 	player = spawned_player
 	hud = get_tree().get_first_node_in_group("hud")
 	hud.connect_to_player(player)
+	var ammo_reminder_popup = get_tree().get_first_node_in_group("ammo_reminder_popup")
+	if ammo_reminder_popup:
+		ammo_reminder_popup.connect_to_player(player)
 
 func register_enemies() -> void:
 	var enemies := get_tree().get_nodes_in_group("enemy")

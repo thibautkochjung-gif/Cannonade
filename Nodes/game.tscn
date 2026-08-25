@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cuv5bc7kx4trb" path="res://Sprites/Water Tiles/tile_0077_water4.png" id="2_kwr2q"]
 [ext_resource type="PackedScene" uid="uid://cawsr06d0411r" path="res://Nodes/pause_menu.tscn" id="8_fhu7r"]
 [ext_resource type="PackedScene" uid="uid://py4ostu7yt1l" path="res://Nodes/help_overlay.tscn" id="8_h85cu"]
+[ext_resource type="PackedScene" uid="uid://dwctqa545x3bn" path="res://Nodes/ammo_reminder_popup.tscn" id="10_kwr2q"]
 [ext_resource type="PackedScene" uid="uid://bvpsthsbdx3mi" path="res://Nodes/player.tscn" id="29_rnkwl"]
 [ext_resource type="PackedScene" uid="uid://dmgtoi1wc10s4" path="res://Nodes/enemy.tscn" id="30_kq58d"]
 [ext_resource type="Script" uid="uid://n5abw0fyhoq2" path="res://Scripts/enemy_spawner.gd" id="31_qkrwb"]
@@ -56,5 +57,7 @@ autostart = true
 
 [node name="PauseMenu" parent="." unique_id=1568775561 node_paths=PackedStringArray("help_overlay") instance=ExtResource("8_fhu7r")]
 help_overlay = NodePath("../HelpOverlay")
+
+[node name="AmmoReminderPopup" parent="." unique_id=1459382441 groups=["ammo_reminder_popup"] instance=ExtResource("10_kwr2q")]
 
 [connection signal="timeout" from="EnemySpawner/Timer" to="EnemySpawner" method="_on_timer_timeout"]

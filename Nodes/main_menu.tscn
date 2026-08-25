@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://c76rwplyu7tp0"]
 
 [ext_resource type="Script" uid="uid://bhn5ylq7yk4le" path="res://Scripts/main_menu.gd" id="1_5ni5v"]
+[ext_resource type="PackedScene" uid="uid://bqwbkew85r6ic" path="res://Nodes/settings_menu.tscn" id="2_0dokd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yb2kq"]
 font_size = 35
 
-[node name="Control" type="Control" unique_id=1137356158 node_paths=PackedStringArray("new_game_button", "exit_button")]
+[node name="Control" type="Control" unique_id=1137356158 node_paths=PackedStringArray("new_game_button", "exit_button", "settings_button", "settings_menu")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,6 +16,8 @@ grow_vertical = 2
 script = ExtResource("1_5ni5v")
 new_game_button = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/NewGameButton")
 exit_button = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ExitButton")
+settings_button = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton")
+settings_menu = NodePath("SettingsMenu")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1566635885]
 layout_mode = 1
@@ -62,3 +65,7 @@ text = "Credits"
 [node name="ExitButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1242696251]
 layout_mode = 2
 text = "Exit"
+
+[node name="SettingsMenu" parent="." unique_id=1198788631 instance=ExtResource("2_0dokd")]
+visible = false
+layout_mode = 1

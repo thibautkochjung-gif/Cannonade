@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://dwctqa545x3bn"]
+
+[ext_resource type="Script" uid="uid://bacncg1gt06m1" path="res://Scripts/ammo_reminder_popup.gd" id="1_vrpj6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vrpj6"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.46451724, 0.6758472, 0.1496886, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8rt5i"]
+font_size = 24
+
+[node name="AmmoReminderPopup" type="CanvasLayer" unique_id=1459382441 node_paths=PackedStringArray("panel", "dont_remind_checkbox", "close_button", "reminder_timer")]
+script = ExtResource("1_vrpj6")
+panel = NodePath("PanelContainer")
+dont_remind_checkbox = NodePath("PanelContainer/VBoxContainer/DontRemindCheckBox")
+close_button = NodePath("PanelContainer/VBoxContainer/CloseButton")
+reminder_timer = NodePath("Timer")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1969808066]
+visible = false
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 499.0
+offset_bottom = 154.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vrpj6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=964425407]
+layout_mode = 2
+
+[node name="ReminderLabel" type="Label" parent="PanelContainer/VBoxContainer" unique_id=193931779]
+layout_mode = 2
+text = "Tip: use keys 1-4 to switch ammo types"
+label_settings = SubResource("LabelSettings_8rt5i")
+
+[node name="DontRemindCheckBox" type="CheckBox" parent="PanelContainer/VBoxContainer" unique_id=988915477]
+layout_mode = 2
+text = "Don't remind me"
+
+[node name="CloseButton" type="Button" parent="PanelContainer/VBoxContainer" unique_id=486142362]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Close"
+
+[node name="Timer" type="Timer" parent="." unique_id=408619075]

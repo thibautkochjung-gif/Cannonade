@@ -20,6 +20,7 @@ config/icon="res://Sprites/icon.svg"
 GameManagerScene="*uid://bigngfkvbgi6p"
 Fx="*uid://cta74vajfb3xk"
 TerrainQuery="*uid://dbdefkdf55li4"
+Settings="*uid://cgh6afs23cfs5"
 
 [global_group]
 

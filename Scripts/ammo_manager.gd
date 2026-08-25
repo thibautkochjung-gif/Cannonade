@@ -28,3 +28,8 @@ func select_ammo(slot: int) -> void:
 			current_ammo = heated_shot
 
 	ammo_changed.emit(current_ammo)
+
+
+func get_available_ammo_count() -> int:
+	var slots := [round_shot, grape_shot, chain_shot, heated_shot]
+	return slots.filter(func(a): return a != null).size()
