@@ -49,13 +49,42 @@ func _ready() -> void:
 	
 	GameManagerScene.on_player_ready(self)
 
-
 func _instantiate_module_behaviors() -> void:
+	var row_count_for_side := {ModuleData.DeckSide.LEFT: 0, ModuleData.DeckSide.RIGHT: 0}
+
 	for slot_type in ModuleData.SlotType.values():
 		for module: ModuleData in RunState.get_equipped_modules(slot_type):
-			if module != null and module.component_scene != null:
-				var behavior := module.component_scene.instantiate()
-				add_child(behavior)
+			if module == null or module.component_scene == null:
+				continue
+			if slot_type == ModuleData.SlotType.DECK:
+				_instantiate_cannon_row(module, row_count_for_side)
+			else:
+				add_child(module.component_scene.instantiate())
+
+	$LeftBroadside.rebuild_cannons()
+	$RightBroadside.rebuild_cannons()
+
+
+func _instantiate_cannon_row(module: ModuleData, row_count_for_side: Dictionary) -> void:
+	var broadside: Node2D = $LeftBroadside if module.deck_side == ModuleData.DeckSide.LEFT else $RightBroadside
+	var row_count: int = row_count_for_side[module.deck_side]
+
+	if row_count >= 3:
+		push_warning("Player: %s broadside already has 3 cannon rows, skipping '%s'" % [
+			"LEFT" if module.deck_side == ModuleData.DeckSide.LEFT else "RIGHT",
+			module.display_name,
+		])
+		return
+	row_count_for_side[module.deck_side] = row_count + 1
+
+	var area := broadside.get_node("RowArea")
+	var row := module.component_scene.instantiate()
+	if row is CannonRow:
+		row.cannon_scene = module.cannon_scene
+		row.cannon_count = module.cannon_count
+		row.start_point = area.get_node("Start").position
+		row.end_point = area.get_node("End").position
+	area.add_child(row)
 
 
 func _unhandled_input(event: InputEvent) -> void:

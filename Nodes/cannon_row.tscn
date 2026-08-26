@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b2s4tu3bidc7b"]
+
+[ext_resource type="Script" uid="uid://bsk3ucebs6ebo" path="res://Scripts/cannon_row.gd" id="1_kcreu"]
+
+[node name="CannonRow" type="Node2D" unique_id=398832068]
+script = ExtResource("1_kcreu")

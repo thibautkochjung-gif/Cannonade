@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="ModuleData" format=3 uid="uid://c3mgaxxxoy3qn"]
-
-[ext_resource type="Script" uid="uid://d0o6balsh07kt" path="res://Scripts/module_data.gd" id="1_7y41l"]
-
-[resource]
-script = ExtResource("1_7y41l")
-slot_type = 2
-display_name = "Default Quarterdeck"
-metadata/_custom_type_script = "uid://d0o6balsh07kt"

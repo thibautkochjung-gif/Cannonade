@@ -6,7 +6,7 @@
 [ext_resource type="Shape2D" uid="uid://cmp8ng4hv57fu" path="res://Polygons/enemy_boat_polygon.tres" id="3_a47nb"]
 [ext_resource type="Shape2D" uid="uid://bt0d0wucw6x5p" path="res://Polygons/enemy_boat_polygon_for_ship_collision.tres" id="3_rlak2"]
 [ext_resource type="Script" uid="uid://kburknm5j816" path="res://Scripts/right_broadside.gd" id="4_epg4t"]
-[ext_resource type="PackedScene" uid="uid://c1jujcp8ukeio" path="res://Nodes/cannon.tscn" id="4_iifgy"]
+[ext_resource type="PackedScene" uid="uid://c1jujcp8ukeio" path="res://Nodes/cannon_medium.tscn" id="4_iifgy"]
 [ext_resource type="Script" uid="uid://enl5yu8t2c3j" path="res://Scripts/sail_condition.gd" id="5_1ksyb"]
 [ext_resource type="Script" uid="uid://v2cm1krxfx6r" path="res://Scripts/status_effects.gd" id="6_t3hhj"]
 [ext_resource type="PackedScene" uid="uid://crvui5s7wiseo" path="res://Nodes/wake.tscn" id="6_vkesy"]
@@ -17,10 +17,6 @@
 [ext_resource type="Script" uid="uid://8rrvjia8ih27" path="res://Scripts/ammo_manager.gd" id="9_ejsdj"]
 [ext_resource type="Script" uid="uid://dyjbyttyd74sk" path="res://Scripts/hull_collision.gd" id="9_rlak2"]
 [ext_resource type="Script" uid="uid://dx0q637jadc3s" path="res://Scripts/collision_damage.gd" id="10_83h23"]
-[ext_resource type="Resource" uid="uid://c74jltw2pm4sy" path="res://Resources/Ammo/RoundShot.tres" id="10_n83r8"]
-[ext_resource type="Resource" uid="uid://dbw7nhlpjyek5" path="res://Resources/Ammo/GrapeShot.tres" id="11_l6wwd"]
-[ext_resource type="Resource" uid="uid://cc1q4bj1tr0ta" path="res://Resources/Ammo/ChainShot.tres" id="12_hadhx"]
-[ext_resource type="Resource" uid="uid://cr6lfdvq780r4" path="res://Resources/Ammo/HeatedShot.tres" id="13_3brvt"]
 [ext_resource type="Script" uid="uid://ba0hejjnxqapd" path="res://Scripts/damage_fx_controller.gd" id="21_3brvt"]
 [ext_resource type="PackedScene" uid="uid://heoa7fhmjvp4" path="res://Nodes/damage_particles.tscn" id="22_d3xy7"]
 
@@ -180,10 +176,6 @@ position = Vector2(4.999999, 20)
 
 [node name="AmmoManager" type="Node" parent="." unique_id=286012581]
 script = ExtResource("9_ejsdj")
-round_shot = ExtResource("10_n83r8")
-grape_shot = ExtResource("11_l6wwd")
-chain_shot = ExtResource("12_hadhx")
-heated_shot = ExtResource("13_3brvt")
 metadata/_custom_type_script = "uid://8rrvjia8ih27"
 
 [node name="BehaviorDecisionTimer" type="Timer" parent="." unique_id=1861967548]

@@ -2,6 +2,7 @@ class_name ModuleData
 extends Resource
 
 enum SlotType {BOW, FORECASTLE, QUARTERDECK, DECK, HOLD, SAIL}
+enum DeckSide {LEFT, RIGHT}
 
 @export_group("Slot")
 @export var slot_type: SlotType
@@ -19,6 +20,11 @@ enum SlotType {BOW, FORECASTLE, QUARTERDECK, DECK, HOLD, SAIL}
 
 @export_group("Ammo")
 @export var ammo_data: AmmoData  # only used when slot_type == HOLD
+
+@export_group("Deck / Cannon Row")
+@export var deck_side: DeckSide          # only used when slot_type == DECK
+@export var cannon_scene: PackedScene    # only used when slot_type == DECK
+@export var cannon_count: int = 5        # only used when slot_type == DECK
 
 @export_group("Behavior")
 @export var component_scene: PackedScene  # only used by modules needing active behavior

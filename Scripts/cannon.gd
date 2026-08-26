@@ -13,9 +13,16 @@ signal ready_to_fire_signal
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	ship = get_parent().get_parent()
+	ship = _find_ship_ancestor()
 	$CooldownTimer.wait_time = randf_range(cooldown_time_avg - cooldown_time_variance, cooldown_time_avg + cooldown_time_variance)
 	ammo_manager = ship.get_node("AmmoManager")
+
+
+func _find_ship_ancestor() -> Node2D:
+	var node := get_parent()
+	while node != null and not node.is_in_group("ship"):
+		node = node.get_parent()
+	return node
 
 
 func cannon_fire(broadside_firing):

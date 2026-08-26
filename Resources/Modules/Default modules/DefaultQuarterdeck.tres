@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_ew70b")
-slot_type = 3
-display_name = "Default Deck"
+slot_type = 2
+display_name = "Default Quarterdeck"
 metadata/_custom_type_script = "uid://d0o6balsh07kt"
