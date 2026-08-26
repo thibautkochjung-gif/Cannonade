@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ModuleData" format=3 uid="uid://b8ltyvxs7xhb8"]
+
+[ext_resource type="Script" uid="uid://d0o6balsh07kt" path="res://Scripts/module_data.gd" id="1_b6fix"]
+[ext_resource type="PackedScene" uid="uid://dix84mvrn6n52" path="res://Nodes/officers_relay_sation.tscn" id="1_qyyv3"]
+
+[resource]
+script = ExtResource("1_b6fix")
+slot_type = 2
+display_name = "Officer's Relay Station"
+description = "Grants speed boost ability"
+component_scene = ExtResource("1_qyyv3")
+metadata/_custom_type_script = "uid://d0o6balsh07kt"

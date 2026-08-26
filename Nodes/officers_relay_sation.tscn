@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dix84mvrn6n52"]
+
+[ext_resource type="Script" uid="uid://bj7kr6orpb5g5" path="res://Scripts/officers_relay_station.gd" id="1_x4ify"]
+
+[node name="OfficersRelaySation" type="Node2D" unique_id=1306703386]
+script = ExtResource("1_x4ify")
+boost_speed_multiplier = 10.0
+
+[node name="BoostTimer" type="Timer" parent="." unique_id=1819488896]
+wait_time = 10.0
+one_shot = true
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=1730510441]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="timeout" from="BoostTimer" to="." method="_on_boost_timer_timeout"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
