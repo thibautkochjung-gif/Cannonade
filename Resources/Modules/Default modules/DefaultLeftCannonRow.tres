@@ -10,6 +10,6 @@ slot_type = 3
 display_name = "Default Cannon Row"
 description = "10 guns, medium damage & range"
 cannon_scene = ExtResource("1_485hy")
-cannon_count = 10
+cannon_count = 13
 component_scene = ExtResource("2_3ut7e")
 metadata/_custom_type_script = "uid://d0o6balsh07kt"

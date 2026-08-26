@@ -14,6 +14,7 @@ var cannon_ready_percentage: float
 signal fired(amount: int, direction: Vector2)
 signal reload_percentage_changed(new_percentage)
 
+
 func _ready() -> void:
 	rebuild_cannons()
 
@@ -22,14 +23,17 @@ func rebuild_cannons() -> void:
 	for cannon in cannons:
 		if cannon.ready_to_fire_signal.is_connected(_on_cannon_ready):
 			cannon.ready_to_fire_signal.disconnect(_on_cannon_ready)
-
+	
 	cannons = find_children("*", "", true, false).filter(func(c): return c.has_method("cannon_fire"))
 	cannon_count = cannons.size()
 	cannon_ready_count = cannon_count
 	cannon_ready_percentage = float(cannon_ready_count) / cannon_count if cannon_count > 0 else 0.0
-
+	
 	for cannon in cannons:
 		cannon.ready_to_fire_signal.connect(_on_cannon_ready)
+	
+	if shot_indicator:
+		shot_indicator.rebuild_cannon_span()
 
 
 func fire():

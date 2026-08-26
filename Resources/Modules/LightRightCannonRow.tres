@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ModuleData" format=3 uid="uid://bblsen17hvpu3"]
+
+[ext_resource type="PackedScene" uid="uid://shlai0eieqv4" path="res://Nodes/cannon_light.tscn" id="1_m8vkr"]
+[ext_resource type="PackedScene" uid="uid://b2s4tu3bidc7b" path="res://Nodes/cannon_row.tscn" id="2_h62vo"]
+[ext_resource type="Script" uid="uid://d0o6balsh07kt" path="res://Scripts/module_data.gd" id="3_cuypj"]
+
+[resource]
+script = ExtResource("3_cuypj")
+slot_type = 3
+display_name = "Default Cannon Row"
+description = "10 guns, medium damage & range"
+deck_side = 1
+cannon_scene = ExtResource("1_m8vkr")
+cannon_count = 17
+component_scene = ExtResource("2_h62vo")
+metadata/_custom_type_script = "uid://d0o6balsh07kt"

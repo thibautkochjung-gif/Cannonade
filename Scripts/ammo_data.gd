@@ -37,7 +37,8 @@ extends Resource
 @export var reload_speed_multiplier: float = 1.0
 
 
-func predicted_range(base_velocity: float) -> float:
+func predicted_range(base_velocity: float, flight_time_multiplier: float = 1.0) -> float:
+	var effective_flight_time := max_flight_time * flight_time_multiplier
 	if drag <= 0.0:
-		return base_velocity * max_flight_time
-	return (base_velocity / drag) * (1.0 - exp(-drag * max_flight_time))
+		return base_velocity * effective_flight_time
+	return (base_velocity / drag) * (1.0 - exp(-drag * effective_flight_time))

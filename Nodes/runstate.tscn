@@ -4,10 +4,11 @@
 [ext_resource type="Resource" uid="uid://ddv63ntc6nj6x" path="res://Resources/Module Layouts/BasicLoadoutLayout.tres" id="2_54nyp"]
 [ext_resource type="Script" uid="uid://d0o6balsh07kt" path="res://Scripts/module_data.gd" id="3_g1sr2"]
 [ext_resource type="Resource" uid="uid://bmenav6ihk0o7" path="res://Resources/Modules/RoundShotModule.tres" id="4_d565v"]
-[ext_resource type="Resource" uid="uid://c3mgaxxxoy3qn" path="res://Resources/Modules/Default modules/DefaultLeftCannonRow.tres" id="5_g1sr2"]
+[ext_resource type="Resource" uid="uid://boxmrf2mlf8if" path="res://Resources/Modules/LightLeftCannonRow.tres" id="5_d565v"]
 [ext_resource type="Resource" uid="uid://cgpxfqwvtuo41" path="res://Resources/Modules/Default modules/DefaultRightCannonRow.tres" id="6_d565v"]
+[ext_resource type="Resource" uid="uid://dj7mrma3pun5c" path="res://Resources/Modules/HeavyRightCannonRow.tres" id="7_5fis6"]
 
 [node name="RunState" type="Node" unique_id=1989746334]
 script = ExtResource("1_kkvug")
 loadout_layout = ExtResource("2_54nyp")
-default_modules = Array[ExtResource("3_g1sr2")]([ExtResource("4_d565v"), ExtResource("5_g1sr2"), ExtResource("5_g1sr2"), ExtResource("5_g1sr2"), ExtResource("6_d565v"), ExtResource("6_d565v"), ExtResource("6_d565v")])
+default_modules = Array[ExtResource("3_g1sr2")]([ExtResource("4_d565v"), ExtResource("5_d565v"), ExtResource("5_d565v"), ExtResource("5_d565v"), ExtResource("5_d565v"), ExtResource("6_d565v"), ExtResource("7_5fis6")])

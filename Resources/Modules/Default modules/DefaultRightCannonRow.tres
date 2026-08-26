@@ -11,6 +11,6 @@ display_name = "Default Cannon Row"
 description = "10 guns, medium damage & range"
 deck_side = 1
 cannon_scene = ExtResource("1_7itci")
-cannon_count = 10
+cannon_count = 13
 component_scene = ExtResource("2_qbs3i")
 metadata/_custom_type_script = "uid://d0o6balsh07kt"

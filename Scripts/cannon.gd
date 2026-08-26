@@ -4,6 +4,12 @@ extends Node2D
 @export var cooldown_time_avg = 8.0
 @export var cooldown_time_variance = 2
 
+@export_group("Cannon Class Stats")
+@export var velocity_multiplier: float = 1.0
+@export var flight_time_multiplier: float = 1.0
+@export var damage_multiplier: float = 1.0
+@export var scale_multiplier: float = 1.0
+
 
 var ship : Node2D
 var ready_to_fire = true
@@ -11,7 +17,6 @@ var ammo_manager: AmmoManager
 
 signal ready_to_fire_signal
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	ship = _find_ship_ancestor()
 	$CooldownTimer.wait_time = randf_range(cooldown_time_avg - cooldown_time_variance, cooldown_time_avg + cooldown_time_variance)
@@ -55,6 +60,10 @@ func cannon_fire(broadside_firing):
 		cannonball.ship = ship
 		cannonball.broadside = broadside_firing
 		cannonball.ammo_data = ammo_manager.current_ammo
+		cannonball.cannon_velocity_multiplier = velocity_multiplier
+		cannonball.cannon_flight_time_multiplier = flight_time_multiplier
+		cannonball.cannon_damage_multiplier = damage_multiplier
+		cannonball.cannon_scale_multiplier = scale_multiplier
 		get_tree().root.add_child(cannonball)
 	
 	ready_to_fire = false
@@ -62,7 +71,6 @@ func cannon_fire(broadside_firing):
 	$MuzzleSmoke.restart()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 

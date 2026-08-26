@@ -1,22 +1,27 @@
 extends Node2D
 
-@export var ship : Node2D
-@export var broadside : Node2D
 @export var despawn_timer : Timer
 @export var splash_scene : PackedScene
 @export var damage_fx_scene : PackedScene
 @export var explosion_scene : PackedScene
-@export var ammo_data : AmmoData
 @export var base_cannonball_scale : Vector2 = Vector2(0.03,0.03)
 
+#Cannon class stats
+var cannon_velocity_multiplier: float = 1.0
+var cannon_flight_time_multiplier: float = 1.0
+var cannon_damage_multiplier: float = 1.0
+var cannon_scale_multiplier: float = 1.0
+
+var ship : Node2D
+var broadside : Node2D
+var ammo_data : AmmoData
 var direction: Vector2
 var velocity: Vector2
 var effects_parent: Node
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	effects_parent = GameManagerScene.world_root
-	var velocity_multiplier = randf_range(
+	var velocity_variance_multiplier = randf_range(
 	1.0 - ammo_data.velocity_variance,
 	1.0 + ammo_data.velocity_variance
 	)	
@@ -24,9 +29,9 @@ func _ready() -> void:
 	$BallSprite.configure(
 		ammo_data.ball_texture, 
 		ammo_data.ball_spin_speed_range, 
-		base_cannonball_scale * ammo_data.projectile_scale * Vector2(1,1))
+		base_cannonball_scale * ammo_data.projectile_scale * cannon_scale_multiplier * Vector2(1,1))
 	
-	var strength = broadside.shot_strength * velocity_multiplier
+	var strength = broadside.shot_strength * cannon_velocity_multiplier * velocity_variance_multiplier
 
 	
 	if ship.is_in_group("player"):
@@ -48,7 +53,7 @@ func _ready() -> void:
 	despawn_timer.wait_time = randf_range(
 		ammo_data.max_flight_time - ammo_data.max_flight_time_variance,
 		ammo_data.max_flight_time + ammo_data.max_flight_time_variance)
-	despawn_timer.wait_time *= sqrt(velocity_multiplier)
+	despawn_timer.wait_time *= sqrt(velocity_variance_multiplier) * cannon_flight_time_multiplier
 	despawn_timer.start()
 	
 
@@ -82,7 +87,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		return
 	
 	if ammo_data.hull_damage > 0:
-		var hull_damage = ammo_data.hull_damage * RunState.get_multiplier_for(body, "damage_taken_multiplier")
+		var hull_damage = ammo_data.hull_damage * cannon_damage_multiplier * RunState.get_multiplier_for(body, "damage_taken_multiplier")
 		body.get_node("Health").take_damage(
 			hull_damage,
 			velocity.normalized(),
@@ -92,7 +97,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		
 	if ammo_data.sail_damage > 0:
 		body.get_node("SailCondition").take_damage(
-			ammo_data.sail_damage,
+			ammo_data.sail_damage * cannon_damage_multiplier,
 		)
 	
 	if ammo_data.stun_trauma > 0:
