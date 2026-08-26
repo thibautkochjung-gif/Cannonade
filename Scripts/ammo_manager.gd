@@ -3,33 +3,27 @@ extends Node
 
 signal ammo_changed(ammo: AmmoData)
 
-@export_group("Ammunition")
-@export var round_shot: AmmoData
-@export var grape_shot: AmmoData
-@export var chain_shot: AmmoData
-@export var heated_shot: AmmoData
+const HOLD_SLOT_FOR_KEY := {1: 0, 2: 1}
 
 var current_ammo: AmmoData
 
 
 func _ready() -> void:
-	current_ammo = round_shot
+	_select_from_hold_slot(0)
 
 
 func select_ammo(slot: int) -> void:
-	match slot:
-		1:
-			current_ammo = round_shot
-		2:
-			current_ammo = grape_shot
-		3:
-			current_ammo = chain_shot
-		4:
-			current_ammo = heated_shot
+	if not HOLD_SLOT_FOR_KEY.has(slot):
+		return
+	_select_from_hold_slot(HOLD_SLOT_FOR_KEY[slot])
 
+
+func _select_from_hold_slot(hold_index: int) -> void:
+	var hold_modules: Array = RunState.get_equipped_modules(ModuleData.SlotType.HOLD)
+	if hold_index >= hold_modules.size():
+		return
+	var module: ModuleData = hold_modules[hold_index]
+	if module == null or module.ammo_data == null:
+		return
+	current_ammo = module.ammo_data
 	ammo_changed.emit(current_ammo)
-
-
-func get_available_ammo_count() -> int:
-	var slots := [round_shot, grape_shot, chain_shot, heated_shot]
-	return slots.filter(func(a): return a != null).size()

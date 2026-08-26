@@ -35,11 +35,15 @@ var current_angular_speed = ANGULAR_SPEED_MAP[current_mast_state] * max_angular_
 var is_aiming := false
 var active_broadside: Node2D = null
 
+var loadout_speed_multiplier: float = 1.0
+var loadout_angular_multiplier: float = 1.0
+
 func _ready() -> void:
 	$LeftBroadside.fired.connect(_on_broadside_fired)
 	$RightBroadside.fired.connect(_on_broadside_fired)
+	loadout_speed_multiplier = RunState.get_aggregate_multiplier("speed_multiplier")
+	loadout_angular_multiplier = RunState.get_aggregate_multiplier("steering_multiplier")
 	GameManagerScene.on_player_ready(self)
-
 
 func _unhandled_input(event: InputEvent) -> void:
 	
@@ -95,9 +99,9 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		return
 	
-	var target_speed = SPEED_MAP[current_mast_state] * max_speed * sail_condition.get_speed_multiplier()
+	var target_speed = SPEED_MAP[current_mast_state] * max_speed * sail_condition.get_speed_multiplier() * loadout_speed_multiplier
 	current_speed = lerp(current_speed, target_speed, acceleration_factor)
-	var target_angular_speed = ANGULAR_SPEED_MAP[current_mast_state] * max_angular_speed * sail_condition.get_turn_multiplier()
+	var target_angular_speed = ANGULAR_SPEED_MAP[current_mast_state] * max_angular_speed * sail_condition.get_turn_multiplier() * loadout_angular_multiplier
 	current_angular_speed = lerp(current_angular_speed, target_angular_speed, angular_acceleration_factor)
 	
 	if Input.is_action_pressed("steer_right"):

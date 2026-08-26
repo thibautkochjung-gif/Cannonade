@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ModuleData" format=3 uid="uid://dlroidy4fgx5t"]
+
+[ext_resource type="Script" uid="uid://d0o6balsh07kt" path="res://Scripts/module_data.gd" id="1_73rua"]
+
+[resource]
+script = ExtResource("1_73rua")
+display_name = "Default Bow"
+metadata/_custom_type_script = "uid://d0o6balsh07kt"

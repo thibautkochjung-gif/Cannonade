@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ModuleData" format=3 uid="uid://dtdbs5goy7wnc"]
+
+[ext_resource type="Script" uid="uid://d0o6balsh07kt" path="res://Scripts/module_data.gd" id="1_82o3x"]
+
+[resource]
+script = ExtResource("1_82o3x")
+slot_type = 4
+display_name = "Default Hold"
+metadata/_custom_type_script = "uid://d0o6balsh07kt"

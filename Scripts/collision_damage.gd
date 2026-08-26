@@ -23,9 +23,11 @@ func on_ship_collision(other_ship: Node2D) -> void:
 
 	var base_damage = get_base_damage(hit_angle)
 	var speed_multiplier = get_speed_multiplier(other_ship)
-
-	var final_damage = base_damage * speed_multiplier
-
+	var dealt_multiplier = RunState.get_multiplier_for(ship, "ram_damage_dealt_multiplier")
+	var taken_multiplier = RunState.get_multiplier_for(other_ship, "ram_damage_taken_multiplier")
+	
+	var final_damage = base_damage * speed_multiplier * dealt_multiplier * taken_multiplier
+	
 	print(
 		ship.name,
 		" rammed ",
@@ -34,7 +36,7 @@ func on_ship_collision(other_ship: Node2D) -> void:
 		final_damage,
 		" damage"
 	)
-
+	
 	other_ship.get_node("Health").take_damage(final_damage, impact_direction, "collision")
 
 

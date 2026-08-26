@@ -31,7 +31,6 @@ mass = 2000.0
 gravity_scale = 0.0
 linear_damp = 0.745
 script = ExtResource("1_qi2p4")
-turning_speed = 300.0
 sail_condition = NodePath("SailCondition")
 avoidance_ray_length = 400.0
 avoidance_ray_spread_degrees = 30.0

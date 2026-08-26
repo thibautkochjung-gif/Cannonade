@@ -14,6 +14,7 @@ var angle_to_target: float
 var distance_to_target: float
 var current_avoidance_direction: float = 0.0  # -1 = left, 1 = right, 0 = none
 var max_velocity: float
+var is_dying: bool = false
 
 signal died
 
@@ -203,9 +204,18 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_health_health_depleted() -> void:
+	if is_dying:
+		return
+	is_dying = true
+
+	set_physics_process(false)
+
+	var tween := create_tween()
+	tween.tween_property(self, "modulate:a", 0.0, 3.0)
+	await tween.finished
+
 	remove_from_group("enemy")
 	died.emit()
-
 	queue_free()
 
 

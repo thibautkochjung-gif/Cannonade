@@ -82,8 +82,9 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		return
 	
 	if ammo_data.hull_damage > 0:
+		var hull_damage = ammo_data.hull_damage * RunState.get_multiplier_for(body, "damage_taken_multiplier")
 		body.get_node("Health").take_damage(
-			ammo_data.hull_damage,
+			hull_damage,
 			velocity.normalized(),
 			"cannon",
 			ammo_data.damage_fx_trigger_chance
