@@ -6,5 +6,7 @@
 [resource]
 script = ExtResource("1_pfevk")
 slot_type = 4
+display_name = "Heated Shot Ammo"
+description = "Heated shot can set ships on fire"
 ammo_data = ExtResource("1_0s680")
 metadata/_custom_type_script = "uid://d0o6balsh07kt"

@@ -2,9 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bhn5ylq7yk4le" path="res://Scripts/main_menu.gd" id="1_5ni5v"]
 [ext_resource type="PackedScene" uid="uid://bqwbkew85r6ic" path="res://Nodes/settings_menu.tscn" id="2_0dokd"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_yb2kq"]
-font_size = 35
+[ext_resource type="LabelSettings" uid="uid://cd3vprvf2yo4u" path="res://Label settings/Header 1.tres" id="2_fcmsd"]
 
 [node name="Control" type="Control" unique_id=1137356158 node_paths=PackedStringArray("new_game_button", "exit_button", "settings_button", "settings_menu")]
 layout_mode = 3
@@ -48,7 +46,7 @@ layout_mode = 2
 [node name="TitleLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1529388909]
 layout_mode = 2
 text = "Cannonade"
-label_settings = SubResource("LabelSettings_yb2kq")
+label_settings = ExtResource("2_fcmsd")
 
 [node name="NewGameButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=63928828]
 layout_mode = 2

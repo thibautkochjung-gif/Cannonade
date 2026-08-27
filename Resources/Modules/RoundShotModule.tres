@@ -6,5 +6,6 @@
 [resource]
 script = ExtResource("1_jhg66")
 slot_type = 4
+display_name = "Round Shot Ammo"
 ammo_data = ExtResource("1_w678p")
 metadata/_custom_type_script = "uid://d0o6balsh07kt"

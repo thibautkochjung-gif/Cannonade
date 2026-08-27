@@ -7,8 +7,8 @@
 [resource]
 script = ExtResource("3_su18l")
 slot_type = 3
-display_name = "Default Cannon Row"
-description = "10 guns, medium damage & range"
+display_name = "Light Cannon Row"
+description = "17 guns, low damage & range, faster reload"
 cannon_scene = ExtResource("1_px8du")
 cannon_count = 17
 component_scene = ExtResource("2_5yom7")

@@ -5,10 +5,16 @@
 [ext_resource type="Script" uid="uid://swuf16c3fasm" path="res://Scripts/contract_data.gd" id="2_ht0b5"]
 [ext_resource type="PackedScene" uid="uid://7qt41nxftj6s" path="res://Nodes/map_1.tscn" id="2_x76ya"]
 [ext_resource type="Resource" uid="uid://8ukj3misaqxr" path="res://Resources/Contracts/KillAllEnemiesObjectiveData.tres" id="3_2wtcq"]
+[ext_resource type="Resource" uid="uid://b8ltyvxs7xhb8" path="res://Resources/Modules/OfficersRelayStation.tres" id="5_5rjib"]
+[ext_resource type="Resource" uid="uid://bndsssvfu1jx3" path="res://Resources/Modules/HeatedShotModule.tres" id="6_y61dy"]
+[ext_resource type="Resource" uid="uid://cgttd4l4l8gh6" path="res://Resources/Modules/HeavyLeftCannonRow.tres" id="7_b1t7t"]
 
 [resource]
 script = ExtResource("2_ht0b5")
+display_name = "Test Contract"
+description = "Eliminate the three enemies."
 map_scene = ExtResource("2_x76ya")
 enemy_scenes = Array[PackedScene]([ExtResource("1_11rfr"), ExtResource("1_11rfr"), ExtResource("1_11rfr")])
 objective = ExtResource("3_2wtcq")
+reward_modules = Array[ExtResource("1_yl64b")]([ExtResource("5_5rjib"), ExtResource("6_y61dy"), ExtResource("7_b1t7t")])
 metadata/_custom_type_script = "uid://swuf16c3fasm"

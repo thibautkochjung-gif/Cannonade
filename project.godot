@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Cannonade"
-run/main_scene="uid://bfd3qg0u8tmag"
+run/main_scene="uid://c76rwplyu7tp0"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://Sprites/icon.svg"
 

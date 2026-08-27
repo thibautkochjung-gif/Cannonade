@@ -14,4 +14,4 @@ extends Resource
 @export var objective: ObjectiveData
 
 @export_group("Reward")
-@export var reward_modules: Array[ModuleData] = []  # inert until Phase 7
+@export var reward_modules: Array[ModuleData] = [] 

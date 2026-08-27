@@ -2,9 +2,10 @@ extends Node
 
 @export var loadout_layout: ShipLoadoutLayout
 @export var default_modules: Array[ModuleData] = []
-@export var active_contract: ContractData # EXPORT TO BE DELETED WHEN HUB IS IMPLEMENTED
 
+var active_contract: ContractData
 var equipped_loadout: Dictionary = {}
+var owned_modules: Array[ModuleData] = []
 
 
 func _ready() -> void:
@@ -21,6 +22,7 @@ func _initialize_slots() -> void:
 
 func _apply_default_modules() -> void:
 	for module in default_modules:
+		grant_module(module)
 		_equip_in_first_open_slot(module)
 
 
@@ -38,6 +40,27 @@ func _equip_in_first_open_slot(module: ModuleData) -> void:
 
 func get_equipped_modules(slot_type: ModuleData.SlotType) -> Array:
 	return equipped_loadout.get(slot_type, [])
+
+
+func set_equipped_module(slot_type: ModuleData.SlotType, slot_index: int, module: ModuleData) -> void:
+	var slots: Array = equipped_loadout.get(slot_type)
+	if slots == null or slot_index < 0 or slot_index >= slots.size():
+		push_warning("RunState: invalid slot %s[%d]" % [slot_type, slot_index])
+		return
+	slots[slot_index] = module
+
+
+func grant_module(module: ModuleData) -> void:
+	if module != null and not owned_modules.has(module):
+		owned_modules.append(module)
+
+
+func get_owned_modules_for_slot(slot_type: ModuleData.SlotType) -> Array[ModuleData]:
+	var result: Array[ModuleData] = []
+	for module in owned_modules:
+		if module.slot_type == slot_type:
+			result.append(module)
+	return result
 
 
 func get_aggregate_multiplier(field_name: StringName) -> float:
