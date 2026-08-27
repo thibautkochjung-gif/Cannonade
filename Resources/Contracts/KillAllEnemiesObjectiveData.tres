@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="KillAllEnemiesObjectiveData" format=3 uid="uid://8ukj3misaqxr"]
+
+[ext_resource type="PackedScene" uid="uid://b01wjkftwxtqk" path="res://Nodes/kill_all_enemies_objective.tscn" id="1_4psi8"]
+[ext_resource type="Script" uid="uid://tlbxaiyp7yfb" path="res://Scripts/kill_all_enemies_objective_data.gd" id="2_w4vwa"]
+
+[resource]
+script = ExtResource("2_w4vwa")
+display_name = "Kill all enemies."
+controller_scene = ExtResource("1_4psi8")
+metadata/_custom_type_script = "uid://tlbxaiyp7yfb"

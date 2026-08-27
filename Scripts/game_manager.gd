@@ -8,7 +8,6 @@ var start_time: int
 var death_time_msec: int
 var player: CharacterBody2D
 var hud: HUD
-var total_enemies: int
 var world_root: Node
 
 func on_player_ready(spawned_player: CharacterBody2D) -> void:
@@ -18,16 +17,6 @@ func on_player_ready(spawned_player: CharacterBody2D) -> void:
 	var ammo_reminder_popup = get_tree().get_first_node_in_group("ammo_reminder_popup")
 	if ammo_reminder_popup:
 		ammo_reminder_popup.connect_to_player(player)
-
-func register_enemies() -> void:
-	var enemies := get_tree().get_nodes_in_group("enemy")
-	total_enemies = enemies.size()
-	for enemy in enemies:
-		enemy.died.connect(_on_enemy_died)
-
-func _on_enemy_died() -> void:
-	if get_tree().get_nodes_in_group("enemy").is_empty():
-		trigger_victory()
 
 func trigger_victory() -> void:
 	var victory_screen = victory_screen_scene.instantiate()

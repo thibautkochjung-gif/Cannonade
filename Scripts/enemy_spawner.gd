@@ -1,33 +1,18 @@
 extends Node
-#
-#var player: CharacterBody2D
-#
-#@export var minimum_distance: int
-#@export var maximum_distance: int
-#@export var enemy_scene: PackedScene
-#
-## Called when the node enters the scene tree for the first time.
-#func _ready() -> void:
-	#player = get_tree().get_first_node_in_group("player")
-#
-#
-## Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-	#pass
-#
-#func spawn_enemy_at_random_location() -> void:
-	#var spawn_distance = randf_range(minimum_distance, maximum_distance)
-	#var spawn_angle = randf_range(0, TAU)
-	#var spawn_vector = Vector2(spawn_distance, 0).rotated(spawn_angle)
-	#var enemy = enemy_scene.instantiate()
-	#
-	#get_parent().add_child(enemy)
-	#enemy.position = spawn_vector + player.global_position
-	#enemy.look_at(player.global_position)
-	#print("Spawned enemy")
-	#
-	#pass
-#
-#
-#func _on_timer_timeout() -> void:
-	#spawn_enemy_at_random_location()
+
+const SPAWN_POINT_GROUP := "enemy_spawn_point"
+
+func spawn_all(enemy_scenes: Array[PackedScene]) -> void:
+	var spawn_points := get_tree().get_nodes_in_group(SPAWN_POINT_GROUP)
+	if spawn_points.is_empty():
+		push_warning("EnemySpawner: no nodes in group '%s' - nothing spawned" % SPAWN_POINT_GROUP)
+		return
+
+	spawn_points.shuffle()
+
+	for i in enemy_scenes.size():
+		var spawn_point: Node2D = spawn_points[i % spawn_points.size()]
+		var enemy := enemy_scenes[i].instantiate()
+		get_parent().add_child(enemy)
+		enemy.global_position = spawn_point.global_position
+		enemy.global_rotation = spawn_point.global_rotation

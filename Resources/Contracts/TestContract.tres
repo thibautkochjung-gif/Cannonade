@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ContractData" format=3 uid="uid://b4cf2d4voa68y"]
+
+[ext_resource type="PackedScene" uid="uid://dmgtoi1wc10s4" path="res://Nodes/enemy.tscn" id="1_11rfr"]
+[ext_resource type="Script" uid="uid://d0o6balsh07kt" path="res://Scripts/module_data.gd" id="1_yl64b"]
+[ext_resource type="Script" uid="uid://swuf16c3fasm" path="res://Scripts/contract_data.gd" id="2_ht0b5"]
+[ext_resource type="PackedScene" uid="uid://7qt41nxftj6s" path="res://Nodes/map_1.tscn" id="2_x76ya"]
+[ext_resource type="Resource" uid="uid://8ukj3misaqxr" path="res://Resources/Contracts/KillAllEnemiesObjectiveData.tres" id="3_2wtcq"]
+
+[resource]
+script = ExtResource("2_ht0b5")
+map_scene = ExtResource("2_x76ya")
+enemy_scenes = Array[PackedScene]([ExtResource("1_11rfr"), ExtResource("1_11rfr"), ExtResource("1_11rfr")])
+objective = ExtResource("3_2wtcq")
+metadata/_custom_type_script = "uid://swuf16c3fasm"

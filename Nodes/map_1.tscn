@@ -1,0 +1,33 @@
+[gd_scene format=4 uid="uid://7qt41nxftj6s"]
+
+[ext_resource type="Texture2D" uid="uid://cuv5bc7kx4trb" path="res://Sprites/Water Tiles/tile_0077_water4.png" id="1_svi1x"]
+[ext_resource type="TileSet" uid="uid://dgwco75qo4wt2" path="res://land_tileset.tres" id="2_7amkc"]
+
+[node name="Map" type="Node2D" unique_id=1406409734]
+
+[node name="Water" type="Sprite2D" parent="." unique_id=247103656]
+texture_repeat = 2
+scale = Vector2(3, 3)
+texture = ExtResource("1_svi1x")
+region_enabled = true
+region_rect = Rect2(-2000, -2000, 5000, 5000)
+
+[node name="LandTileMapLayer" type="TileMapLayer" parent="." unique_id=264984435 groups=["terrain"]]
+scale = Vector2(6, 6)
+tile_map_data = PackedByteArray("AADx/wYAAAABAAEAAAD1/wYAAAADAAEAAAD1/woAAAADAAIAAAD1/w4AAAADAAMAAADx/w4AAAABAAMAAADx/woAAAABAAIAAADz/wUAAQABAAEAAADz/wkAAQABAAIAAADz/w0AAQABAAMAAAD3/w0AAQADAAMAAAD3/wkAAQADAAIAAAD3/wUAAQADAAEAAADb//z/AQABAAEAAADf/wAAAQADAAMAAADb/wAAAQABAAMAAADj/xUAAQABAAMAAADn/xUAAQACAAMAAADr/xUAAQACAAMAAADv/xUAAQACAAMAAADz/xUAAQADAAMAAADz/xEAAQADAAEAAADv/xEAAQACAAEAAADr/xEAAQACAAEAAADn/xEAAQACAAEAAADj/xEAAQABAAEAAAD0//v/AQACAAMAAAD4//v/AQADAAMAAADw//v/AQABAAMAAADw//f/AQABAAIAAADw//P/AQABAAIAAADw/+//AQABAAEAAAD0/+//AQACAAEAAAD4/+//AQADAAEAAAD0//P/AQACAAIAAAD0//f/AQACAAIAAAD4//P/AQADAAIAAAD4//f/AQADAAIAAADf//z/AQADAAEAAAA=")
+tile_set = ExtResource("2_7amkc")
+
+[node name="EnemySpawnPoint1" type="Marker2D" parent="." unique_id=51543488 groups=["enemy_spawn_point"]]
+position = Vector2(-2727, -1127)
+
+[node name="EnemySpawnPoint2" type="Marker2D" parent="." unique_id=1303464188 groups=["enemy_spawn_point"]]
+position = Vector2(-2115, -1127)
+
+[node name="EnemySpawnPoint3" type="Marker2D" parent="." unique_id=1438126600 groups=["enemy_spawn_point"]]
+position = Vector2(350, -935)
+
+[node name="EnemySpawnPoint4" type="Marker2D" parent="." unique_id=1250602616 groups=["enemy_spawn_point"]]
+position = Vector2(350, 647)
+
+[node name="EnemySpawnPoint5" type="Marker2D" parent="." unique_id=1105746758 groups=["enemy_spawn_point"]]
+position = Vector2(-2316, -2080)

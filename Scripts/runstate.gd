@@ -2,6 +2,7 @@ extends Node
 
 @export var loadout_layout: ShipLoadoutLayout
 @export var default_modules: Array[ModuleData] = []
+@export var active_contract: ContractData # EXPORT TO BE DELETED WHEN HUB IS IMPLEMENTED
 
 var equipped_loadout: Dictionary = {}
 
