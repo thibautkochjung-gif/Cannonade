@@ -4,8 +4,11 @@
 [ext_resource type="Script" uid="uid://swuf16c3fasm" path="res://Scripts/contract_data.gd" id="2_kpalr"]
 [ext_resource type="Resource" uid="uid://b4cf2d4voa68y" path="res://Resources/Contracts/TestContract.tres" id="3_x2jy6"]
 [ext_resource type="LabelSettings" uid="uid://cd3vprvf2yo4u" path="res://Label settings/Header 1.tres" id="4_kpalr"]
+[ext_resource type="Script" uid="uid://uaifuiw2us3f" path="res://Scripts/contract_details_menu.gd" id="5_x2jy6"]
 
-[node name="Hub" type="Control" unique_id=815816142 node_paths=PackedStringArray("contracts_list", "loadout_list", "main_menu_button")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x2jy6"]
+
+[node name="Hub" type="Control" unique_id=815816142 node_paths=PackedStringArray("contracts_list", "loadout_list", "main_menu_button", "contract_details")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,9 +17,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wj7kx")
 available_contracts = Array[ExtResource("2_kpalr")]([ExtResource("3_x2jy6")])
-contracts_list = NodePath("MarginContainer/HBoxContainer/ContractsPanel/ContractsBox/ContractsList")
-loadout_list = NodePath("MarginContainer/HBoxContainer/OutfittingPanel/OutfittingBox/OutfittingList")
-main_menu_button = NodePath("MainMenuButton")
+contracts_list = NodePath("Layout/MarginContainer/HBoxContainer/ContractsPanel/ContractsBox/ScrollContainer/ContractsList")
+loadout_list = NodePath("Layout/MarginContainer/HBoxContainer/OutfittingPanel/OutfittingBox/ScrollContainer/OutfittingList")
+main_menu_button = NodePath("Layout/MarginContainer2/MainMenuButton")
+contract_details = NodePath("ContractDetailsMenu")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=628431297]
 layout_mode = 1
@@ -27,62 +31,157 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0.53782195, 0.53970665, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1462478127]
+[node name="Layout" type="VBoxContainer" parent="." unique_id=438224301]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -173.5
-offset_right = 173.5
-offset_bottom = 93.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Layout" unique_id=1462478127]
+layout_mode = 2
+size_flags_vertical = 3
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1366442105]
+[node name="HBoxContainer" type="HBoxContainer" parent="Layout/MarginContainer" unique_id=1366442105]
 layout_mode = 2
 alignment = 1
 
-[node name="ContractsPanel" type="PanelContainer" parent="MarginContainer/HBoxContainer" unique_id=492064387]
+[node name="ContractsPanel" type="PanelContainer" parent="Layout/MarginContainer/HBoxContainer" unique_id=492064387]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ContractsBox" type="VBoxContainer" parent="Layout/MarginContainer/HBoxContainer/ContractsPanel" unique_id=1990343986]
 layout_mode = 2
 
-[node name="ContractsBox" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ContractsPanel" unique_id=1990343986]
-layout_mode = 2
-
-[node name="ContractsHeader" type="Label" parent="MarginContainer/HBoxContainer/ContractsPanel/ContractsBox" unique_id=1337761224]
+[node name="ContractsHeader" type="Label" parent="Layout/MarginContainer/HBoxContainer/ContractsPanel/ContractsBox" unique_id=1337761224]
 layout_mode = 2
 text = "Contracts"
 label_settings = ExtResource("4_kpalr")
 horizontal_alignment = 1
 
-[node name="ContractsList" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ContractsPanel/ContractsBox" unique_id=1797352596]
+[node name="ScrollContainer" type="ScrollContainer" parent="Layout/MarginContainer/HBoxContainer/ContractsPanel/ContractsBox" unique_id=145305354]
+custom_minimum_size = Vector2(100, 200)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ContractsList" type="VBoxContainer" parent="Layout/MarginContainer/HBoxContainer/ContractsPanel/ContractsBox/ScrollContainer" unique_id=1797352596]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="OutfittingPanel" type="PanelContainer" parent="Layout/MarginContainer/HBoxContainer" unique_id=1363168915]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="OutfittingBox" type="VBoxContainer" parent="Layout/MarginContainer/HBoxContainer/OutfittingPanel" unique_id=2062866324]
 layout_mode = 2
 
-[node name="OutfittingPanel" type="PanelContainer" parent="MarginContainer/HBoxContainer" unique_id=1363168915]
-layout_mode = 2
-
-[node name="OutfittingBox" type="VBoxContainer" parent="MarginContainer/HBoxContainer/OutfittingPanel" unique_id=2062866324]
-layout_mode = 2
-
-[node name="OutfittingHeader" type="Label" parent="MarginContainer/HBoxContainer/OutfittingPanel/OutfittingBox" unique_id=1484350066]
+[node name="OutfittingHeader" type="Label" parent="Layout/MarginContainer/HBoxContainer/OutfittingPanel/OutfittingBox" unique_id=1484350066]
 layout_mode = 2
 text = "Loadout"
 label_settings = ExtResource("4_kpalr")
 horizontal_alignment = 1
 
-[node name="OutfittingList" type="VBoxContainer" parent="MarginContainer/HBoxContainer/OutfittingPanel/OutfittingBox" unique_id=324616262]
+[node name="ScrollContainer" type="ScrollContainer" parent="Layout/MarginContainer/HBoxContainer/OutfittingPanel/OutfittingBox" unique_id=338464864]
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="MainMenuButton" type="Button" parent="." unique_id=948966260]
-layout_mode = 0
-offset_left = 528.0
-offset_top = 597.0
-offset_right = 624.0
-offset_bottom = 628.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="OutfittingList" type="VBoxContainer" parent="Layout/MarginContainer/HBoxContainer/OutfittingPanel/OutfittingBox/ScrollContainer" unique_id=324616262]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="Layout" unique_id=315009658]
+layout_mode = 2
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = 20
+
+[node name="MainMenuButton" type="Button" parent="Layout/MarginContainer2" unique_id=948966260]
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 text = "Main Menu"
+
+[node name="ContractDetailsMenu" type="Control" parent="." unique_id=1887811903 node_paths=PackedStringArray("title_label", "description_label", "main_objective_label", "secondary_objectives_list", "rewards_list", "back_button", "begin_button")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_x2jy6")
+title_label = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Title")
+description_label = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Description")
+main_objective_label = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MainObjective")
+secondary_objectives_list = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ListSecondaryObjectives")
+rewards_list = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ListRewards")
+back_button = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/BackButton")
+begin_button = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/StartButton")
+
+[node name="CenterContainer" type="CenterContainer" parent="ContractDetailsMenu" unique_id=548031305]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -81.5
+offset_right = 20.0
+offset_bottom = 81.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="ContractDetailsMenu/CenterContainer" unique_id=351981217]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_x2jy6")
+
+[node name="MarginContainer" type="MarginContainer" parent="ContractDetailsMenu/CenterContainer/PanelContainer" unique_id=429884325]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ContractDetailsMenu/CenterContainer/PanelContainer/MarginContainer" unique_id=2075196467]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="ContractDetailsMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=330187767]
+layout_mode = 2
+label_settings = ExtResource("4_kpalr")
+
+[node name="Description" type="Label" parent="ContractDetailsMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2043944355]
+layout_mode = 2
+autowrap_mode = 3
+
+[node name="MainObjective" type="Label" parent="ContractDetailsMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1432980061]
+layout_mode = 2
+
+[node name="HeaderSecondaryObjectives" type="Label" parent="ContractDetailsMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=5907302]
+layout_mode = 2
+
+[node name="ListSecondaryObjectives" type="VBoxContainer" parent="ContractDetailsMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1114021605]
+layout_mode = 2
+
+[node name="HeaderRewards" type="Label" parent="ContractDetailsMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1259279121]
+layout_mode = 2
+
+[node name="ListRewards" type="VBoxContainer" parent="ContractDetailsMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=170791151]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="ContractDetailsMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=498807601]
+layout_mode = 2
+text = "Back"
+
+[node name="StartButton" type="Button" parent="ContractDetailsMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1299840078]
+layout_mode = 2
+text = "Begin contract"

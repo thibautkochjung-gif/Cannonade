@@ -75,3 +75,7 @@ func get_multiplier_for(ship: Node, field_name: StringName) -> float:
 	if ship == null or not ship.is_in_group("player"):
 		return 1.0
 	return get_aggregate_multiplier(field_name)
+
+
+func get_deck_side_for_slot(slot_index: int) -> ShipLoadoutLayout.DeckSide:
+	return loadout_layout.get_deck_side(slot_index)

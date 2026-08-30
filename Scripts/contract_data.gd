@@ -3,6 +3,7 @@ extends Resource
 
 @export var display_name: String
 @export var description: String
+@export var long_description: String
 
 @export_group("Map")
 @export var map_scene: PackedScene
@@ -12,6 +13,7 @@ extends Resource
 
 @export_group("Objective")
 @export var objective: ObjectiveData
+@export var secondary_objectives: Array[ObjectiveData] = []
 
 @export_group("Reward")
-@export var reward_modules: Array[ModuleData] = [] 
+@export var reward_modules: Array[ModuleData] = []
