@@ -3,8 +3,17 @@ extends CharacterBody2D
 @export var max_speed = 100
 @export var acceleration_factor = 0.1
 @export var angular_acceleration_factor = 0.005
+@export var angular_decay_factor: float = 0.02
 @export var max_angular_speed = 0.5
 @export var sail_condition : SailCondition
+
+@export_group("Wind response")
+## How fast the ship's felt wind effect on speed catches up to wind's
+## actual current multiplier, independent of the ship's own acceleration
+## above. Higher = wind is felt almost immediately on speed; lower =
+## wind takes longer to "take hold." Turning doesn't need an equivalent
+## knob - see the signed current_angular_speed model below.
+@export var wind_speed_catchup_factor: float = 0.05
 
 @onready var health: Health = $Health
 @onready var left_broadside: Node = $LeftBroadside
@@ -31,13 +40,15 @@ var ANGULAR_SPEED_MAP = {
 
 var current_mast_state = MastState.STOP
 var current_speed = SPEED_MAP[current_mast_state] * max_speed
-var current_angular_speed = ANGULAR_SPEED_MAP[current_mast_state] * max_angular_speed
+var current_angular_speed: float = 0.0  # signed: positive = turning right, negative = turning left
+var current_wind_speed_multiplier: float = 1.0
 var is_aiming := false
 var active_broadside: Node2D = null
 
 var loadout_speed_multiplier: float = 1.0
 var loadout_angular_multiplier: float = 1.0
 var boost_multiplier: float = 1.0
+var debug_speed_multiplier: float = 1.0
 
 func _ready() -> void:
 	$LeftBroadside.fired.connect(_on_broadside_fired)
@@ -133,21 +144,42 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		return
 	
-	var target_speed = SPEED_MAP[current_mast_state] * max_speed * sail_condition.get_speed_multiplier() * loadout_speed_multiplier * boost_multiplier
-	current_speed = lerp(current_speed, target_speed, acceleration_factor)
-	var target_angular_speed = ANGULAR_SPEED_MAP[current_mast_state] * max_angular_speed * sail_condition.get_turn_multiplier() * loadout_angular_multiplier
-	current_angular_speed = lerp(current_angular_speed, target_angular_speed, angular_acceleration_factor)
+	# Speed: wind's contribution catches up on its own schedule
+	# (wind_speed_catchup_factor), decoupled from the ship's own heavy
+	# acceleration_factor below.
+	var target_wind_speed_multiplier: float = Wind.get_speed_multiplier(transform.x)
+	current_wind_speed_multiplier = lerp(current_wind_speed_multiplier, target_wind_speed_multiplier, wind_speed_catchup_factor)
 	
-	if Input.is_action_pressed("steer_right"):
-		rotation += current_angular_speed * delta
-	if Input.is_action_pressed("steer_left"):
-		rotation -= current_angular_speed * delta
-		
-	velocity = Vector2.RIGHT.rotated(rotation) * current_speed
+	var target_speed = SPEED_MAP[current_mast_state] * max_speed * sail_condition.get_speed_multiplier() * loadout_speed_multiplier * boost_multiplier * debug_speed_multiplier
+	current_speed = lerp(current_speed, target_speed, acceleration_factor)
+	print("speed: ", current_speed, " (effective: ", current_speed * current_wind_speed_multiplier, ")")
+	
+	# Turning: current_angular_speed is signed (positive = right, negative
+	# = left). Wind's turn multiplier is baked straight into the target -
+	# no separate catch-up needed, because this value ramps fresh from
+	# wherever it currently sits every time input changes, rather than
+	# running in the background. Releasing both keys decays it back
+	# toward 0 instead of freezing it, and switching direction mid-turn
+	# re-targets smoothly through 0 instead of snapping.
+	var target_angular_speed_magnitude : float = ANGULAR_SPEED_MAP[current_mast_state] * max_angular_speed * sail_condition.get_turn_multiplier() * Wind.get_turn_multiplier(transform.x) * loadout_angular_multiplier
+	
+	var turning_right := Input.is_action_pressed("steer_right")
+	var turning_left := Input.is_action_pressed("steer_left")
+	var input_direction := (1.0 if turning_right else 0.0) - (1.0 if turning_left else 0.0)
+	
+	if input_direction != 0.0:
+		current_angular_speed = lerp(current_angular_speed, target_angular_speed_magnitude * input_direction, angular_acceleration_factor)
+	else:
+		current_angular_speed = lerp(current_angular_speed, 0.0, angular_decay_factor)
+	
+	rotation += current_angular_speed * delta
+	print("angular speed: ", current_angular_speed)
+	
+	velocity = Vector2.RIGHT.rotated(rotation) * current_speed * current_wind_speed_multiplier
 	move_and_slide()
 	
 	for wake in $Wakes.get_children().filter(func(child): return child.is_in_group("wake")):
-		wake.update_speed(current_speed / max_speed)
+		wake.update_speed((current_speed * current_wind_speed_multiplier) / max_speed)
 
 
 func _on_broadside_fired(amount, direction) -> void:

@@ -10,3 +10,5 @@
 script = ExtResource("1_kkvug")
 loadout_layout = ExtResource("2_54nyp")
 default_modules = Array[ExtResource("3_g1sr2")]([ExtResource("4_d565v"), ExtResource("5_g1sr2"), ExtResource("5_g1sr2"), ExtResource("5_g1sr2"), ExtResource("5_g1sr2"), ExtResource("5_g1sr2"), ExtResource("5_g1sr2")])
+front_arc_half_angle = 0.3
+back_arc_half_angle = 0.3

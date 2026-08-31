@@ -24,7 +24,9 @@
 [node name="Player" type="CharacterBody2D" unique_id=2092264728 node_paths=PackedStringArray("sail_condition") groups=["player", "ship"]]
 collision_mask = 36
 script = ExtResource("1_onrkg")
+angular_decay_factor = 0.01
 sail_condition = NodePath("SailCondition")
+wind_speed_catchup_factor = 0.03
 metadata/_edit_group_ = true
 
 [node name="DamageDecals" parent="." unique_id=550950358 instance=ExtResource("2_0bouj")]

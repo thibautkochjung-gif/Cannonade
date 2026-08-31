@@ -22,6 +22,8 @@ Fx="*uid://cta74vajfb3xk"
 TerrainQuery="*uid://dbdefkdf55li4"
 Settings="*uid://cgh6afs23cfs5"
 RunState="*uid://b1i1g3kn1a0wp"
+DebugMenu="*uid://cpfmbpjh28ngm"
+Wind="*uid://ks0qv132rmil"
 
 [global_group]
 

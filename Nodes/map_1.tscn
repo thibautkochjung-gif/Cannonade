@@ -6,6 +6,7 @@
 [node name="Map" type="Node2D" unique_id=1406409734]
 
 [node name="Water" type="Sprite2D" parent="." unique_id=247103656]
+z_index = -5
 texture_repeat = 2
 scale = Vector2(3, 3)
 texture = ExtResource("1_svi1x")
@@ -18,7 +19,7 @@ tile_map_data = PackedByteArray("AADx/wYAAAABAAEAAAD1/wYAAAADAAEAAAD1/woAAAADAAI
 tile_set = ExtResource("2_7amkc")
 
 [node name="EnemySpawnPoint1" type="Marker2D" parent="." unique_id=51543488 groups=["enemy_spawn_point"]]
-position = Vector2(-2727, -1127)
+position = Vector2(-1535, 1322)
 
 [node name="EnemySpawnPoint2" type="Marker2D" parent="." unique_id=1303464188 groups=["enemy_spawn_point"]]
 position = Vector2(-2115, -1127)

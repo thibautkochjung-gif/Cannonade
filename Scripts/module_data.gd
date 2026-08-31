@@ -17,6 +17,12 @@ enum SlotType {BOW, FORECASTLE, QUARTERDECK, DECK, HOLD, SAIL}
 @export var ram_damage_taken_multiplier: float = 1.0
 @export var damage_taken_multiplier: float = 1.0
 
+@export_group("Directional Damage Taken")
+@export var damage_taken_multiplier_front: float = 1.0
+@export var damage_taken_multiplier_back: float = 1.0
+@export var damage_taken_multiplier_left: float = 1.0
+@export var damage_taken_multiplier_right: float = 1.0
+
 @export_group("Ammo")
 @export var ammo_data: AmmoData  # only used when slot_type == HOLD
 

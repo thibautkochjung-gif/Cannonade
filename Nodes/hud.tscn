@@ -16,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://y4e343og5c0i" path="res://Sprites/HUD/Ammo type icons/roundshot icon.png" id="10_617pi"]
 [ext_resource type="Texture2D" uid="uid://dt8bn8efsx7lj" path="res://Sprites/Enemy Offmap Arrow.png" id="10_f8pak"]
 [ext_resource type="Script" uid="uid://c3e0i5am2d5hf" path="res://Scripts/ammo_choice_icon.gd" id="15_kloxh"]
+[ext_resource type="Texture2D" uid="uid://csaqijxd3ktso" path="res://Sprites/boat 1.png" id="17_5ayy8"]
+[ext_resource type="Script" uid="uid://7t1emk6imkp8" path="res://Nodes/wind_indicator.gd" id="18_qc4bh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f8pak"]
 bg_color = Color(0.49747366, 0.49747372, 0.49747354, 1)
@@ -25,7 +27,7 @@ border_color = Color(0.49803922, 0.49803922, 0.49803922, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_pl8jw"]
 
-[node name="HUD" type="CanvasLayer" unique_id=1318984358 node_paths=PackedStringArray("health_indicator", "sail_condition_indicator", "mast_state_indicator", "mast_state_icons", "right_broadside_indicator", "left_broadside_indicator", "survival_timer_label", "ammo_choice_icon")]
+[node name="HUD" type="CanvasLayer" unique_id=1318984358 node_paths=PackedStringArray("health_indicator", "sail_condition_indicator", "mast_state_indicator", "mast_state_icons", "right_broadside_indicator", "left_broadside_indicator", "survival_timer_label", "ammo_choice_icon", "wind_indicator")]
 script = ExtResource("1_50iqg")
 health_indicator = NodePath("Root/MarginContainer2/BottomCluster/CenterStack/HealthIndicator")
 sail_condition_indicator = NodePath("Root/MarginContainer2/BottomCluster/CenterStack/MastStateIndicator/SailConditionIndicator")
@@ -35,6 +37,7 @@ right_broadside_indicator = NodePath("Root/MarginContainer2/BottomCluster/RightB
 left_broadside_indicator = NodePath("Root/MarginContainer2/BottomCluster/LeftBroadsideIndicator")
 survival_timer_label = NodePath("Root/MarginContainer/PanelContainer/SurvivalTimerLabel")
 ammo_choice_icon = NodePath("Root/MarginContainer2/BottomCluster/MarginContainer/AmmoChoiceIcon")
+wind_indicator = NodePath("Root/WindIndicator")
 
 [node name="Root" type="Control" parent="." unique_id=1877811523]
 layout_mode = 3
@@ -245,3 +248,20 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("7_offscr")
 indicator_texture = ExtResource("10_f8pak")
+
+[node name="WindIndicator" type="TextureRect" parent="Root" unique_id=938151645]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -141.0
+offset_top = 55.0
+offset_right = -101.0
+offset_bottom = 95.0
+grow_horizontal = 0
+scale = Vector2(2, 2)
+texture = ExtResource("17_5ayy8")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("18_qc4bh")
+max_scale = 3.0

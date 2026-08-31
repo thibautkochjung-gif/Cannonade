@@ -65,7 +65,6 @@ func get_base_damage(angle: float) -> float:
 
 func get_speed_multiplier(other_ship: Node2D) -> float:
 	var relative_speed = get_relative_speed(other_ship)
-
 	return 1.0 + relative_speed * relative_speed * speed_damage_multiplier 
 
 

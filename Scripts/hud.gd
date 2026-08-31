@@ -9,12 +9,13 @@ class_name HUD
 @export var left_broadside_indicator: TextureProgressBar
 @export var survival_timer_label: SurvivalTimerLabel
 @export var ammo_choice_icon: TextureRect
+@export var wind_indicator: WindIndicator
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	Wind.wind_updated.connect(wind_indicator.update_wind)
+	wind_indicator.update_wind(Wind.current_direction(), Wind.current_speed)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

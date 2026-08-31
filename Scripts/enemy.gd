@@ -121,12 +121,47 @@ func get_mast_state() -> MastState:
 			return MastState.HALF_MAST
 
 
+# Returns time-to-intercept assuming both parties move in straight lines
+# at constant speed, or null if no real, positive-time intercept exists.
+func _solve_intercept_time(rel_pos: Vector2, target_vel: Vector2, chaser_speed: float):
+	var a = target_vel.dot(target_vel) - chaser_speed * chaser_speed
+	var b = 2.0 * rel_pos.dot(target_vel)
+	var c = rel_pos.dot(rel_pos)
+
+	# a ≈ 0 means chaser_speed ≈ target speed: the quadratic degenerates to linear.
+	if abs(a) < 0.0001:
+		if abs(b) < 0.0001:
+			return null
+		var t = -c / b
+		return t if t > 0 else null
+
+	var discriminant = b * b - 4 * a * c
+	if discriminant < 0:
+		return null  # no real solution: can't be caught on a straight line at this speed
+
+	var sqrt_disc = sqrt(discriminant)
+	var t1 = (-b + sqrt_disc) / (2 * a)
+	var t2 = (-b - sqrt_disc) / (2 * a)
+
+	var best = -1.0
+	for t in [t1, t2]:
+		if t > 0 and (best < 0 or t < best):
+			best = t
+
+	return best if best > 0 else null
+
+
 func _get_target_position(player_position: Vector2, player_velocity: Vector2) -> Vector2:
 	if linear_velocity.length() == 0 or player_velocity.length() < 5:
 		return player_position
-	var time_to_intercept = distance_to_player / linear_velocity.length()
-	var intercept = player_position + player_velocity * time_to_intercept
-	return intercept
+
+	var rel_pos = player_position - global_position
+	var time_to_intercept = _solve_intercept_time(rel_pos, player_velocity, linear_velocity.length())
+
+	if time_to_intercept == null:
+		return player_position  # fallback: pure pursuit instead of a runaway lead point
+
+	return player_position + player_velocity * time_to_intercept
 
 
 func decide_behavior() -> void:
@@ -173,7 +208,7 @@ func _physics_process(delta: float) -> void:
 		broadside_in_use = $RightBroadside
 	else:
 		broadside_in_use = $LeftBroadside
-
+	
 	match current_behavior_state:
 		BehaviorState.SEEK:
 			behavior_result = tick_seek(delta)
@@ -183,22 +218,25 @@ func _physics_process(delta: float) -> void:
 			behavior_result = tick_evade(delta)
 		BehaviorState.DEAD:
 			behavior_result = tick_dead(delta)
-
+	
 	var avoidance_result = get_avoidance_torque(delta)
 	var urgency = avoidance_result["urgency"]
 	var allow_bypass = behavior_result["bypass_suppression"] and urgency < opportunistic_fire_urgency_ceiling
-
+	
 	var blended_torque: float
 	if allow_bypass:
 		blended_torque = behavior_result["torque"]
 	else:
 		blended_torque = behavior_result["torque"] * (1.0 - urgency) + avoidance_result["torque"]
-
+	
 	var blended_speed = behavior_result["speed"] * (1.0 - urgency * force_reduction_amount)
-
+	
+	var wind_speed_multiplier : float = Wind.get_speed_multiplier(transform.x)
+	var wind_turn_multiplier : float = Wind.get_turn_multiplier(transform.x)
+	
 	apply_force(transform.x * blended_speed * acceleration_force * sail_condition.get_condition_ratio())
 	apply_torque(blended_torque)
-
+	
 	for wake in $Wakes.get_children().filter(func(child): return child.is_in_group("wake")):
 		wake.update_speed(linear_velocity.length() / max_velocity)
 
