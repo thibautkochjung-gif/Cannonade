@@ -83,6 +83,15 @@ boost_speed={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Player Ship"
+2d_physics/layer_2="Enemy cannonball"
+2d_physics/layer_3="Enemy Ship"
+2d_physics/layer_4="Player & enemy hull & player cannonball ?"
+2d_physics/layer_6="Islands"
+2d_physics/layer_7="Current"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

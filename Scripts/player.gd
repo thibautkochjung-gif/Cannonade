@@ -15,11 +15,16 @@ extends CharacterBody2D
 ## knob - see the signed current_angular_speed model below.
 @export var wind_speed_catchup_factor: float = 0.05
 
+@export_group("Currents")
+@export var current_catchup_factor: float = 0.03  # same role as wind_speed_catchup_factor
+
+
 @onready var health: Health = $Health
 @onready var left_broadside: Node = $LeftBroadside
 @onready var right_broadside: Node = $RightBroadside
 @onready var status_effects: StatusEffects = $StatusEffects
 @onready var ammo_manager: AmmoManager = $AmmoManager
+@onready var current_detector: CurrentDetector = $CurrentDetector
 
 signal mast_state_changed(new_state: MastState)
 enum MastState {FULL_MAST, HALF_MAST, STOP, REVERSE}
@@ -49,6 +54,8 @@ var loadout_speed_multiplier: float = 1.0
 var loadout_angular_multiplier: float = 1.0
 var boost_multiplier: float = 1.0
 var debug_speed_multiplier: float = 1.0
+
+var current_push: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	$LeftBroadside.fired.connect(_on_broadside_fired)
@@ -154,13 +161,6 @@ func _physics_process(delta: float) -> void:
 	current_speed = lerp(current_speed, target_speed, acceleration_factor)
 	print("speed: ", current_speed, " (effective: ", current_speed * current_wind_speed_multiplier, ")")
 	
-	# Turning: current_angular_speed is signed (positive = right, negative
-	# = left). Wind's turn multiplier is baked straight into the target -
-	# no separate catch-up needed, because this value ramps fresh from
-	# wherever it currently sits every time input changes, rather than
-	# running in the background. Releasing both keys decays it back
-	# toward 0 instead of freezing it, and switching direction mid-turn
-	# re-targets smoothly through 0 instead of snapping.
 	var target_angular_speed_magnitude : float = ANGULAR_SPEED_MAP[current_mast_state] * max_angular_speed * sail_condition.get_turn_multiplier() * Wind.get_turn_multiplier(transform.x) * loadout_angular_multiplier
 	
 	var turning_right := Input.is_action_pressed("steer_right")
@@ -175,7 +175,10 @@ func _physics_process(delta: float) -> void:
 	rotation += current_angular_speed * delta
 	print("angular speed: ", current_angular_speed)
 	
-	velocity = Vector2.RIGHT.rotated(rotation) * current_speed * current_wind_speed_multiplier
+	var target_current_push: Vector2 = current_detector.get_total_push(global_position)
+	current_push = current_push.lerp(target_current_push, current_catchup_factor)
+
+	velocity = Vector2.RIGHT.rotated(rotation) * current_speed * current_wind_speed_multiplier + current_push
 	move_and_slide()
 	
 	for wake in $Wakes.get_children().filter(func(child): return child.is_in_group("wake")):

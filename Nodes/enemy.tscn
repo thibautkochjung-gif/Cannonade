@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://8rrvjia8ih27" path="res://Scripts/ammo_manager.gd" id="9_ejsdj"]
 [ext_resource type="Script" uid="uid://dyjbyttyd74sk" path="res://Scripts/hull_collision.gd" id="9_rlak2"]
 [ext_resource type="Script" uid="uid://dx0q637jadc3s" path="res://Scripts/collision_damage.gd" id="10_83h23"]
+[ext_resource type="Script" uid="uid://dmn3ti084v2w" path="res://Scripts/current_detector.gd" id="20_l6wwd"]
 [ext_resource type="Script" uid="uid://ba0hejjnxqapd" path="res://Scripts/damage_fx_controller.gd" id="21_3brvt"]
 [ext_resource type="PackedScene" uid="uid://heoa7fhmjvp4" path="res://Nodes/damage_particles.tscn" id="22_d3xy7"]
 
@@ -241,6 +242,14 @@ position = Vector2(36, 0)
 rotation = 1.8072772
 scale = Vector2(0.7099999, 0.7099999)
 size_multiplier = 0.9
+
+[node name="CurrentDetector" type="Area2D" parent="." unique_id=579151860]
+collision_layer = 0
+collision_mask = 64
+script = ExtResource("20_l6wwd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CurrentDetector" unique_id=164664172]
+shape = ExtResource("3_a47nb")
 
 [connection signal="health_changed" from="Health" to="." method="_on_health_health_changed"]
 [connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]

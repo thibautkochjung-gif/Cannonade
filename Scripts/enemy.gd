@@ -47,7 +47,11 @@ var SPEED_MAP = {
 @export var avoidance_normal_threshold: float = 0.3
 @export var force_reduction_amount: float = 0.7
 
+@export_group("Currents")
+@export var current_force_fudge: float = 1.0  # correction knob to normalize with player
+
 @onready var status_effects : StatusEffects = $StatusEffects
+@onready var current_detector: CurrentDetector = $CurrentDetector
 
 func _ready() -> void:
 	change_behavior_state(BehaviorState.SEEK)
@@ -237,6 +241,9 @@ func _physics_process(delta: float) -> void:
 	apply_force(transform.x * blended_speed * acceleration_force * sail_condition.get_condition_ratio())
 	apply_torque(blended_torque)
 	
+	var target_current_push: Vector2 = current_detector.get_total_push(global_position)
+	apply_central_force(target_current_push * mass * linear_damp_value * current_force_fudge)
+		
 	for wake in $Wakes.get_children().filter(func(child): return child.is_in_group("wake")):
 		wake.update_speed(linear_velocity.length() / max_velocity)
 

@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://bf02gm2epb0ef"]
+
+[ext_resource type="PackedScene" uid="uid://ckb5qyrm8pl0e" path="res://Nodes/current_base.tscn" id="1_k37gp"]
+
+[node name="Current" unique_id=680332628 instance=ExtResource("1_k37gp")]
+
+[node name="Polygon" type="CollisionPolygon2D" parent="." index="0" unique_id=1340626289]
+polygon = PackedVector2Array(19, 2, 254, 36, 491, 2, 511, 62, 253, 95, 1, 57)
+
+[node name="FlowMarkers" type="Node2D" parent="." index="1" unique_id=594809484]
+
+[node name="Marker2D" type="Marker2D" parent="FlowMarkers" index="0" unique_id=1811257713]
+position = Vector2(11, 25)
+
+[node name="Marker2D2" type="Marker2D" parent="FlowMarkers" index="1" unique_id=311427030]
+position = Vector2(255, 62)
+
+[node name="Marker2D3" type="Marker2D" parent="FlowMarkers" index="2" unique_id=2072691632]
+position = Vector2(501, 29)
+
+[node name="Particles" type="Node2D" parent="." index="2" unique_id=1872105512]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Particles" index="0" unique_id=1125663804]
+position = Vector2(28, 33)
+amount = 60
+lifetime = 1.5999999999999999
+emission_shape = 3
+emission_rect_extents = Vector2(23.585, 31.45)
+direction = Vector2(1, 0.17)
+spread = 8.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 111.1
+initial_velocity_max = 200.0
+damping_max = 37.333
+scale_amount_min = 1.5
+scale_amount_max = 2.0
+color = Color(1, 1, 1, 0.6862745)
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="Particles" index="1" unique_id=1163687094]
+position = Vector2(252, 66)
+rotation = -0.29929584
+amount = 60
+lifetime = 1.5999999999999999
+emission_shape = 3
+emission_rect_extents = Vector2(23.585, 31.45)
+direction = Vector2(1, 0.17)
+spread = 8.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 111.1
+initial_velocity_max = 200.0
+damping_max = 37.333
+scale_amount_min = 1.5
+scale_amount_max = 2.0
+color = Color(1, 1, 1, 0.6862745)

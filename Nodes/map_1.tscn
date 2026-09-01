@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://cuv5bc7kx4trb" path="res://Sprites/Water Tiles/tile_0077_water4.png" id="1_svi1x"]
 [ext_resource type="TileSet" uid="uid://dgwco75qo4wt2" path="res://land_tileset.tres" id="2_7amkc"]
+[ext_resource type="PackedScene" uid="uid://bf02gm2epb0ef" path="res://Nodes/current1.tscn" id="3_7amkc"]
+[ext_resource type="PackedScene" uid="uid://dmgtoi1wc10s4" path="res://Nodes/enemy.tscn" id="4_kpfxi"]
 
 [node name="Map" type="Node2D" unique_id=1406409734]
 
@@ -32,3 +34,10 @@ position = Vector2(350, 647)
 
 [node name="EnemySpawnPoint5" type="Marker2D" parent="." unique_id=1105746758 groups=["enemy_spawn_point"]]
 position = Vector2(-2316, -2080)
+
+[node name="Current" parent="." unique_id=680332628 instance=ExtResource("3_7amkc")]
+position = Vector2(-1853, 1296)
+push_speed = 20.0
+
+[node name="Enemy" parent="." unique_id=483788940 instance=ExtResource("4_kpfxi")]
+position = Vector2(-1852, 1329)

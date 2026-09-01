@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://d4grbd05jksdi"]
+
+[ext_resource type="PackedScene" uid="uid://ckb5qyrm8pl0e" path="res://Nodes/current_base.tscn" id="1_sxmjx"]
+
+[node name="Current" unique_id=680332628 instance=ExtResource("1_sxmjx")]
+
+[node name="Polygon" type="CollisionPolygon2D" parent="." index="0" unique_id=1340626289]
+polygon = PackedVector2Array(41, 13, 103, 121, 314, 164, 515, 75, 569, -68, 625, -53, 570, 119, 320, 225, 77, 167, 1, 57)
+
+[node name="FlowMarkers" type="Node2D" parent="." index="1" unique_id=594809484]
+
+[node name="Marker2D" type="Marker2D" parent="FlowMarkers" index="0" unique_id=1811257713]
+position = Vector2(21, 34)
+
+[node name="Marker2D2" type="Marker2D" parent="FlowMarkers" index="1" unique_id=311427030]
+position = Vector2(92, 139)
+
+[node name="Marker2D3" type="Marker2D" parent="FlowMarkers" index="2" unique_id=2072691632]
+position = Vector2(318, 192)
+
+[node name="Marker2D4" type="Marker2D" parent="FlowMarkers" index="3" unique_id=1016523412]
+position = Vector2(538, 93)
+
+[node name="Marker2D5" type="Marker2D" parent="FlowMarkers" index="4" unique_id=1126131345]
+position = Vector2(598, -59)
+
+[node name="Particles" type="Node2D" parent="." index="2" unique_id=1872105512]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Particles" index="0" unique_id=1125663804]
+position = Vector2(22.000002, 30.000004)
+rotation = 0.9351032
+amount = 40
+lifetime = 0.7
+emission_shape = 3
+emission_rect_extents = Vector2(23.585, 25.515)
+direction = Vector2(1, 0.17)
+spread = 8.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 111.1
+initial_velocity_max = 200.0
+damping_max = 37.333
+scale_amount_min = 1.5
+scale_amount_max = 2.0
+color = Color(1, 1, 1, 0.6862745)
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="Particles" index="1" unique_id=465628444]
+position = Vector2(91.00001, 139.00002)
+rotation = 0.10746676
+amount = 60
+lifetime = 1.2
+emission_shape = 3
+emission_rect_extents = Vector2(23.585, 25.515)
+direction = Vector2(1, 0.17)
+spread = 8.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 111.1
+initial_velocity_max = 200.0
+damping_max = 37.333
+scale_amount_min = 1.5
+scale_amount_max = 2.0
+color = Color(1, 1, 1, 0.6862745)
+
+[node name="CPUParticles2D4" type="CPUParticles2D" parent="Particles" index="2" unique_id=1609894181]
+position = Vector2(316.00003, 192)
+rotation = -0.5714278
+amount = 80
+lifetime = 1.4000000000000001
+emission_shape = 3
+emission_rect_extents = Vector2(23.585, 25.515)
+direction = Vector2(1, 0.17)
+spread = 8.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 111.1
+initial_velocity_max = 200.0
+damping_max = 37.333
+scale_amount_min = 1.5
+scale_amount_max = 2.0
+color = Color(1, 1, 1, 0.6862745)
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="Particles" index="3" unique_id=1163687094]
+position = Vector2(539, 93)
+rotation = -1.3546195
+amount = 50
+emission_shape = 3
+emission_rect_extents = Vector2(23.585, 31.45)
+direction = Vector2(1, 0.17)
+spread = 3.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 111.1
+initial_velocity_max = 200.0
+damping_max = 37.333
+scale_amount_min = 1.5
+scale_amount_max = 2.0
+color = Color(1, 1, 1, 0.6862745)
