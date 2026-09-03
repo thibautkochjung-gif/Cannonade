@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bx6vfje50g7ex"
+path="res://.godot/imported/Distant.wav-3831bd61721eb29fc7509d53aa5e6461.sample"
+
+[deps]
+
+source_file="res://Sound/SFX/Cannon fired/Distant.wav"
+dest_files=["res://.godot/imported/Distant.wav-3831bd61721eb29fc7509d53aa5e6461.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

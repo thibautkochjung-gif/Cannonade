@@ -78,6 +78,9 @@ position = Vector2(-40, 5)
 [node name="End" type="Marker2D" parent="RightBroadside/RowArea" unique_id=17149753]
 position = Vector2(24, 5)
 
+[node name="ShotAudio" type="AudioStreamPlayer2D" parent="RightBroadside" unique_id=1151714660]
+bus = &"SFX"
+
 [node name="LeftBroadside" type="Node2D" parent="." unique_id=1529387424]
 position = Vector2(2, -8)
 rotation = 3.1415927
@@ -94,6 +97,9 @@ position = Vector2(35, 2.999997)
 
 [node name="End" type="Marker2D" parent="LeftBroadside/RowArea" unique_id=607595035]
 position = Vector2(-29, 3.0000026)
+
+[node name="ShotAudio" type="AudioStreamPlayer2D" parent="LeftBroadside" unique_id=91836196]
+bus = &"SFX"
 
 [node name="Health" type="Node2D" parent="." unique_id=1096264317]
 script = ExtResource("5_sweqy")

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CannonSfxSet" format=3 uid="uid://ctq1xs7j63o6l"]
+
+[ext_resource type="Script" uid="uid://oi415888lx2v" path="res://Scripts/cannon_sfx_set.gd" id="1_exash"]
+[ext_resource type="AudioStream" uid="uid://blmemuvu75dgb" path="res://Sound/SFX/Cannon fired/162455__kastenfrosch__cannonball.wav" id="2_x5w5q"]
+[ext_resource type="AudioStream" uid="uid://bpdlmk0k6jryu" path="res://Sound/SFX/Cannon fired/187767__qubodup__cannon-shot.wav" id="3_0fcql"]
+[ext_resource type="AudioStream" uid="uid://dgg6w1b5ayjv4" path="res://Sound/SFX/Cannon fired/Audio 2.wav" id="4_nelfp"]
+[ext_resource type="AudioStream" uid="uid://16c1m51u7x4v" path="res://Sound/SFX/Cannon fired/Audio 3.wav" id="5_8jcjt"]
+[ext_resource type="AudioStream" uid="uid://5k833nuo20m7" path="res://Sound/SFX/Cannon fired/Audio 5.wav" id="6_dkad5"]
+
+[resource]
+script = ExtResource("1_exash")
+cannon_class = 1
+sounds = Array[AudioStream]([ExtResource("2_x5w5q"), ExtResource("3_0fcql"), ExtResource("4_nelfp"), ExtResource("5_8jcjt"), ExtResource("6_dkad5")])
+metadata/_custom_type_script = "uid://oi415888lx2v"

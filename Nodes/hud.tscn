@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://dt8bn8efsx7lj" path="res://Sprites/Enemy Offmap Arrow.png" id="10_f8pak"]
 [ext_resource type="Script" uid="uid://c3e0i5am2d5hf" path="res://Scripts/ammo_choice_icon.gd" id="15_kloxh"]
 [ext_resource type="Texture2D" uid="uid://csaqijxd3ktso" path="res://Sprites/boat 1.png" id="17_5ayy8"]
-[ext_resource type="Script" uid="uid://7t1emk6imkp8" path="res://Nodes/wind_indicator.gd" id="18_qc4bh"]
+[ext_resource type="Script" uid="uid://7t1emk6imkp8" path="res://Scripts/wind_indicator.gd" id="18_qc4bh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f8pak"]
 bg_color = Color(0.49747366, 0.49747372, 0.49747354, 1)

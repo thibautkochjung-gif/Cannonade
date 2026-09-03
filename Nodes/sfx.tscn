@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bldr7te4o4x0t"]
+
+[ext_resource type="Script" uid="uid://bs51uwpkkt4tm" path="res://Scripts/sfx.gd" id="1_7ad7p"]
+[ext_resource type="Script" uid="uid://oi415888lx2v" path="res://Scripts/cannon_sfx_set.gd" id="2_j3om7"]
+[ext_resource type="Resource" uid="uid://bbf0kbvtobt0n" path="res://Resources/Sound SFX sets/light_cannon_sfx_set.tres" id="3_epwg5"]
+[ext_resource type="Resource" uid="uid://ctq1xs7j63o6l" path="res://Resources/Sound SFX sets/medium_cannon_sfx_set.tres" id="4_oetnn"]
+[ext_resource type="Resource" uid="uid://rorqdiby4jnw" path="res://Resources/Sound SFX sets/heavy_cannon_sfx_set.tres" id="5_bpjx4"]
+
+[node name="SFX" type="Node" unique_id=1060881578]
+script = ExtResource("1_7ad7p")
+cannon_sfx_sets = Array[ExtResource("2_j3om7")]([ExtResource("3_epwg5"), ExtResource("4_oetnn"), ExtResource("5_bpjx4")])
+stagger_min = 0.0

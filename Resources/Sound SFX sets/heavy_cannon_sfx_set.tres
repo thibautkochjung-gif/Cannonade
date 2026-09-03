@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CannonSfxSet" format=3 uid="uid://rorqdiby4jnw"]
+
+[ext_resource type="Script" uid="uid://oi415888lx2v" path="res://Scripts/cannon_sfx_set.gd" id="1_efbux"]
+[ext_resource type="AudioStream" uid="uid://dg5bmqjym0ixo" path="res://Sound/SFX/Cannon fired/Heavy cannon 1.wav" id="2_d5kuj"]
+[ext_resource type="AudioStream" uid="uid://8dkgm7nrruoy" path="res://Sound/SFX/Cannon fired/Heavy cannon 2.wav" id="3_x0vxr"]
+[ext_resource type="AudioStream" uid="uid://bah648jisga5c" path="res://Sound/SFX/Cannon fired/Heavy cannon 3.wav" id="4_p7bs6"]
+[ext_resource type="AudioStream" uid="uid://dkb28rlgbu5lb" path="res://Sound/SFX/Cannon fired/Heavy cannon 4.wav" id="5_1jb4t"]
+[ext_resource type="AudioStream" uid="uid://6you7iaxoleb" path="res://Sound/SFX/Cannon fired/93741__waveadventurer__explosion.wav" id="6_04w2p"]
+
+[resource]
+script = ExtResource("1_efbux")
+cannon_class = 2
+sounds = Array[AudioStream]([ExtResource("2_d5kuj"), ExtResource("3_x0vxr"), ExtResource("4_p7bs6"), ExtResource("5_1jb4t"), ExtResource("6_04w2p")])
+base_pitch = 1.2
+base_volume_db = 10.0
+metadata/_custom_type_script = "uid://oi415888lx2v"

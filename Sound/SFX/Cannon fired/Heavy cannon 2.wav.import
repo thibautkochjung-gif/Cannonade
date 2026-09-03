@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://8dkgm7nrruoy"
+path="res://.godot/imported/Heavy cannon 2.wav-920e4c719a7fe128ec00aef7dc4779fe.sample"
+
+[deps]
+
+source_file="res://Sound/SFX/Cannon fired/Heavy cannon 2.wav"
+dest_files=["res://.godot/imported/Heavy cannon 2.wav-920e4c719a7fe128ec00aef7dc4779fe.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

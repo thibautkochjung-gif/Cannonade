@@ -252,13 +252,13 @@ func _on_health_health_depleted() -> void:
 	if is_dying:
 		return
 	is_dying = true
-
+	
 	set_physics_process(false)
-
+	
 	var tween := create_tween()
 	tween.tween_property(self, "modulate:a", 0.0, 3.0)
 	await tween.finished
-
+	
 	remove_from_group("enemy")
 	died.emit()
 	queue_free()

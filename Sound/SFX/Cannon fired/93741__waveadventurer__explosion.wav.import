@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://6you7iaxoleb"
+path="res://.godot/imported/93741__waveadventurer__explosion.wav-9317c04e47eada2f14ec73ae0d7afd03.sample"
+
+[deps]
+
+source_file="res://Sound/SFX/Cannon fired/93741__waveadventurer__explosion.wav"
+dest_files=["res://.godot/imported/93741__waveadventurer__explosion.wav-9317c04e47eada2f14ec73ae0d7afd03.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

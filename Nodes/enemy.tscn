@@ -125,6 +125,9 @@ position = Vector2(3.0000014, 27)
 [node name="Cannon15" parent="RightBroadside" unique_id=438035107 groups=["cannon"] instance=ExtResource("4_iifgy")]
 position = Vector2(3.0000014, 30)
 
+[node name="ShotAudio" type="AudioStreamPlayer2D" parent="RightBroadside" unique_id=251676630]
+bus = &"SFX"
+
 [node name="LeftBroadside" type="Node2D" parent="." unique_id=1692605001]
 position = Vector2(0, -5)
 rotation = 4.712389
@@ -174,6 +177,9 @@ position = Vector2(4.999999, 17)
 
 [node name="Cannon30" parent="LeftBroadside" unique_id=304809330 groups=["cannon"] instance=ExtResource("4_iifgy")]
 position = Vector2(4.999999, 20)
+
+[node name="ShotAudio" type="AudioStreamPlayer2D" parent="LeftBroadside" unique_id=425118010]
+bus = &"SFX"
 
 [node name="AmmoManager" type="Node" parent="." unique_id=286012581]
 script = ExtResource("9_ejsdj")

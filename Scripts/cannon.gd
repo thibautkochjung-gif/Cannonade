@@ -1,10 +1,14 @@
+class_name Cannon
 extends Node2D
+
+enum CannonClass {LIGHT, MEDIUM, HEAVY}
 
 @export var cannonball_scene : PackedScene
 @export var cooldown_time_avg = 8.0
 @export var cooldown_time_variance = 2
 
 @export_group("Cannon Class Stats")
+@export var cannon_class: CannonClass = CannonClass.MEDIUM
 @export var velocity_multiplier: float = 1.0
 @export var flight_time_multiplier: float = 1.0
 @export var damage_multiplier: float = 1.0

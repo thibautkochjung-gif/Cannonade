@@ -9,6 +9,7 @@ script = ExtResource("1_ud2dv")
 cannonball_scene = ExtResource("2_j3ip2")
 cooldown_time_avg = 5.0
 cooldown_time_variance = 1
+cannon_class = 0
 velocity_multiplier = 0.8
 flight_time_multiplier = 0.75
 damage_multiplier = 0.6

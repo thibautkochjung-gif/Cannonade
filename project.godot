@@ -15,6 +15,10 @@ run/main_scene="uid://c76rwplyu7tp0"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://Sprites/icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://bspj3ulqkf6nr"
+
 [autoload]
 
 GameManagerScene="*uid://bigngfkvbgi6p"
@@ -24,6 +28,7 @@ Settings="*uid://cgh6afs23cfs5"
 RunState="*uid://b1i1g3kn1a0wp"
 DebugMenu="*uid://cpfmbpjh28ngm"
 Wind="*uid://ks0qv132rmil"
+Sfx="*uid://bldr7te4o4x0t"
 
 [global_group]
 

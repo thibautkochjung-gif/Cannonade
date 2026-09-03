@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dxpk0lh2fp5fn"
+path="res://.godot/imported/DISTANT ARTI 2.wav-9e84e23f201f2c8595bdb53e35fdd7b4.sample"
+
+[deps]
+
+source_file="res://Sound/SFX/Cannon fired/DISTANT ARTI 2.wav"
+dest_files=["res://.godot/imported/DISTANT ARTI 2.wav-9e84e23f201f2c8595bdb53e35fdd7b4.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

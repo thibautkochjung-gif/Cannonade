@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://guy857854y5"
+path="res://.godot/imported/556134__walkingwithmicrophones__zis-3-3-guns-and-firework-in-honor-of-day-of-the-75th-anniversary-of-sevastopol-liberation.wav-9f012ce7a406b899ca5ec25347c0fadc.sample"
+
+[deps]
+
+source_file="res://Sound/SFX/Cannon fired/556134__walkingwithmicrophones__zis-3-3-guns-and-firework-in-honor-of-day-of-the-75th-anniversary-of-sevastopol-liberation.wav"
+dest_files=["res://.godot/imported/556134__walkingwithmicrophones__zis-3-3-guns-and-firework-in-honor-of-day-of-the-75th-anniversary-of-sevastopol-liberation.wav-9f012ce7a406b899ca5ec25347c0fadc.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

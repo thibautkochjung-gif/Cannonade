@@ -36,6 +36,12 @@ extends Resource
 @export_group("Reload")
 @export var reload_speed_multiplier: float = 1.0
 
+@export_group("Sound")
+@export var sfx_pitch_offset: float = 0.0
+@export var sfx_volume_offset_db: float = 0.0
+@export var sfx_overlay: AudioStream
+@export var sfx_overlay_volume_db: float = 0.0
+
 
 func predicted_range(base_velocity: float, flight_time_multiplier: float = 1.0) -> float:
 	var effective_flight_time := max_flight_time * flight_time_multiplier

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://blmemuvu75dgb"
+path="res://.godot/imported/162455__kastenfrosch__cannonball.wav-2966d612c4a6efdca6b2fb49fccbb1b6.sample"
+
+[deps]
+
+source_file="res://Sound/SFX/Cannon fired/162455__kastenfrosch__cannonball.wav"
+dest_files=["res://.godot/imported/162455__kastenfrosch__cannonball.wav-2966d612c4a6efdca6b2fb49fccbb1b6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://biarkmkkvn2v5"
+path="res://.godot/imported/Far away 2.wav-9e575029a4e57f22792a0f4d0b698010.sample"
+
+[deps]
+
+source_file="res://Sound/SFX/Cannon fired/Far away 2.wav"
+dest_files=["res://.godot/imported/Far away 2.wav-9e575029a4e57f22792a0f4d0b698010.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

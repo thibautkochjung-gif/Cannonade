@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bi3jxbomnmuu"
+path="res://.godot/imported/186952__readeonly__cannon_boom6.wav-e3236e3f00c4fd850b0e5f90eb8dea66.sample"
+
+[deps]
+
+source_file="res://Sound/SFX/Cannon fired/186952__readeonly__cannon_boom6.wav"
+dest_files=["res://.godot/imported/186952__readeonly__cannon_boom6.wav-e3236e3f00c4fd850b0e5f90eb8dea66.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

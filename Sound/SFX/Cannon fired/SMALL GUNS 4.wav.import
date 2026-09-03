@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dfyfqpc31w7r5"
+path="res://.godot/imported/SMALL GUNS 4.wav-16e0d5a5133f6ca71f793ce8abf8a664.sample"
+
+[deps]
+
+source_file="res://Sound/SFX/Cannon fired/SMALL GUNS 4.wav"
+dest_files=["res://.godot/imported/SMALL GUNS 4.wav-16e0d5a5133f6ca71f793ce8abf8a664.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
