@@ -12,5 +12,5 @@ script = ExtResource("1_efbux")
 cannon_class = 2
 sounds = Array[AudioStream]([ExtResource("2_d5kuj"), ExtResource("3_x0vxr"), ExtResource("4_p7bs6"), ExtResource("5_1jb4t"), ExtResource("6_04w2p")])
 base_pitch = 1.2
-base_volume_db = 10.0
+base_volume_db = 3.0
 metadata/_custom_type_script = "uid://oi415888lx2v"

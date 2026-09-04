@@ -10,3 +10,6 @@
 script = ExtResource("1_7ad7p")
 cannon_sfx_sets = Array[ExtResource("2_j3om7")]([ExtResource("3_epwg5"), ExtResource("4_oetnn"), ExtResource("5_bpjx4")])
 stagger_min = 0.0
+low_tier_volume_db = -10.0
+medium_tier_volume_db = -6.0
+muffle_far_volume_db = -13.0

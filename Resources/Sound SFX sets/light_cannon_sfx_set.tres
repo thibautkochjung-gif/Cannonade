@@ -5,13 +5,12 @@
 [ext_resource type="AudioStream" uid="uid://guy857854y5" path="res://Sound/SFX/Cannon fired/556134__walkingwithmicrophones__zis-3-3-guns-and-firework-in-honor-of-day-of-the-75th-anniversary-of-sevastopol-liberation.wav" id="3_xpxdi"]
 [ext_resource type="AudioStream" uid="uid://dfyfqpc31w7r5" path="res://Sound/SFX/Cannon fired/SMALL GUNS 4.wav" id="4_lhn3h"]
 [ext_resource type="AudioStream" uid="uid://bo8ymtye16oy1" path="res://Sound/SFX/Cannon fired/SMALL GUNS 1.wav" id="5_jhj62"]
-[ext_resource type="AudioStream" uid="uid://dfr67syqi6ivs" path="res://Sound/SFX/Cannon fired/SMALL GUNS 2.wav" id="6_fu73n"]
 [ext_resource type="AudioStream" uid="uid://47avbcs0vtt3" path="res://Sound/SFX/Cannon fired/SMALL GUNS 3.wav" id="7_28yly"]
 [ext_resource type="AudioStream" uid="uid://b5g832hfrydvv" path="res://Sound/SFX/Cannon fired/SMALL GUNS 5.wav" id="8_neeax"]
 
 [resource]
 script = ExtResource("1_m2pyg")
-sounds = Array[AudioStream]([ExtResource("2_p1biw"), ExtResource("3_xpxdi"), ExtResource("4_lhn3h"), ExtResource("5_jhj62"), ExtResource("6_fu73n"), ExtResource("7_28yly"), ExtResource("8_neeax")])
+sounds = Array[AudioStream]([ExtResource("2_p1biw"), ExtResource("3_xpxdi"), ExtResource("4_lhn3h"), ExtResource("5_jhj62"), ExtResource("7_28yly"), ExtResource("8_neeax")])
 base_pitch = 0.9
-base_volume_db = -10.0
+base_volume_db = -3.0
 metadata/_custom_type_script = "uid://oi415888lx2v"

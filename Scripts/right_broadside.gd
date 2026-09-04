@@ -52,8 +52,8 @@ func rebuild_cannons() -> void:
 
 
 func fire():
-	var ready_cannons: Array = cannons.filter(func(c): return c.ready_to_fire)  # NEW
-	Sfx.play_broadside(shot_playback, ready_cannons, cannon_count, ammo_manager.current_ammo)
+	var ready_cannons: Array = cannons.filter(func(c): return c.ready_to_fire)
+	Sfx.play_broadside(shot_playback, ready_cannons, cannon_count, ammo_manager.current_ammo, global_position)  
 	for cannon in cannons:
 		var delay = randf_range(0.0, shot_delay_max)
 		get_tree().create_timer(delay).timeout.connect(func(c = cannon): c.cannon_fire(self))

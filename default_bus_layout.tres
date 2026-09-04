@@ -31,6 +31,14 @@ spread = 0.2
 hipass = 0.35
 wet = 0.29
 
+[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_j3pel"]
+resource_name = "LowPassFilter"
+cutoff_hz = 3260.0
+
+[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_g28q7"]
+resource_name = "LowPassFilter"
+cutoff_hz = 1160.0
+
 [resource]
 bus/1/name = &"SFX"
 bus/1/solo = false
@@ -46,3 +54,19 @@ bus/1/effect/2/effect = SubResource("AudioEffectCompressor_j3pel")
 bus/1/effect/2/enabled = false
 bus/1/effect/3/effect = SubResource("AudioEffectReverb_j3pel")
 bus/1/effect/3/enabled = true
+bus/2/name = &"SFX_Mid"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = 0.0
+bus/2/send = &"SFX"
+bus/2/effect/0/effect = SubResource("AudioEffectLowPassFilter_j3pel")
+bus/2/effect/0/enabled = true
+bus/3/name = &"SFX_Far"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = 0.0
+bus/3/send = &"SFX"
+bus/3/effect/0/effect = SubResource("AudioEffectLowPassFilter_g28q7")
+bus/3/effect/0/enabled = true

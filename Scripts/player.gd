@@ -120,6 +120,9 @@ func _unhandled_input(event: InputEvent) -> void:
 				active_broadside.fire()
 				active_broadside = null
 	
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+		_cancel_shot()
+	
 	if event.is_action_pressed("ammo_1"):
 		ammo_manager.select_ammo(1)
 	elif event.is_action_pressed("ammo_2"):
@@ -128,6 +131,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		ammo_manager.select_ammo(3)
 	elif event.is_action_pressed("ammo_4"):
 		ammo_manager.select_ammo(4)
+
+
+func _cancel_shot() -> void:
+	if not active_broadside:
+		return
+	is_aiming = false
+	active_broadside.hide_aim()
+	active_broadside = null
 
 
 func _broadside_for_mouse(screen_position: Vector2) -> Node2D:
@@ -175,9 +186,9 @@ func _physics_process(delta: float) -> void:
 	rotation += current_angular_speed * delta
 	print("angular speed: ", current_angular_speed)
 	
-	var target_current_push: Vector2 = current_detector.get_total_push(global_position)
+	var target_current_push: Vector2 = current_detector.get_total_push(global_position, transform.x)
 	current_push = current_push.lerp(target_current_push, current_catchup_factor)
-
+	
 	velocity = Vector2.RIGHT.rotated(rotation) * current_speed * current_wind_speed_multiplier + current_push
 	move_and_slide()
 	

@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://7md2ohin2kdg" path="res://Scripts/wind.gd" id="1_ewlvk"]
 
 [sub_resource type="Curve" id="Curve_ewlvk"]
-_data = [Vector2(0, 0.68416643), 0.0, 0.0, 0, 0, Vector2(0.24009326, 1), 0.0, 0.0, 0, 0, Vector2(0.7109557, 0.6551243), -1.2805173, -1.2805173, 0, 0, Vector2(0.98834497, 0.3175091), -0.39515758, 0.0, 0, 0]
+_data = [Vector2(0, 0.68416643), 0.0, 0.0, 0, 0, Vector2(0.24009326, 1), 0.0, 0.0, 0, 0, Vector2(0.7109557, 0.6551243), -1.2805173, -1.2805173, 0, 0, Vector2(1, 0.43658608), -0.39515758, 0.0, 0, 0]
 point_count = 4
 
 [sub_resource type="Curve" id="Curve_jij6u"]
-_data = [Vector2(0, 0.59340966), 0.0, 0.0, 0, 0, Vector2(0.5011655, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.2957275), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.59340966), 0.0, 0.0, 0, 0, Vector2(0.5011655, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.3916512), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_lw6x0"]
@@ -16,8 +16,10 @@ point_count = 3
 
 [node name="Wind" type="Node" unique_id=566784976]
 script = ExtResource("1_ewlvk")
-max_change_interval = 20.0
-transition_duration = 1.0
+min_change_interval = 60.0
+max_change_interval = 90.0
+transition_duration = 20.0
+min_wind_speed = 5.0
 speed_by_angle_curve = SubResource("Curve_ewlvk")
 turn_by_angle_curve = SubResource("Curve_jij6u")
 strength_by_wind_speed_curve = SubResource("Curve_lw6x0")
